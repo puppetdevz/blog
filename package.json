@@ -35,7 +35,7 @@
   "devDependencies": {
     "chalk": "^5.3.0",
     "gray-matter": "^4.0.3",
-    "inquirer": "^9.2.12",
+    "inquirer": "^9.2.16",
     "json2yaml": "^1.1.0",
     "yamljs": "^0.3.0"
   }
