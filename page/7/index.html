@@ -302,7 +302,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220413/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AVant%E5%AE%9E%E7%8E%B0show-overflow-tooltip/">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220413/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AelementUI%E7%9A%84input%E7%BB%84%E4%BB%B6autofocus%E5%A4%B1%E6%95%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -320,7 +320,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/20220413/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AVant%E5%AE%9E%E7%8E%B0show-overflow-tooltip/" class="post-title-link" itemprop="url">解决方案：移动端实现触碰时show-overflow-tooltip</a>
+          <a href="/20220413/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AelementUI%E7%9A%84input%E7%BB%84%E4%BB%B6autofocus%E5%A4%B1%E6%95%88/" class="post-title-link" itemprop="url">解决方案：ElementUI的input组件的autofocus失效（自动获取焦点）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -371,14 +371,27 @@
           <span id="more"></span>
 
 
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>用于编写 PC 端的 UI 框架 Element-UI 的 Table 组件有一个属性叫 show-overflow-tooltip 属性，可以实现当单元格的文字太多时，用省略号(ellipsis)展示，鼠标覆上时显示文字全文本的提示框效果。如下：</p>
-<p><img src="https://oss.puppetdev.top/image/note/a3ad5f8cec0fbac62c27424dbae96a64.png" alt="image-20211129165847396"></p>
-<p>这阵子在项目碰到一个问题，由于我主要是做后端的，对前端并不是很熟悉，但被迫做了一阵子前端。项目组用的技术栈是 Vue + Vant，移动端的 UI 框架，需要实现一个方框里当文字太多时，用省略号代替超出的文本，当手触碰时，又能够显示所有文本。</p>
-<p>找了半天，没发现 Vant 有提供与 ElementUI 类似的，只能自己摸索写了一个</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.myClass</span> &#123;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">overflow</span> : hidden;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.myClass</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">text-overflow</span>: clip;</span><br><span class="line">    <span class="attribute">white-space</span>: normal;</span><br><span class="line">    <span class="attribute">word-break</span>: break-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>这两天在开发中碰到需要在 el-table 表单中嵌套 input 组件，可以在表单上直接进行编辑，我使用了 template 的具名插槽进行实现，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column prop=&quot;toApplyNum&quot; label=&quot;申请数量&quot;&gt;</span><br><span class="line">  &lt;template slot-scope=&quot;scope&quot;&gt;</span><br><span class="line">    &lt;el-input v-model=&quot;scope.row.toApplyNum&quot;&gt;&lt;/el-input&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/el-table-column&gt;</span><br></pre></td></tr></table></figure>
 
-<p>后边发现，Stack Overflow 上有类似的提问，并且有了相关解答，其中一个解决跟我的解决差不多，贴一下地址：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5474871/html-how-can-i-show-tooltip-only-when-ellipsis-is-activated">https://stackoverflow.com/questions/5474871/html-how-can-i-show-tooltip-only-when-ellipsis-is-activated</a></p>
+<p>但实际运行后，发现 input 控件无法正常输入，每输入一个字符，就会自动失焦，需要再次点击之后才能继续输入。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>经在网上查阅资料发现</p>
+<p>autofocus 是 vue 中 input 的原生属性，element也支持这种方法。但是 element 中的 el-input 组件外面还有其他组件，导致 autofocus 失效</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>知道了原因，尝试采用手动调用 focus 方法来解决问题。</p>
+<ol>
+<li>先给 el-input 控件绑定一个 ref，由于要使得每一行均能操作，需要绑定为一个动态 ref</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-input :ref=&quot;&#x27;inputRef&#x27;+ scope.row.id&quot; v-model=&quot;scope.row.toApplyNum&quot; /&gt;</span><br></pre></td></tr></table></figure>
 
+<ol start="2">
+<li>监听el-input 控件的 input 事件</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-input </span><br><span class="line">  :ref=&quot;&#x27;inputRef&#x27;+ scope.row.id&quot; </span><br><span class="line">  v-model=&quot;scope.row.toApplyNum&quot;</span><br><span class="line">  @input=&quot;handleInput&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>每当输入，就手动会 input 控件获取焦点</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$nextTick(<span class="function">(<span class="params">goodsInfo</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> refName = <span class="string">&#x27;inputRef&#x27;</span> + goodsInfo.<span class="property">id</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">$refs</span>[refName].<span class="title function_">focus</span>();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
       
     </div>
 
