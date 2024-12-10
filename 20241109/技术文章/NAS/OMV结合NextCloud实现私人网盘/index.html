@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon_32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="OpenMediaVault (OMV) 是一款基于 Debian 的开源网络附加存储（NAS）解决方案，它通过易于使用的界面提供数据存储、备份和共享服务。结合 Nextcloud，用户可以在 OMV 平台上搭建一个功能强大的私人网盘，实现文件同步、分享和协作。这种组合不仅增强了数据的可访问性和安全性，也为个人和小型企业提供了一个成本效益高、隐私保护好的云存储解决方案。通过 Docker 容器或">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OMV结合NextCloud实现私人网盘">
+<meta property="og:url" content="https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/index.html">
+<meta property="og:site_name" content="木偶&#39;s Blog">
+<meta property="og:description" content="OpenMediaVault (OMV) 是一款基于 Debian 的开源网络附加存储（NAS）解决方案，它通过易于使用的界面提供数据存储、备份和共享服务。结合 Nextcloud，用户可以在 OMV 平台上搭建一个功能强大的私人网盘，实现文件同步、分享和协作。这种组合不仅增强了数据的可访问性和安全性，也为个人和小型企业提供了一个成本效益高、隐私保护好的云存储解决方案。通过 Docker 容器或">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/ab9bff5d9f1b185ad091b0387e139630.webp">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/b07d48b9dbffd4fd9bf424d300a886d7.png">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/a322e5eab62d1dd79f525aa219685254.png">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/9d8abde41a2ce10acd9c1ffb8e9973fa.png">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/69da14431cb380184c83876467f6af67.png">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/128b011a00a09c0e3f7e8e68594dd0a3.png">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/9e470a538d0c23296c6cc7c3f859acd2.png">
+<meta property="article:published_time" content="2024-11-09T02:36:49.000Z">
+<meta property="article:modified_time" content="2024-11-09T02:36:49.000Z">
+<meta property="article:author" content="木偶">
+<meta property="article:tag" content="前端,后端,框架,web,学习,面试,JavaScript,ES6,TypeScript,vue,css3,html5,Node,markdown,算法,C,Cpp,Linux,Go,Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oss.puppetdev.top/image/note/ab9bff5d9f1b185ad091b0387e139630.webp">
+
+
+<link rel="canonical" href="https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/","path":"20241109/技术文章/NAS/OMV结合NextCloud实现私人网盘/","title":"OMV结合NextCloud实现私人网盘"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>OMV结合NextCloud实现私人网盘 | 木偶's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="木偶's Blog" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="木偶's Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">木偶's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果发现能力无法支撑自己的野心，那就静下心来学习吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-简历"><a href="/resume/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC"><span class="nav-text">1.1 安装脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-flashmemory"><span class="nav-text">1.1.1 flashmemory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%88%9B%E5%BB%BA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9%E7%94%A8%E4%BA%8E%E5%AD%98%E6%94%BE-NextCloud-%E7%9A%84-Data"><span class="nav-text">1.2 创建共享文件夹用于存放 NextCloud 的 Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%80%9F%E5%8A%A9-Compose-%E6%95%B4%E4%BD%93%E5%90%AF%E7%94%A8%E5%AE%89%E8%A3%85-MySQL-%E5%92%8C-NextCloud"><span class="nav-text">1.3 借助 Compose 整体启用安装 MySQL 和 NextCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-MySQL-%E4%B8%8E-NextCloud-%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-text">1.3.1 MySQL 与 NextCloud 配置参数说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E6%9C%80%E5%90%8E%EF%BC%9A%E5%90%AF%E5%8A%A8-NextCloud"><span class="nav-text">1.4 最后：启动 NextCloud</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE"><span class="nav-text">1.5 安全配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-%E9%85%8D%E7%BD%AE-SSL-%E8%AF%81%E4%B9%A6"><span class="nav-text">1.5.1 配置 SSL 证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-%E5%B0%86-HTTP-%E7%9A%84%E8%AE%BF%E9%97%AE%E4%B9%9F%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0-HTTPS"><span class="nav-text">1.5.2 将 HTTP 的访问也重定向到 HTTPS</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木偶"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">木偶</p>
+  <div class="site-description" itemprop="description">本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/puppetdevz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;puppetdevz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:puppetdevz@163.com" title="E-Mail → mailto:puppetdevz@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OMV结合NextCloud实现私人网盘 | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OMV结合NextCloud实现私人网盘
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-09 10:36:49" itemprop="dateCreated datePublished" datetime="2024-11-09T10:36:49+08:00">2024-11-09</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://oss.puppetdev.top/image/note/ab9bff5d9f1b185ad091b0387e139630.webp" alt="OMV NAS &amp; NextCloud搭建私人网盘.webp"></p>
+<p>OpenMediaVault (OMV) 是一款基于 Debian 的开源网络附加存储（NAS）解决方案，它通过易于使用的界面提供数据存储、备份和共享服务。结合 Nextcloud，用户可以在 OMV 平台上搭建一个功能强大的私人网盘，实现文件同步、分享和协作。这种组合不仅增强了数据的可访问性和安全性，也为个人和小型企业提供了一个成本效益高、隐私保护好的云存储解决方案。通过 Docker 容器或直接安装，OMV 与 Nextcloud 的整合可以轻松完成，满足现代数字生活的存储需求。</p>
+<span id="more"></span>
+
+<h2 id="1-1-安装脚本"><a href="#1-1-安装脚本" class="headerlink" title="1.1 安装脚本"></a>1.1 安装脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash</span><br></pre></td></tr></table></figure>
+
+<p>该脚本会安装 openmediavault、omv-extras、flashmemory，如果已经安装好了的，就自动跳过。</p>
+<h3 id="1-1-1-flashmemory"><a href="#1-1-1-flashmemory" class="headerlink" title="1.1.1 flashmemory"></a>1.1.1 flashmemory</h3><p>在 OMV 系统中，<code>flashmemory</code> 插件的主要作用是减少对系统运行的存储介质（尤其是基于闪存的存储介质，如 SSD 或 USB 闪存驱动器）的写入操作。这个插件非常重要，特别是当 OMV 安装在闪存媒介上时，比如 USB 棒或 SD 卡。</p>
+<p>它的作用：</p>
+<ol>
+<li><strong>减少写入操作</strong>：通过减少对闪存的写入次数，可以显著延长闪存设备的使用寿命。闪存设备（如 SSD、USB 闪存盘和 SD 卡）有有限的写入次数，过多的写入操作会减少它们的寿命。</li>
+<li><strong>改善系统性能</strong>：通过减少不必要的写入操作，可以提高系统的响应速度和整体性能。</li>
+<li><strong>使用 tmpfs</strong>：插件工作原理是将一些经常被写入的目录挂载到内存中（使用 tmpfs），这样这些目录下的数据写入操作实际上是在内存中进行，而不是在实际的物理存储上。系统重启时，这些写入的数据会丢失，因为它们只是临时存储在内存中。</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li>如果 OMV 安装在硬盘驱动器（HDD）上，并且不担心写入次数，不一定要安装 <code>flashmemory</code> 插件</li>
+<li>对于安装在闪存媒介（如 SSD、USB 闪存盘和 SD 卡）的 OMV 系统，强烈建议安装 <code>flashmemory</code> 插件。这样可以保护存储介质，延长其使用寿命，并提高系统的整体稳定性和性能。</li>
+</ul>
+<h2 id="1-2-创建共享文件夹用于存放-NextCloud-的-Data"><a href="#1-2-创建共享文件夹用于存放-NextCloud-的-Data" class="headerlink" title="1.2 创建共享文件夹用于存放 NextCloud 的 Data"></a>1.2 创建共享文件夹用于存放 NextCloud 的 Data</h2><ol>
+<li><p>创建共享文件夹，记录绝对路径：&#x2F;srv&#x2F;dev-disk-by-uuid-3f0211f1-75af-4278-9d80-21f507bb8650&#x2F;NextCloudData<br> <img src="https://oss.puppetdev.top/image/note/b07d48b9dbffd4fd9bf424d300a886d7.png" alt="image.png"></p>
+</li>
+<li><p><strong>重要</strong>！！！修改共享文件夹的 ACL 权限，将用户组修改为 www-data，否则初始化 NextCloud 时，会出现权限不足而失败。</p>
+<p> <img src="https://oss.puppetdev.top/image/note/a322e5eab62d1dd79f525aa219685254.png" alt="image.png"></p>
+</li>
+</ol>
+<h2 id="1-3-借助-Compose-整体启用安装-MySQL-和-NextCloud"><a href="#1-3-借助-Compose-整体启用安装-MySQL-和-NextCloud" class="headerlink" title="1.3 借助 Compose 整体启用安装 MySQL 和 NextCloud"></a>1.3 借助 Compose 整体启用安装 MySQL 和 NextCloud</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 该文件最初是为了给 OMV NAS 集成 NextCloud 而写</span></span><br><span class="line"><span class="comment"># 已经过完整测试，确定可用，因此非必要，不建议更换镜像的版本。</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">mysql:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql:8.3.0</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">TZ:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line">      <span class="comment"># MySQL Root用户密码</span></span><br><span class="line">      <span class="attr">MYSQL_ROOT_PASSWORD:</span> <span class="string">xxx</span></span><br><span class="line">      <span class="attr">MYSQL_ALLOW_EMPTY_PASSWORD:</span> <span class="string">&#x27;no&#x27;</span></span><br><span class="line">      <span class="comment"># 初始化数据库</span></span><br><span class="line">      <span class="attr">MYSQL_DATABASE:</span> <span class="string">nextcloud</span></span><br><span class="line">      <span class="comment"># 初始化用户(不能是root 会报错)</span></span><br><span class="line">      <span class="attr">MYSQL_USER:</span> <span class="string">nextcloud</span></span><br><span class="line">      <span class="comment"># 用户密码</span></span><br><span class="line">      <span class="attr">MYSQL_PASSWORD:</span> <span class="string">MYSQL_PASSWORD</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;3306:3306&#x27;</span></span><br><span class="line">      <span class="comment"># 不需要主从，所以不需要33060</span></span><br><span class="line">      <span class="comment"># - &#x27;33060:33060&#x27;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/data/mysql/data:/var/lib/mysql:rw</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/data/mysql/logs:/logs:rw</span></span><br><span class="line">      <span class="comment"># 下面两个映射为可选</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/data/mysql/config:/etc/mysql/conf.d:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/data/mysql/init:/docker-entrypoint-initdb.d:ro</span></span><br><span class="line">    <span class="attr">logging:</span></span><br><span class="line">      <span class="attr">driver:</span> <span class="string">&#x27;json-file&#x27;</span></span><br><span class="line">      <span class="attr">options:</span></span><br><span class="line">        <span class="attr">max-size:</span> <span class="string">&#x27;1024M&#x27;</span></span><br><span class="line">        <span class="attr">max-file:</span> <span class="string">&#x27;5&#x27;</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nextcloud</span></span><br><span class="line">  <span class="attr">nextcloud:</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nextcloud</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nextcloud:28.0.3</span> <span class="comment"># 该镜像内部使用了 Apache 作为 Web 代理服务器</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;8080:80&#x27;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/data/nextcloud/custom_apps:/var/www/html/custom_apps</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/data/nextcloud/config:/var/www/html/config</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/app/data/nextcloud/theme:/var/www/html/themes</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/srv/dev-disk-by-uuid-3f0211f1-75af-4278-9d80-21f507bb8650/NextCloudData:/var/www/html/data</span> <span class="comment"># OMV共享文件夹的绝对路径，存放实际文件数据</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MYSQL_PASSWORD=MYSQL_PASSWORD</span> <span class="comment"># 同上面 MySQL 服务的用户密码一致</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MYSQL_DATABASE=nextcloud</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MYSQL_USER=nextcloud</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">MYSQL_HOST=mysql</span> <span class="comment"># 同一个 DockerCompose 下，Host只需要使用服务名即可</span></span><br><span class="line">    <span class="attr">networks:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nextcloud</span></span><br><span class="line"></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">nextcloud:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">&#x27;nextcloud&#x27;</span></span><br><span class="line">    <span class="attr">driver:</span> <span class="string">&#x27;bridge&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-1-MySQL-与-NextCloud-配置参数说明"><a href="#1-3-1-MySQL-与-NextCloud-配置参数说明" class="headerlink" title="1.3.1 MySQL 与 NextCloud 配置参数说明"></a>1.3.1 MySQL 与 NextCloud 配置参数说明</h3><blockquote>
+<p>仅列举必要且常见的，更多配置说明见官方说明。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/nextcloud">NextCloud</a>：<code>https://hub.docker.com/_/nextcloud</code></p>
+<p>Nextcloud 安装以及数据库之外的所有数据（文件上载等）都存储在容器地址&#x2F;var&#x2F;www&#x2F;html 中，要想持久化你的数据，不通过 nextCloud 也可以查看的话，应当映射到宿主机的某个位置上。</p>
+<p>nextcloud 的一些卷地址：</p>
+<ul>
+<li>&#x2F;var&#x2F;www&#x2F;html 更新所需的主文件夹</li>
+<li>&#x2F;var&#x2F;www&#x2F;html&#x2F;custom_apps 你自己手动安装的应用位置</li>
+<li>&#x2F;var&#x2F;www&#x2F;html&#x2F;config 本地配置文件位置</li>
+<li>&#x2F;var&#x2F;www&#x2F;html&#x2F;data 你的网盘数据存放的位置</li>
+<li>&#x2F;var&#x2F;www&#x2F;html&#x2F;themes&#x2F; 主题文件位置</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/_/mysql">MySQL</a>：<code>https://hub.docker.com/_/mysql</code></p>
+<h2 id="1-4-最后：启动-NextCloud"><a href="#1-4-最后：启动-NextCloud" class="headerlink" title="1.4 最后：启动 NextCloud"></a>1.4 最后：启动 NextCloud</h2><ol>
+<li>直接用 DockerCompose 启用容器服务</li>
+<li>启动后，Web 访问 ip:8080，即可访问 NextCloud</li>
+<li>创建管理用户</li>
+<li>安装额外的应用</li>
+</ol>
+<p>最后的效果：Amazing！！！！</p>
+<p><img src="https://oss.puppetdev.top/image/note/9d8abde41a2ce10acd9c1ffb8e9973fa.png" alt="image.png"></p>
+<p><img src="https://oss.puppetdev.top/image/note/69da14431cb380184c83876467f6af67.png" alt="image.png"></p>
+<p><img src="https://oss.puppetdev.top/image/note/128b011a00a09c0e3f7e8e68594dd0a3.png" alt="image.png"></p>
+<h2 id="1-5-安全配置"><a href="#1-5-安全配置" class="headerlink" title="1.5 安全配置"></a>1.5 <a target="_blank" rel="noopener" href="https://docs.nextcloud.com/server/28/admin_manual/installation/harden_server.html">安全配置</a></h2><h3 id="1-5-1-配置-SSL-证书"><a href="#1-5-1-配置-SSL-证书" class="headerlink" title="1.5.1 配置 SSL 证书"></a>1.5.1 配置 SSL 证书</h3><p>由于使用的是 nextcloud，而不是 fpm，因此 Web 代理采用了内置的 Apache2</p>
+<ul>
+<li><p>安装 vim：<code>apt update &amp;&amp; apt install vim</code></p>
+</li>
+<li><p>在 apache 安装目录下新建一个文件夹 cert：<code>/etc/apache2/certs</code></p>
+</li>
+<li><p>上传 Apache 类型的证书文件到 certs 目录下</p>
+</li>
+<li><p>启用 SSL 模块和默认的 SSL 站点配置</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a2enmod ssl</span><br><span class="line">a2ensite default-ssl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 default-ssl.conf 配置文件：<code>vim /etc/apache2/sites-available/default-ssl.conf</code></p>
+<p>  添加或修改如下语句（<strong>修改前记得备份</strong>）</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 邮箱</span><br><span class="line">ServerAdmin xxxxx@163.com</span><br><span class="line"># 域名</span><br><span class="line">ServerName cloud.nextcloud.com</span><br><span class="line"># 头部安全配置</span><br><span class="line">    &lt;IfModule mod_headers.c&gt;</span><br><span class="line">      Header always set Strict-Transport-Security &quot;max-age=15552000; includeSubDomains&quot;</span><br><span class="line">    &lt;/IfModule&gt;</span><br><span class="line"></span><br><span class="line"># SSL 证书配置</span><br><span class="line">SSLEngine on</span><br><span class="line">SSLCertificateFile /etc/apache2/certs/public.crt</span><br><span class="line">SSLCertificateKeyFile /etc/apache2/certs/web.key</span><br><span class="line">SSLProtocol all -SSLv2 -SSLv3</span><br><span class="line">SSLCipherSuite HIGH:!RC4:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!EXP:+MEDIUM</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p><code>SSLProtocol all -SSLv2 -SSLv3</code>：指定 Apache 服务器支持的 SSL 和 TLS 协议版本。启用了所有可用的协议（<code>all</code>），但禁用了旧版的 <code>SSLv2</code> 和 <code>SSLv3</code>。这是因为 <code>SSLv2</code> 和 <code>SSLv3</code> 都存在严重的安全漏洞，如 POODLE 攻击，因此在现代 Web 服务器配置中应当被禁用以保证安全。</p>
+</blockquote>
+<blockquote>
+<p><code>SSLCipherSuite HIGH:!RC4:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!EXP:+MEDIUM</code><br>：定义 Apache 服务器在 SSL&#x2F;TLS 握手过程中可以使用的加密套件（cipher suites）</p>
+<ul>
+<li><code>HIGH</code>：启用被认为是高强度的加密套件。</li>
+<li><code>!RC4</code>：禁用 RC4 加密算法。RC4 已被发现存在多种安全问题。</li>
+<li><code>!MD5</code>：禁用 MD5 散列函数。MD5 因其安全性不足而不推荐使用。</li>
+<li><code>!aNULL</code>：禁用允许匿名身份验证的加密套件。</li>
+<li><code>!eNULL</code>：禁用不提供加密的套件（即明文通信）。</li>
+<li><code>!NULL</code>：确保所有加密套件都必须提供消息认证。</li>
+<li><code>!DH</code>、<code>!EDH</code>：禁用不安全的 Diffie-Hellman 密钥交换方法。</li>
+<li><code>!EXP</code>：禁用出口级（被认为弱加密）的加密套件。</li>
+<li><code>+MEDIUM</code>：启用中等强度的加密套件。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>有些还需要配置了：<code>SSLCertificateChainFile /etc/apache2/cert/chain.crt</code><br>指定包含证书链的文件的路径。证书链文件（有时称为 CA 证书束）包含了从服务器证书到根 CA 证书（包括中间 CA 证书）的完整路径。这是必要的，因为客户端（如 Web 浏览器）需要这个证书链来验证服务器证书的真实性。Apache 2.4.8 及更高版本中推荐使用 <code>SSLCertificateFile</code> 指令来代替 <code>SSLCertificateChainFile</code>，因为 <code>SSLCertificateFile</code> 现在可以同时处理服务器证书和链证书。</p>
+</blockquote>
+<ul>
+<li>修改用 <code>apache2ctl configtest</code> 检查一下配置是否有异常。</li>
+<li>重启 apache 服务：<code>/etc/init.d/apache2 restart</code> or <code>service apache2 restart</code></li>
+</ul>
+<p>使用域名访问 nextcloud 即可。如果未正确识别，可清除浏览记录，关闭浏览器再重新打开。</p>
+<h3 id="1-5-2-将-HTTP-的访问也重定向到-HTTPS"><a href="#1-5-2-将-HTTP-的访问也重定向到-HTTPS" class="headerlink" title="1.5.2 将 HTTP 的访问也重定向到 HTTPS"></a>1.5.2 将 HTTP 的访问也重定向到 HTTPS</h3><p>Apache2 可以同时启用多个虚拟主机配置文件，可通过 <code>apachectl -S</code> 进行查看，一般为：</p>
+<p><img src="https://oss.puppetdev.top/image/note/9e470a538d0c23296c6cc7c3f859acd2.png" alt="image.png"></p>
+<p>上面我们已经配置了监听 443 端口的虚拟主机，为了更加安全，我们需要进一步修改监听 80 端口的虚拟主机，使其访问重定向到 443 端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">   ServerName cloud.nextcloud.com</span><br><span class="line">   Redirect permanent / https://cloud.nextcloud.com/</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+
+<p>最后重启 apache 服务：<code>/etc/init.d/apache2 restart</code> or <code>service apache2 restart</code></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/uploads/wechatpay.jpeg" alt="木偶 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/uploads/alipay.jpeg" alt="木偶 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>木偶
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/" title="OMV结合NextCloud实现私人网盘">https://www.puppetdevz.top/20241109/技术文章/NAS/OMV结合NextCloud实现私人网盘/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/uploads/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/" rel="prev" title="解决方案：e1000e eno1 Detected Hardware Unit Hang">
+                  <i class="fa fa-angle-left"></i> 解决方案：e1000e eno1 Detected Hardware Unit Hang
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">木偶</br><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022114751号-1<a /></span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"69de69fc724d3489ff88a61a998ee22d"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

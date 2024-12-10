@@ -17,14 +17,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.puppetdev.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="背景描述 操作系统：macOS 通过 npm 全局安装的 yarn  问题描述通过命令 yarn global add packageName 后，试图该模块的命令，发现无法找到   问题分析macOS 在安装完 npm 后，再通过 npm 安装 yarn。则 yarn 相关配置和包路径默认位于家目录下   通过 yarn global add 安装包，则会被安装到 ~&#x2F;.config&#x2F;yar">
+    <meta name="description" content="1.1 背景描述 操作系统：macOS 通过 npm 全局安装的 yarn  1.2 问题描述通过命令 yarn global add packageName 后，试图该模块的命令，发现无法找到   1.3 问题分析macOS 在安装完 npm 后，再通过 npm 安装 yarn。则 yarn 相关配置和包路径默认位于家目录下   通过 yarn global add 安装包，则会被安装到 ~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决方案：通过yarn安装全局包后无法找到命令">
-<meta property="og:url" content="https://blog.puppetdev.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:url" content="https://www.puppetdevz.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="木偶&#39;s Blog">
-<meta property="og:description" content="背景描述 操作系统：macOS 通过 npm 全局安装的 yarn  问题描述通过命令 yarn global add packageName 后，试图该模块的命令，发现无法找到   问题分析macOS 在安装完 npm 后，再通过 npm 安装 yarn。则 yarn 相关配置和包路径默认位于家目录下   通过 yarn global add 安装包，则会被安装到 ~&#x2F;.config&#x2F;yar">
+<meta property="og:description" content="1.1 背景描述 操作系统：macOS 通过 npm 全局安装的 yarn  1.2 问题描述通过命令 yarn global add packageName 后，试图该模块的命令，发现无法找到   1.3 问题分析macOS 在安装完 npm 后，再通过 npm 安装 yarn。则 yarn 相关配置和包路径默认位于家目录下   通过 yarn global add 安装包，则会被安装到 ~">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/4fe618e399628724ad20b4a6323b0a59.png">
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/5dada55a4915bb85a40e68e0f75354cd.png">
@@ -32,20 +32,20 @@
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/8e5e85ebf430d7676443903be1407465.png">
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/ad02e37701153120d62feef66115b282.png">
 <meta property="article:published_time" content="2022-09-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-19T15:37:01.035Z">
+<meta property="article:modified_time" content="2024-05-19T15:30:29.000Z">
 <meta property="article:author" content="木偶">
 <meta property="article:tag" content="解决方案">
 <meta property="article:tag" content="包管理器">
-<meta property="article:tag" content="yarn">
+<meta property="article:tag" content="Yarn">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://oss.puppetdev.top/image/note/4fe618e399628724ad20b4a6323b0a59.png">
 
 
-<link rel="canonical" href="https://blog.puppetdev.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/">
+<link rel="canonical" href="https://www.puppetdevz.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"auto","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.puppetdev.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/","path":"20220921/技术文章/前端/解决方案：MacOS通过yarn安装全局包后无法找到命令/","title":"解决方案：通过yarn安装全局包后无法找到命令"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"auto","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/","path":"20220921/技术文章/前端/解决方案：MacOS通过yarn安装全局包后无法找到命令/","title":"解决方案：通过yarn安装全局包后无法找到命令"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>解决方案：通过yarn安装全局包后无法找到命令 | 木偶's Blog</title>
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BF%B0"><span class="nav-text">背景描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">解决方案</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E8%83%8C%E6%99%AF%E6%8F%8F%E8%BF%B0"><span class="nav-text">1.1 背景描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-text">1.2 问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-text">1.3 问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">1.4 解决方案</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,13 +165,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -211,7 +211,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.puppetdev.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -247,7 +247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-19 23:37:01" itemprop="dateModified" datetime="2023-12-19T23:37:01+08:00">2023-12-19</time>
+      <time title="修改时间：2024-05-19 23:30:29" itemprop="dateModified" datetime="2024-05-19T23:30:29+08:00">2024-05-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -281,20 +281,20 @@
     
     <div class="post-body" itemprop="articleBody"><span id="more"></span>
 
-<h2 id="背景描述"><a href="#背景描述" class="headerlink" title="背景描述"></a>背景描述</h2><ul>
+<h2 id="1-1-背景描述"><a href="#1-1-背景描述" class="headerlink" title="1.1 背景描述"></a>1.1 背景描述</h2><ul>
 <li>操作系统：macOS</li>
 <li>通过 npm 全局安装的 yarn</li>
 </ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>通过命令 <code>yarn global add packageName</code> 后，试图该模块的命令，发现无法找到</p>
+<h2 id="1-2-问题描述"><a href="#1-2-问题描述" class="headerlink" title="1.2 问题描述"></a>1.2 问题描述</h2><p>通过命令 <code>yarn global add packageName</code> 后，试图该模块的命令，发现无法找到</p>
 <img src="https://oss.puppetdev.top/image/note/4fe618e399628724ad20b4a6323b0a59.png" alt="image-20210930135631984" style="zoom:50%;" />
 
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>macOS 在安装完 npm 后，再通过 npm 安装 yarn。则 yarn 相关配置和包路径默认位于家目录下</p>
+<h2 id="1-3-问题分析"><a href="#1-3-问题分析" class="headerlink" title="1.3 问题分析"></a>1.3 问题分析</h2><p>macOS 在安装完 npm 后，再通过 npm 安装 yarn。则 yarn 相关配置和包路径默认位于家目录下</p>
 <img src="https://oss.puppetdev.top/image/note/5dada55a4915bb85a40e68e0f75354cd.png" alt="image-20210930135818676" style="zoom:50%;" />
 
 <p>通过 yarn global add 安装包，则会被安装到 <code>~/.config/yarn/global/node_modules/</code> 中</p>
 <p><img src="https://oss.puppetdev.top/image/note/791f480a09702d4bbc1f5d8213509e76.png" alt="image-20210930140102368"></p>
 <p>而该路径是没有配置在环境变量中的，因此无法找到。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>将上述路径配置到环境变量中即可。此处我是配置在 <code>~/.zshrc</code> 中，大家可以视自身所用的 shell 自行决定。</p>
+<h2 id="1-4-解决方案"><a href="#1-4-解决方案" class="headerlink" title="1.4 解决方案"></a>1.4 解决方案</h2><p>将上述路径配置到环境变量中即可。此处我是配置在 <code>~/.zshrc</code> 中，大家可以视自身所用的 shell 自行决定。</p>
 <p>配置如下：</p>
 <p><img src="https://oss.puppetdev.top/image/note/8e5e85ebf430d7676443903be1407465.png" alt="image-20210930140654119"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin&quot;</span><br></pre></td></tr></table></figure>
@@ -338,7 +338,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://blog.puppetdev.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/" title="解决方案：通过yarn安装全局包后无法找到命令">https://blog.puppetdev.top/20220921/技术文章/前端/解决方案：MacOS通过yarn安装全局包后无法找到命令/</a>
+      <a href="https://www.puppetdevz.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/" title="解决方案：通过yarn安装全局包后无法找到命令">https://www.puppetdevz.top/20220921/技术文章/前端/解决方案：MacOS通过yarn安装全局包后无法找到命令/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -378,7 +378,7 @@
           <div class="post-tags">
               <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="tag"># 解决方案</a>
               <a href="/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/" rel="tag"># 包管理器</a>
-              <a href="/tags/yarn/" rel="tag"># yarn</a>
+              <a href="/tags/Yarn/" rel="tag"># Yarn</a>
           </div>
 
         
@@ -390,8 +390,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-dialog%E5%86%85%E5%AE%B9%E8%BF%87%E5%A4%9A%E6%97%B6%E5%8D%B4%E4%B8%8D%E4%BC%9A%E5%8F%98%E6%88%90%E6%BB%9A%E5%8A%A8%E6%A0%B7%E5%BC%8F%E7%9A%84%E9%97%AE%E9%A2%98/" rel="next" title="解决方案：van-dialog内容过多时却不会变成滚动样式的问题">
-                  解决方案：van-dialog内容过多时却不会变成滚动样式的问题 <i class="fa fa-angle-right"></i>
+                <a href="/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ael-input%E5%A6%82%E4%BD%95%E7%BB%91%E5%AE%9A%E6%8C%89%E9%94%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6/" rel="next" title="解决方案：el-input如何绑定按键修饰符">
+                  解决方案：el-input如何绑定按键修饰符 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

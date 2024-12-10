@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon_32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在 Proxmox 6.5.11-8 中，偶发性会出现以下报错，尤其是在进行大文件传输后： 123456789101112131415[97377.240263] e1000e 0000:00:1f eno1: Detected Hardware Unit Hang:                 TDH                  &lt;22&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决方案：e1000e eno1 Detected Hardware Unit Hang">
+<meta property="og:url" content="https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/index.html">
+<meta property="og:site_name" content="木偶&#39;s Blog">
+<meta property="og:description" content="在 Proxmox 6.5.11-8 中，偶发性会出现以下报错，尤其是在进行大文件传输后： 123456789101112131415[97377.240263] e1000e 0000:00:1f eno1: Detected Hardware Unit Hang:                 TDH                  &lt;22&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/8a813c25c40bdf839d7466c7a2da9098.png">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/9ebac05995653141eb5529a53e633a8b.png">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/a6de0c3547bf2b8d8868b0885dd1f2e1.png">
+<meta property="article:published_time" content="2024-10-31T03:27:47.000Z">
+<meta property="article:modified_time" content="2024-11-04T12:22:30.000Z">
+<meta property="article:author" content="木偶">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Proxmox">
+<meta property="article:tag" content="英特尔网卡">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oss.puppetdev.top/image/note/8a813c25c40bdf839d7466c7a2da9098.png">
+
+
+<link rel="canonical" href="https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/","path":"20241031/技术文章/解决方案：e1000e eno1 Detected Hardware Unit Hang/解决方案：e1000e eno1 Detected Hardware Unit Hang（PVE突然无法连接）/","title":"解决方案：e1000e eno1 Detected Hardware Unit Hang"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>解决方案：e1000e eno1 Detected Hardware Unit Hang | 木偶's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="木偶's Blog" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="木偶's Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">木偶's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果发现能力无法支撑自己的野心，那就静下心来学习吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-简历"><a href="/resume/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Intel-%E7%BD%91%E5%8D%A1%E9%A9%B1%E5%8A%A8%E9%97%AE%E9%A2%98%EF%BC%8C%E7%89%B9%E5%88%AB%E6%98%AF-e1000e"><span class="nav-text">1.1 Intel 网卡驱动问题，特别是 e1000e</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">1.2 解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">1.3 参考文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木偶"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">木偶</p>
+  <div class="site-description" itemprop="description">本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/puppetdevz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;puppetdevz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:puppetdevz@163.com" title="E-Mail → mailto:puppetdevz@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="解决方案：e1000e eno1 Detected Hardware Unit Hang | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          解决方案：e1000e eno1 Detected Hardware Unit Hang
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-31 11:27:47" itemprop="dateCreated datePublished" datetime="2024-10-31T11:27:47+08:00">2024-10-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-04 20:22:30" itemprop="dateModified" datetime="2024-11-04T20:22:30+08:00">2024-11-04</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://oss.puppetdev.top/image/note/8a813c25c40bdf839d7466c7a2da9098.png" alt="fjy89"></p>
+<p>在 Proxmox 6.5.11-8 中，偶发性会出现以下报错，尤其是在进行大文件传输后：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[97377.240263] e1000e 0000:00:1f eno1: Detected Hardware Unit Hang:</span><br><span class="line">                 TDH                  &lt;22&gt;</span><br><span class="line">                 TDT                  &lt;2f&gt;</span><br><span class="line">                 next_to_use          &lt;2f&gt;</span><br><span class="line">                 next_to_clean        &lt;21&gt;</span><br><span class="line">               buffer_info[next_to_clean]:</span><br><span class="line">                 time_stamp           &lt;101725292&gt;</span><br><span class="line">                 next_to_watch        &lt;22&gt;</span><br><span class="line">                 jiffies              &lt;1017253e0&gt;</span><br><span class="line">                 next_to_watch.status &lt;0&gt;</span><br><span class="line">               MAC Status             &lt;40080083&gt;</span><br><span class="line">               PHY Status             &lt;796d&gt;</span><br><span class="line">               PHY 1000BASE-T Status  &lt;3800&gt;</span><br><span class="line">               PHY Extended Status    &lt;3000&gt;</span><br><span class="line">               PCI Status             &lt;10&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>一旦出现该问题，Synology NAS 就会进入不可用的状态。</strong></p>
+<h2 id="1-1-Intel-网卡驱动问题，特别是-e1000e"><a href="#1-1-Intel-网卡驱动问题，特别是-e1000e" class="headerlink" title="1.1 Intel 网卡驱动问题，特别是 e1000e"></a>1.1 Intel 网卡驱动问题，特别是 e1000e</h2><p>错误信息表明网络接口卡（NIC）在进行数据传输时遇到了硬件单元挂起的问题。这种情况在<strong>重网络负载</strong>时更容易发生。</p>
+<p>这是多年来 I219-V、I218-V… 网卡型号及其驱动程序的一个已知错误。不仅在 proxmox 上，在 xcp-ng 上也是如此。</p>
+<p>这个问题，截止 Proxmox 6.5.11-8 仍未被彻底解决，只能通过禁用 TCP 校验和卸载。</p>
+<h2 id="1-2-解决方案"><a href="#1-2-解决方案" class="headerlink" title="1.2 解决方案"></a>1.2 解决方案</h2><p>通过执行命令：<code>ethtool -K eno1 tso off gso off gro off</code> 即可解决，但是每次重启机器或者网卡，都会失效。具体含义下方会说明。</p>
+<p>如何长期解决？</p>
+<p>在 <code>/etc/network/interfaces</code> 中，添加以下代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iface eno1 inet manual</span><br><span class="line">    post-up /usr/bin/logger -p debug -t ifup <span class="string">&quot;Disabling offload for eno1&quot;</span> &amp;&amp; /sbin/ethtool -K <span class="variable">$IFACE</span> tso off gso off gro off &amp;&amp; /usr/bin/logger -p debug -t ifup <span class="string">&quot;Disabled offload for eno1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>post-up</strong>：这是一个钩子命令，它会在接口被成功激活（“up”状态）后执行。这里的命令会在 <code>eno1</code> 接口启动之后执行一系列动作。</li>
+<li><strong>&#x2F;usr&#x2F;bin&#x2F;logger -p debug -t ifup “Disabling offload for eno1”</strong>：这条命令使用 <code>logger</code> 程序，将一条调试级别（<code>debug</code>）的信息写入系统日志。日志内容为 <code>&quot;Disabling offload for eno1&quot;</code>，标记为 <code>ifup</code>。这样做的目的是记录接口启动时禁用某些功能的动作，方便日后查看系统日志，了解配置是否按预期执行。（可通过 <code>journalctl -t ifup -p debug</code> 查看日志）</li>
+<li><strong>&#x2F;sbin&#x2F;ethtool -K $IFACE tso off gso off gro off tx off rx off</strong>：这里使用 <code>ethtool</code> 工具来关闭网络接口的一些“硬件卸载（offload）”功能。具体地：<ul>
+<li><strong>tso（TCP Segmentation Offload）</strong>：关闭 TCP 分段卸载。TSO 允许网卡将大型 TCP 数据包分段，减轻 CPU 负担。如果关闭，系统会由 CPU 进行 TCP 分段。</li>
+<li><strong>gso（Generic Segmentation Offload）</strong>：关闭通用分段卸载。GSO 是一种将不同协议的数据分段处理的技术，关闭它会让系统自己处理分段。</li>
+<li><strong>gro（Generic Receive Offload）</strong>：关闭通用接收卸载。GRO 是一种接收数据包处理优化技术。关闭它意味着数据包接收将完全交由 CPU 处理。</li>
+<li><strong>tx（Transmit Checksum Offload）</strong>：完全关闭传输时的校验和卸载。网卡不会自动处理数据包的校验和，而是让系统自行处理。</li>
+<li><strong>rx（Receive Checksum Offload）</strong>：完全关闭接收时的校验和卸载，网卡不会校验接收到的数据包，需要系统来进行检查。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>[!info] 信息</p>
+<ul>
+<li><strong>TSO</strong>、<strong>GSO</strong> 和 <strong>GRO</strong> 分别用于控制 TCP 分段、通用分段和接收卸载，这三个是针对传输层和网络层的优化。</li>
+<li><strong>tx off</strong> 和 <strong>rx off</strong> 是更通用的选项，用于关闭整个发送（TX）和接收（RX）的卸载功能。</li>
+</ul>
+<p>如果已经关闭了 TSO、GSO 和 GRO，那么 <code>tx off</code> 和 <code>rx off</code> 可能会显得多余，因为这些设置会影响整个数据包的处理，而不只是特定的卸载功能。</p>
+<p>在大多数情况下，只需关闭 TSO、GSO 和 GRO 就可以了，<code>tx off</code> 和 <code>rx off</code> 可以根据需要选择是否使用。如果需要彻底禁用卸载功能，可以使用它们，但通常只关闭 TSO、GSO 和 GRO 是足够的。</p>
+</blockquote>
+<blockquote>
+<p>[!note] 注意<br>这对于一些系统可能没有生效，那么可以尝试通过注册 Service 的方式执行。这里不赘述。</p>
+</blockquote>
+<p>如何查看 tso、gso、gro 是否已经关闭：<code>ethtool -k eno1 | grep -E &#39;tso|gso|gro&#39;</code></p>
+<p><img src="https://oss.puppetdev.top/image/note/9ebac05995653141eb5529a53e633a8b.png" alt="yp93w"></p>
+<p>均为 off，说明已经关闭。</p>
+<p>如何查看 TCP 校验和卸载是否开启：<code>ethtool -a eno1</code></p>
+<p><img src="https://oss.puppetdev.top/image/note/a6de0c3547bf2b8d8868b0885dd1f2e1.png" alt="qegq7"></p>
+<p>些参数主要用于控制网络接口的流量控制，以减少数据包丢失，确保在网络拥堵时网络的稳定性。</p>
+<ul>
+<li><strong>Autonegotiate</strong>：开启表示接口支持自动协商功能，允许网络接口和连接到的设备协商最佳的传输模式（如全双工或半双工）和流量控制。</li>
+<li><strong>RX（Receive）</strong>：此项“on”表示接收暂停帧的能力已开启。也就是说，网络接口在接收到暂停帧时会暂停接收数据。这在数据接收方无法及时处理流量时非常有用。</li>
+<li><strong>TX（Transmit）</strong>：此项“on”表示发送暂停帧的能力已开启。网络接口可以在需要的时候发送暂停帧，指示对方暂停发送数据。这在本设备负载过高时很有帮助。</li>
+<li><strong>RX negotiated</strong>：表示接收暂停帧的能力已协商开启，表明两端设备在连接时已协商启用了接收流量控制。</li>
+<li><strong>TX negotiated</strong>：表示发送暂停帧的能力已协商开启，表明两端设备在连接时已协商启用了发送流量控制。</li>
+</ul>
+<p>配置后，Synology NAS 终于不会再“突发恶疾”了！！！</p>
+<h2 id="1-3-参考文献"><a href="#1-3-参考文献" class="headerlink" title="1.3 参考文献"></a>1.3 参考文献</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://forum.proxmox.com/threads/e1000e-eno1-detected-hardware-unit-hang.59928/" title="e1000e eno1: Detected Hardware Unit Hang: | Proxmox Support Forum">e1000e eno1: Detected Hardware Unit Hang: | Proxmox Support Forum</a></li>
+<li><a target="_blank" rel="noopener" href="https://forum.proxmox.com/threads/e1000-driver-hang.58284/page-8#post-390709" title="e1000 driver hang | Page 8 | Proxmox Support Forum">e1000 driver hang | Page 8 | Proxmox Support Forum</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/uploads/wechatpay.jpeg" alt="木偶 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/uploads/alipay.jpeg" alt="木偶 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>木偶
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/" title="解决方案：e1000e eno1 Detected Hardware Unit Hang">https://www.puppetdevz.top/20241031/技术文章/解决方案：e1000e eno1 Detected Hardware Unit Hang/解决方案：e1000e eno1 Detected Hardware Unit Hang（PVE突然无法连接）/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/uploads/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Proxmox/" rel="tag"># Proxmox</a>
+              <a href="/tags/%E8%8B%B1%E7%89%B9%E5%B0%94%E7%BD%91%E5%8D%A1/" rel="tag"># 英特尔网卡</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20240510/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/NGINX%E6%97%A5%E5%BF%97%E5%88%87%E7%89%87/" rel="prev" title="">
+                  <i class="fa fa-angle-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/" rel="next" title="OMV结合NextCloud实现私人网盘">
+                  OMV结合NextCloud实现私人网盘 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">木偶</br><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022114751号-1<a /></span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"74f621188850759f7ae70ab0926594e7"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

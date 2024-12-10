@@ -17,38 +17,36 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.puppetdev.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="有时候我们还在开发，想一边开发一边分享给其他人体验和改进，但是又没有公网服务器供别人访问，又不是同一个局域网，该如何做呢？此时就需要进行“内网穿透”，让自己的本地电脑短暂地变成服务器（指定开放端口），使得其他人可以轻松访问。">
+    <meta name="description" content="有时候我们还在开发，想一边开发一边分享给其他人体验和改进，但是又没有公网服务器供别人访问，又不是同一个局域网，该如何做呢？此时就需要进行“内网穿透”，让自己的本地电脑短暂地变成服务器（指定开放端口），使得其他人可以轻松访问。 内网穿透大致有两种：  第三方提供的服务。这类往往有免费的，但是免费的带宽受限且不稳定，基本只有 1~2M 带宽，如 Zerotier、花生壳、DDNSTO、ngrok、na">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内网穿透">
-<meta property="og:url" content="https://blog.puppetdev.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.html">
+<meta property="og:url" content="https://www.puppetdevz.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.html">
 <meta property="og:site_name" content="木偶&#39;s Blog">
-<meta property="og:description" content="有时候我们还在开发，想一边开发一边分享给其他人体验和改进，但是又没有公网服务器供别人访问，又不是同一个局域网，该如何做呢？此时就需要进行“内网穿透”，让自己的本地电脑短暂地变成服务器（指定开放端口），使得其他人可以轻松访问。">
+<meta property="og:description" content="有时候我们还在开发，想一边开发一边分享给其他人体验和改进，但是又没有公网服务器供别人访问，又不是同一个局域网，该如何做呢？此时就需要进行“内网穿透”，让自己的本地电脑短暂地变成服务器（指定开放端口），使得其他人可以轻松访问。 内网穿透大致有两种：  第三方提供的服务。这类往往有免费的，但是免费的带宽受限且不稳定，基本只有 1~2M 带宽，如 Zerotier、花生壳、DDNSTO、ngrok、na">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/bffa74bb56b9925f18c769d383b9c2f8.png">
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/88fbf5d500a90eaf9a952f843b73cf1b.png">
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/8278272b216a2ca8d57e52d84d391df6.png">
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/c4054891abc54d25e6579229d03ef5bf.png">
-<meta property="og:image" content="https://oss.puppetdev.top/image/note/268c59026abae22be927055292d01a4c.png">
 <meta property="og:image" content="https://oss.puppetdev.top/image/note/7965455b08ab7fefa547a61ac6fe418e.png">
+<meta property="og:image" content="https://oss.puppetdev.top/image/note/268c59026abae22be927055292d01a4c.png">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEYibu8vK4b7IDbQXHyyevOJ4TsKV1JaxvxueKKEdYw2jcaJia2YgYcnPEHNyKmHDTVvictibt1IIYUtTQ/640?wx_fmt=png&random=0.5643900247770886&wxfrom=5&wx_lazy=1&wx_co=1&tp=wxpic">
 <meta property="article:published_time" content="2022-07-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-19T15:37:01.034Z">
+<meta property="article:modified_time" content="2024-09-15T07:54:34.000Z">
 <meta property="article:author" content="木偶">
-<meta property="article:tag" content="内网穿透">
-<meta property="article:tag" content="ngrok">
-<meta property="article:tag" content="natapp">
 <meta property="article:tag" content="软件">
+<meta property="article:tag" content="内网穿透">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://oss.puppetdev.top/image/note/bffa74bb56b9925f18c769d383b9c2f8.png">
 
 
-<link rel="canonical" href="https://blog.puppetdev.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+<link rel="canonical" href="https://www.puppetdevz.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"auto","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.puppetdev.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/","path":"20220801/技术文章/内网穿透/","title":"内网穿透"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"auto","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/","path":"20220801/技术文章/内网穿透/","title":"内网穿透"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>内网穿透 | 木偶's Blog</title>
@@ -153,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-nps-npc"><span class="nav-text">1.1 nps-npc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E7%AE%80%E4%BB%8B"><span class="nav-text">1.1.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E7%89%B9%E7%82%B9"><span class="nav-text">1.1.2 特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">1.1.3 使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-NPS"><span class="nav-text">1.1.4 NPS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-1-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="nav-text">1.1.4.1 安装配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-2-%E5%90%AF%E5%8A%A8"><span class="nav-text">1.1.4.2 启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-5-NPC"><span class="nav-text">1.1.5 NPC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-6-web%E7%AE%A1%E7%90%86%E7%AB%AF"><span class="nav-text">1.1.6 web管理端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-ngrok"><span class="nav-text">1.2 ngrok</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E4%BD%93%E9%AA%8C%E5%85%88%E8%A1%8C"><span class="nav-text">1.2.1 体验先行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-text">1.2.2 使用流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-text">1.2.3 相关链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-natapp"><span class="nav-text">1.3 natapp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-%E4%BD%93%E9%AA%8C%E5%85%88%E8%A1%8C"><span class="nav-text">1.3.1 体验先行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-text">1.3.2 使用流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-text">1.3.3 相关链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-frp"><span class="nav-text">1.4 frp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-%E7%AE%80%E4%BB%8B"><span class="nav-text">1.4.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-%E7%89%B9%E7%82%B9"><span class="nav-text">1.4.2 特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">1.4.3 使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-1-%E9%80%9A%E8%BF%87rdp%E8%AE%BF%E9%97%AE%E5%AE%B6%E9%87%8C%E7%9A%84%E6%9C%BA%E5%99%A8"><span class="nav-text">1.4.3.1 通过rdp访问家里的机器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-2-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="nav-text">1.4.3.2 开机自启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-3-%E9%80%9A%E8%BF%87SSH%E8%AE%BF%E9%97%AE%E5%85%AC%E5%8F%B8%E5%86%85%E7%BD%91%E6%9C%BA%E5%99%A8"><span class="nav-text">1.4.3.3 通过SSH访问公司内网机器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-4-%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%83%A8%E7%BD%B2%E4%BA%8E%E5%86%85%E7%BD%91%E7%9A%84Web%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.4.3.4 通过自定义域名访问部署于内网的Web服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-5-%E5%AF%B9%E5%A4%96%E6%8F%90%E4%BE%9B%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.4.3.5 对外提供简单的文件访问服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-6-%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="nav-text">1.4.3.6 常用功能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-%E7%BB%9F%E8%AE%A1%E9%9D%A2%E6%9D%BF"><span class="nav-text">1.4.3.7 统计面板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-%E5%8A%A0%E5%AF%86%E4%B8%8E%E5%8E%8B%E7%BC%A9"><span class="nav-text">1.4.3.7 加密与压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-TLS"><span class="nav-text">1.4.3.7 TLS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-%E4%BB%A3%E7%90%86%E9%99%90%E9%80%9F"><span class="nav-text">1.4.3.7 代理限速</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-%E8%8C%83%E5%9B%B4%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84"><span class="nav-text">1.4.3.7 范围端口映射</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-ew"><span class="nav-text">1.5 ew</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-%E7%AE%80%E4%BB%8B"><span class="nav-text">1.5.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-%E7%89%B9%E7%82%B9"><span class="nav-text">1.5.2 特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-3-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">1.5.3 使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-3-1-%E6%AD%A3%E5%90%91SOCKS-v5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">1.5.3.1 正向SOCKS v5服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-3-2-%E5%8F%8D%E5%BC%B9SOCKS-v5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">1.5.3.2 反弹SOCKS v5服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-4-%E5%A4%9A%E7%BA%A7%E7%BA%A7%E8%81%94"><span class="nav-text">1.5.4 多级级联</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-4-1-lcx-tran-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-text">1.5.4.1 lcx_tran 的用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-4-2-lcx-listen%E3%80%81lcx-slave%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-text">1.5.4.2 lcx_listen、lcx_slave的用法</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-nps-npc%EF%BC%88%E8%87%AA%E5%BB%BA%EF%BC%89"><span class="nav-text">1.1 nps-npc（自建）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E7%AE%80%E4%BB%8B"><span class="nav-text">1.1.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E7%89%B9%E7%82%B9"><span class="nav-text">1.1.2 特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">1.1.3 使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-NPS"><span class="nav-text">1.1.4 NPS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-1-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="nav-text">1.1.4.1 安装配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-2-%E5%90%AF%E5%8A%A8"><span class="nav-text">1.1.4.2 启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-5-NPC"><span class="nav-text">1.1.5 NPC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-6-web-%E7%AE%A1%E7%90%86%E7%AB%AF"><span class="nav-text">1.1.6 web 管理端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-frp%EF%BC%88%E8%87%AA%E5%BB%BA%EF%BC%89"><span class="nav-text">1.2 frp（自建）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E7%AE%80%E4%BB%8B"><span class="nav-text">1.2.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E7%89%B9%E7%82%B9"><span class="nav-text">1.2.2 特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">1.2.3 使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-1-%E9%80%9A%E8%BF%87-rdp-%E8%AE%BF%E9%97%AE%E5%AE%B6%E9%87%8C%E7%9A%84%E6%9C%BA%E5%99%A8"><span class="nav-text">1.2.3.1 通过 rdp 访问家里的机器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-2-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="nav-text">1.2.3.2 开机自启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-3-%E9%80%9A%E8%BF%87-SSH-%E8%AE%BF%E9%97%AE%E5%85%AC%E5%8F%B8%E5%86%85%E7%BD%91%E6%9C%BA%E5%99%A8"><span class="nav-text">1.2.3.3 通过 SSH 访问公司内网机器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-4-%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E9%83%A8%E7%BD%B2%E4%BA%8E%E5%86%85%E7%BD%91%E7%9A%84-Web-%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.2.3.4 通过自定义域名访问部署于内网的 Web 服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-5-%E5%AF%B9%E5%A4%96%E6%8F%90%E4%BE%9B%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.2.3.5 对外提供简单的文件访问服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-6-%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="nav-text">1.2.3.6 常用功能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-%E7%BB%9F%E8%AE%A1%E9%9D%A2%E6%9D%BF"><span class="nav-text">1.4.3.7 统计面板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-%E5%8A%A0%E5%AF%86%E4%B8%8E%E5%8E%8B%E7%BC%A9"><span class="nav-text">1.4.3.7 加密与压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-TLS"><span class="nav-text">1.4.3.7 TLS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-%E4%BB%A3%E7%90%86%E9%99%90%E9%80%9F"><span class="nav-text">1.4.3.7 代理限速</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-3-7-%E8%8C%83%E5%9B%B4%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84"><span class="nav-text">1.4.3.7 范围端口映射</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-ngrok%EF%BC%88%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89"><span class="nav-text">1.3 ngrok（第三方）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-%E4%BD%93%E9%AA%8C%E5%85%88%E8%A1%8C"><span class="nav-text">1.3.1 体验先行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-text">1.3.2 使用流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-text">1.3.3 相关链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-natapp%EF%BC%88%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89"><span class="nav-text">1.4 natapp（第三方）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-%E4%BD%93%E9%AA%8C%E5%85%88%E8%A1%8C"><span class="nav-text">1.4.1 体验先行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-text">1.4.2 使用流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="nav-text">1.4.3 相关链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-ew%EF%BC%88%E8%87%AA%E5%BB%BA%EF%BC%8C%E4%B8%8D%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-text">1.5 ew（自建，不推荐）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-%E7%AE%80%E4%BB%8B"><span class="nav-text">1.5.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-%E7%89%B9%E7%82%B9"><span class="nav-text">1.5.2 特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-3-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">1.5.3 使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-3-1-%E6%AD%A3%E5%90%91-SOCKS-v5-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">1.5.3.1 正向 SOCKS v5 服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-3-2-%E5%8F%8D%E5%BC%B9-SOCKS-v5-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">1.5.3.2 反弹 SOCKS v5 服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-4-%E5%A4%9A%E7%BA%A7%E7%BA%A7%E8%81%94"><span class="nav-text">1.5.4 多级级联</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-4-1-lcx-tran-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-text">1.5.4.1 lcx_tran 的用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-4-2-lcx-listen%E3%80%81lcx-slave-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-text">1.5.4.2 lcx_listen、lcx_slave 的用法</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,13 +166,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -214,7 +212,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.puppetdev.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -250,7 +248,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-19 23:37:01" itemprop="dateModified" datetime="2023-12-19T23:37:01+08:00">2023-12-19</time>
+      <time title="修改时间：2024-09-15 15:54:34" itemprop="dateModified" datetime="2024-09-15T15:54:34+08:00">2024-09-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -279,9 +277,14 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>有时候我们还在开发，想一边开发一边分享给其他人体验和改进，但是又没有公网服务器供别人访问，又不是同一个局域网，该如何做呢？此时就需要进行“内网穿透”，让自己的本地电脑短暂地变成服务器（指定开放端口），使得其他人可以轻松访问。</p>
+<p>内网穿透大致有两种：</p>
+<ul>
+<li>第三方提供的服务。这类往往有免费的，但是免费的带宽受限且不稳定，基本只有 1~2M 带宽，如 Zerotier、花生壳、DDNSTO、ngrok、natapp</li>
+<li>自建服务。这类都需要自身有云服务器，稳定，速度取决与云服务器的带宽，如 nps-npc、frp</li>
+</ul>
 <span id="more"></span>
 
-<h2 id="1-1-nps-npc"><a href="#1-1-nps-npc" class="headerlink" title="1.1 nps-npc"></a>1.1 nps-npc</h2><h3 id="1-1-1-简介"><a href="#1-1-1-简介" class="headerlink" title="1.1.1 简介"></a>1.1.1 简介</h3><p>nps 是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持 tcp、udp 流量转发，可支持任何 tcp、udp 上层协议（访问内网网站、本地支付接口调试、ssh 访问、远程桌面，内网 dns 解析等等……），此外还支持内网 http 代理、内网 socks5 代理、p2p 等，并带有功能强大的 web 管理端。</p>
+<h2 id="1-1-nps-npc（自建）"><a href="#1-1-nps-npc（自建）" class="headerlink" title="1.1 nps-npc（自建）"></a>1.1 nps-npc（自建）</h2><h3 id="1-1-1-简介"><a href="#1-1-1-简介" class="headerlink" title="1.1.1 简介"></a>1.1.1 简介</h3><p>nps 是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持 tcp、udp 流量转发，可支持任何 tcp、udp 上层协议（访问内网网站、本地支付接口调试、ssh 访问、远程桌面，内网 dns 解析等等……），此外还支持内网 http 代理、内网 socks5 代理、p2p 等，并带有功能强大的 web 管理端。</p>
 <ul>
 <li>一台有公网 IP 的服务器（VPS）运行服务端（<strong>NPS</strong>）</li>
 <li>一个或多个运行在内网的服务器或者 PC 运行客户端（<strong>NPC</strong>）</li>
@@ -311,51 +314,20 @@
 <p><img src="https://oss.puppetdev.top/image/note/88fbf5d500a90eaf9a952f843b73cf1b.png" alt="image.png"></p>
 <p>新建好客户端后，也可以在 <code>+</code> 中看到，详细的客户端连接命令：</p>
 <p><img src="https://oss.puppetdev.top/image/note/8278272b216a2ca8d57e52d84d391df6.png" alt="image.png"></p>
-<h3 id="1-1-6-web管理端"><a href="#1-1-6-web管理端" class="headerlink" title="1.1.6 web管理端"></a>1.1.6 web管理端</h3><p>在客户端界面可以通过 <code>新增</code> 的方式添加客户端连接，每一个连接的 vkey 都是唯一区分的。</p>
+<h3 id="1-1-6-web-管理端"><a href="#1-1-6-web-管理端" class="headerlink" title="1.1.6 web 管理端"></a>1.1.6 web 管理端</h3><p>在客户端界面可以通过 <code>新增</code> 的方式添加客户端连接，每一个连接的 vkey 都是唯一区分的。</p>
 <p>每一个客户端，在建立连接后，都可以建立多个不同协议的隧道，这一个个隧道就是不同的代理了。</p>
 <p><img src="https://oss.puppetdev.top/image/note/c4054891abc54d25e6579229d03ef5bf.png" alt="image.png"></p>
 <p>通过不同的协议和端口就可以连接代理的内网机器。</p>
-<h2 id="1-2-ngrok"><a href="#1-2-ngrok" class="headerlink" title="1.2 ngrok"></a>1.2 ngrok</h2><h3 id="1-2-1-体验先行"><a href="#1-2-1-体验先行" class="headerlink" title="1.2.1 体验先行"></a>1.2.1 体验先行</h3><p>国内的使用体验不是很好，即便有梯子，也不那么好用，之前折腾了半天，最后换成 natapp 一下子就搞定了</p>
-<h3 id="1-2-2-使用流程"><a href="#1-2-2-使用流程" class="headerlink" title="1.2.2 使用流程"></a>1.2.2 使用流程</h3><ol>
-<li><p>进入 ngrok 官网 <code>https://ngrok.com/download</code> 下载 ngrok</p>
-</li>
-<li><p>注册一个账号，登陆账号进入管理后台，获取 Token，即左侧的 Your Authtoken</p>
-</li>
-<li><p>打开命令行工具</p>
-</li>
-<li><p>切换到 ngrok 可执行文件所在目录，执行：<code>ngrok authtoken &#123;&#123;Token&#125;&#125;</code></p>
-</li>
-<li><p>然后就可以开启内网穿透服务了，输入以下命令：<code>ngrok http 8080</code></p>
-<p>这样就可以实现将内网 8080 端口映射到外网域名，可以进行访问了</p>
-</li>
-</ol>
-<h3 id="1-2-3-相关链接"><a href="#1-2-3-相关链接" class="headerlink" title="1.2.3 相关链接"></a>1.2.3 相关链接</h3><ol>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/53c72ae1446c">自建 ngrok 服务实现内网穿透</a></li>
-<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040463714">ngrok 实现内网穿透，端口映射，无需公网 ip 实现内网穿透</a></li>
-<li><a target="_blank" rel="noopener" href="https://jelly.jd.com/article/6006b1035b6c6a01506c8792">手把手教你搭建 ngrok 服务－轻松外网调试本机站点</a></li>
-</ol>
-<h2 id="1-3-natapp"><a href="#1-3-natapp" class="headerlink" title="1.3 natapp"></a>1.3 natapp</h2><h3 id="1-3-1-体验先行"><a href="#1-3-1-体验先行" class="headerlink" title="1.3.1 体验先行"></a>1.3.1 体验先行</h3><p>总体体验不错，有免费和收费两种通道，免费通道感觉速度也很快，但是需要实名认证。目前主要使用它来做简单的内网穿透。</p>
-<h3 id="1-3-2-使用流程"><a href="#1-3-2-使用流程" class="headerlink" title="1.3.2 使用流程"></a>1.3.2 使用流程</h3><ol>
-<li><p>进入 <a target="_blank" rel="noopener" href="https://natapp.cn/">官网</a>，注册并下载客户端</p>
-<p><img src="https://oss.puppetdev.top/image/note/268c59026abae22be927055292d01a4c.png" alt="image-20220821004721200"></p>
-</li>
-<li><p>根据 <a target="_blank" rel="noopener" href="https://natapp.cn/article/natapp_newbie">快速入门文档</a>，购买免费隧道，并获取 authtoken</p>
-</li>
-<li><p>修改客户端执行权限 <code>chmod x natapp</code></p>
-</li>
-<li><p>执行命令以启动代理：<code>./natapp -authtoken=xxxxxxx</code></p>
-</li>
-</ol>
-<h3 id="1-3-3-相关链接"><a href="#1-3-3-相关链接" class="headerlink" title="1.3.3 相关链接"></a>1.3.3 相关链接</h3><h2 id="1-4-frp"><a href="#1-4-frp" class="headerlink" title="1.4 frp"></a>1.4 frp</h2><h3 id="1-4-1-简介"><a href="#1-4-1-简介" class="headerlink" title="1.4.1 简介"></a>1.4.1 简介</h3><p>frp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。</p>
+<h2 id="1-2-frp（自建）"><a href="#1-2-frp（自建）" class="headerlink" title="1.2 frp（自建）"></a>1.2 frp（自建）</h2><h3 id="1-2-1-简介"><a href="#1-2-1-简介" class="headerlink" title="1.2.1 简介"></a>1.2.1 简介</h3><p>frp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。</p>
 <p><img src="https://oss.puppetdev.top/image/note/7965455b08ab7fefa547a61ac6fe418e.png" alt="image.png"></p>
-<h3 id="1-4-2-特点"><a href="#1-4-2-特点" class="headerlink" title="1.4.2 特点"></a>1.4.2 特点</h3><ul>
+<h3 id="1-2-2-特点"><a href="#1-2-2-特点" class="headerlink" title="1.2.2 特点"></a>1.2.2 特点</h3><ul>
 <li>客户端服务端通信支持 TCP、KCP 以及 Websocket 等多种协议。</li>
 <li>端口复用，多个服务通过同一个服务端端口暴露。</li>
 <li>跨平台，但是支持的比 nps 少一点</li>
 <li>多种插件，提供很多功能</li>
 </ul>
-<h3 id="1-4-3-使用方法"><a href="#1-4-3-使用方法" class="headerlink" title="1.4.3 使用方法"></a>1.4.3 使用方法</h3><p>下载：<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
-<h4 id="1-4-3-1-通过rdp访问家里的机器"><a href="#1-4-3-1-通过rdp访问家里的机器" class="headerlink" title="1.4.3.1 通过rdp访问家里的机器"></a>1.4.3.1 通过rdp访问家里的机器</h4><ul>
+<h3 id="1-2-3-使用方法"><a href="#1-2-3-使用方法" class="headerlink" title="1.2.3 使用方法"></a>1.2.3 使用方法</h3><p>下载：<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
+<h4 id="1-2-3-1-通过-rdp-访问家里的机器"><a href="#1-2-3-1-通过-rdp-访问家里的机器" class="headerlink" title="1.2.3.1 通过 rdp 访问家里的机器"></a>1.2.3.1 通过 rdp 访问家里的机器</h4><ul>
 <li>修改 frps.ini 文件，为了安全起见，这里最好配置一下身份验证，服务端和客户端的 common 配置中的 <code>token</code> 参数一致则身份验证通过：</li>
 </ul>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frps.ini    </span></span><br><span class="line"><span class="section">[common]</span>    </span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span>    </span><br><span class="line"><span class="comment"># 用于身份验证，请自行修改，要保证服务端与客户端一致    </span></span><br><span class="line"><span class="attr">token</span> = abcdefgh</span><br></pre></td></tr></table></figure>
@@ -370,7 +342,7 @@
 <li>启动 frpc：<code>./frpc -c ./frpc.ini</code></li>
 <li>通过 rdp 访问远程的机器，地址为：<code>x.x.x.x:6000</code></li>
 </ul>
-<h4 id="1-4-3-2-开机自启"><a href="#1-4-3-2-开机自启" class="headerlink" title="1.4.3.2 开机自启"></a>1.4.3.2 开机自启</h4><p>针对 Windows 系统，为了便于使用，可以配置一下开机的时候静默启动。</p>
+<h4 id="1-2-3-2-开机自启"><a href="#1-2-3-2-开机自启" class="headerlink" title="1.2.3.2 开机自启"></a>1.2.3.2 开机自启</h4><p>针对 Windows 系统，为了便于使用，可以配置一下开机的时候静默启动。</p>
 <ul>
 <li>在 frpc.exe 的同级目录创建一个 start_frpc.vbs：</li>
 </ul>
@@ -380,7 +352,7 @@
 <li>复制 start_frpc.vbs 文件，打开以下目录，注意将 <code>&lt;USER_NAME&gt;</code> 修改为自己的用户名：<code>C:\Users\&lt;USER_NAME&gt;\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code></li>
 <li>鼠标右击，粘贴为快捷方式即可。</li>
 </ul>
-<h4 id="1-4-3-3-通过SSH访问公司内网机器"><a href="#1-4-3-3-通过SSH访问公司内网机器" class="headerlink" title="1.4.3.3 通过SSH访问公司内网机器"></a>1.4.3.3 通过SSH访问公司内网机器</h4><p>frps 的部署步骤同上。</p>
+<h4 id="1-2-3-3-通过-SSH-访问公司内网机器"><a href="#1-2-3-3-通过-SSH-访问公司内网机器" class="headerlink" title="1.2.3.3 通过 SSH 访问公司内网机器"></a>1.2.3.3 通过 SSH 访问公司内网机器</h4><p>frps 的部署步骤同上。</p>
 <ul>
 <li>启动 frpc，配置如下：</li>
 </ul>
@@ -389,7 +361,7 @@
 <ul>
 <li>通过 SSH 访问内网机器，假设用户名为 test：<code>ssh -oPort=6000 test@x.x.x.x</code></li>
 </ul>
-<h4 id="1-4-3-4-通过自定义域名访问部署于内网的Web服务"><a href="#1-4-3-4-通过自定义域名访问部署于内网的Web服务" class="headerlink" title="1.4.3.4 通过自定义域名访问部署于内网的Web服务"></a>1.4.3.4 通过自定义域名访问部署于内网的Web服务</h4><p>有时想要让其他人通过域名访问或者测试我们在本地搭建的 Web 服务，但是由于本地机器没有公网 IP，无法将域名解析到本地的机器，通过 frp 就可以实现这一功能，以下示例为 http 服务，https 服务配置方法相同， vhost_http_port 替换为 vhost_https_port， type 设置为 https 即可。</p>
+<h4 id="1-2-3-4-通过自定义域名访问部署于内网的-Web-服务"><a href="#1-2-3-4-通过自定义域名访问部署于内网的-Web-服务" class="headerlink" title="1.2.3.4 通过自定义域名访问部署于内网的 Web 服务"></a>1.2.3.4 通过自定义域名访问部署于内网的 Web 服务</h4><p>有时想要让其他人通过域名访问或者测试我们在本地搭建的 Web 服务，但是由于本地机器没有公网 IP，无法将域名解析到本地的机器，通过 frp 就可以实现这一功能，以下示例为 http 服务，https 服务配置方法相同， vhost_http_port 替换为 vhost_https_port， type 设置为 https 即可。</p>
 <ul>
 <li>修改 frps.ini 文件，设置 http 访问端口为 8080：</li>
 </ul>
@@ -406,7 +378,7 @@
 <li>将 <code>www.yourdomain.com</code> 的域名 A 记录解析到 IP <code>x.x.x.x</code>，如果服务器已经有对应的域名，也可以将 CNAME 记录解析到服务器原先的域名。</li>
 <li>通过浏览器访问 <code>http://www.yourdomain.com:8080</code> 即可访问到处于内网机器上的 Web 服务。</li>
 </ul>
-<h4 id="1-4-3-5-对外提供简单的文件访问服务"><a href="#1-4-3-5-对外提供简单的文件访问服务" class="headerlink" title="1.4.3.5 对外提供简单的文件访问服务"></a>1.4.3.5 对外提供简单的文件访问服务</h4><p>通过 <code>static_file</code> 插件可以对外提供一个简单的基于 HTTP 的文件访问服务。</p>
+<h4 id="1-2-3-5-对外提供简单的文件访问服务"><a href="#1-2-3-5-对外提供简单的文件访问服务" class="headerlink" title="1.2.3.5 对外提供简单的文件访问服务"></a>1.2.3.5 对外提供简单的文件访问服务</h4><p>通过 <code>static_file</code> 插件可以对外提供一个简单的基于 HTTP 的文件访问服务。</p>
 <p>frps 的部署步骤同上。</p>
 <ul>
 <li>启动 frpc，启用 <code>static_file</code> 插件，配置如下：</li>
@@ -416,7 +388,7 @@
 <ul>
 <li>通过浏览器访问 <code>http://x.x.x.x:6000/static/</code> 来查看位于 <code>/tmp/file</code> 目录下的文件，会要求输入已设置好的用户名和密码。</li>
 </ul>
-<h4 id="1-4-3-6-常用功能"><a href="#1-4-3-6-常用功能" class="headerlink" title="1.4.3.6 常用功能"></a>1.4.3.6 常用功能</h4><h5 id="1-4-3-7-统计面板"><a href="#1-4-3-7-统计面板" class="headerlink" title="1.4.3.7 统计面板"></a>1.4.3.7 统计面板</h5><p>通过浏览器查看 frp 的状态以及代理统计信息展示。</p>
+<h4 id="1-2-3-6-常用功能"><a href="#1-2-3-6-常用功能" class="headerlink" title="1.2.3.6 常用功能"></a>1.2.3.6 常用功能</h4><h5 id="1-4-3-7-统计面板"><a href="#1-4-3-7-统计面板" class="headerlink" title="1.4.3.7 统计面板"></a>1.4.3.7 统计面板</h5><p>通过浏览器查看 frp 的状态以及代理统计信息展示。</p>
 <p><strong>注：Dashboard 尚未针对大量的 proxy 数据展示做优化，如果出现 Dashboard 访问较慢的情况，请不要启用此功能。</strong></p>
 <p>需要在 frps.ini 中指定 dashboard 服务使用的端口，即可开启此功能：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span>  </span><br><span class="line"><span class="attr">dashboard_port</span> = <span class="number">7500</span>  </span><br><span class="line"><span class="comment"># dashboard用户名密码，默认都为admin  </span></span><br><span class="line"><span class="attr">dashboard_user</span> = admin  </span><br><span class="line"><span class="attr">dashboard_pwd</span> = admin</span><br></pre></td></tr></table></figure>
@@ -440,8 +412,39 @@
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frpc.ini  </span></span><br><span class="line"><span class="section">[range:test_tcp]</span>  </span><br><span class="line"><span class="attr">type</span> = tcp  </span><br><span class="line"><span class="attr">local_ip</span> = <span class="number">127.0</span>.<span class="number">0.1</span>  </span><br><span class="line"><span class="attr">local_port</span> = <span class="number">6000</span>-<span class="number">6006</span>,<span class="number">6007</span>  </span><br><span class="line"><span class="attr">remote_port</span> = <span class="number">6000</span>-<span class="number">6006</span>,<span class="number">6007</span>  </span><br></pre></td></tr></table></figure>
 
 <p>实际连接成功后会创建 8 个 proxy，命名为 <code>test_tcp_0, test_tcp_1 … test_tcp_7</code>。</p>
-<h2 id="1-5-ew"><a href="#1-5-ew" class="headerlink" title="1.5 ew"></a>1.5 ew</h2><h3 id="1-5-1-简介"><a href="#1-5-1-简介" class="headerlink" title="1.5.1 简介"></a>1.5.1 简介</h3><blockquote>
-<p>EW 是一套便携式的网络穿透工具，具有 SOCKS v5 服务架设和端口转发两大核心功能，可在复杂网络环境下完成网络穿透。但是，现在工具已经不更新了。。。</p>
+<h2 id="1-3-ngrok（第三方）"><a href="#1-3-ngrok（第三方）" class="headerlink" title="1.3 ngrok（第三方）"></a>1.3 ngrok（第三方）</h2><h3 id="1-3-1-体验先行"><a href="#1-3-1-体验先行" class="headerlink" title="1.3.1 体验先行"></a>1.3.1 体验先行</h3><p>国内的使用体验不是很好，即便有梯子，也不那么好用，之前折腾了半天，最后换成 natapp 一下子就搞定了</p>
+<h3 id="1-3-2-使用流程"><a href="#1-3-2-使用流程" class="headerlink" title="1.3.2 使用流程"></a>1.3.2 使用流程</h3><ol>
+<li><p>进入 ngrok 官网 <code>https://ngrok.com/download</code> 下载 ngrok</p>
+</li>
+<li><p>注册一个账号，登陆账号进入管理后台，获取 Token，即左侧的 Your Authtoken</p>
+</li>
+<li><p>打开命令行工具</p>
+</li>
+<li><p>切换到 ngrok 可执行文件所在目录，执行：<code>ngrok authtoken &#123;&#123;Token&#125;&#125;</code></p>
+</li>
+<li><p>然后就可以开启内网穿透服务了，输入以下命令：<code>ngrok http 8080</code></p>
+<p>这样就可以实现将内网 8080 端口映射到外网域名，可以进行访问了</p>
+</li>
+</ol>
+<h3 id="1-3-3-相关链接"><a href="#1-3-3-相关链接" class="headerlink" title="1.3.3 相关链接"></a>1.3.3 相关链接</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/53c72ae1446c">自建 ngrok 服务实现内网穿透</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040463714">ngrok 实现内网穿透，端口映射，无需公网 ip 实现内网穿透</a></li>
+<li><a target="_blank" rel="noopener" href="https://jelly.jd.com/article/6006b1035b6c6a01506c8792">手把手教你搭建 ngrok 服务－轻松外网调试本机站点</a></li>
+</ol>
+<h2 id="1-4-natapp（第三方）"><a href="#1-4-natapp（第三方）" class="headerlink" title="1.4 natapp（第三方）"></a>1.4 natapp（第三方）</h2><h3 id="1-4-1-体验先行"><a href="#1-4-1-体验先行" class="headerlink" title="1.4.1 体验先行"></a>1.4.1 体验先行</h3><p>总体体验不错，有免费和收费两种通道，免费通道感觉速度也很快，但是需要实名认证。目前主要使用它来做简单的内网穿透。</p>
+<h3 id="1-4-2-使用流程"><a href="#1-4-2-使用流程" class="headerlink" title="1.4.2 使用流程"></a>1.4.2 使用流程</h3><ol>
+<li><p>进入 <a target="_blank" rel="noopener" href="https://natapp.cn/">官网</a>，注册并下载客户端</p>
+<p><img src="https://oss.puppetdev.top/image/note/268c59026abae22be927055292d01a4c.png" alt="image-20220821004721200"></p>
+</li>
+<li><p>根据 <a target="_blank" rel="noopener" href="https://natapp.cn/article/natapp_newbie">快速入门文档</a>，购买免费隧道，并获取 authtoken</p>
+</li>
+<li><p>修改客户端执行权限 <code>chmod x natapp</code></p>
+</li>
+<li><p>执行命令以启动代理：<code>./natapp -authtoken=xxxxxxx</code></p>
+</li>
+</ol>
+<h3 id="1-4-3-相关链接"><a href="#1-4-3-相关链接" class="headerlink" title="1.4.3 相关链接"></a>1.4.3 相关链接</h3><h2 id="1-5-ew（自建，不推荐）"><a href="#1-5-ew（自建，不推荐）" class="headerlink" title="1.5 ew（自建，不推荐）"></a>1.5 ew（自建，不推荐）</h2><h3 id="1-5-1-简介"><a href="#1-5-1-简介" class="headerlink" title="1.5.1 简介"></a>1.5.1 简介</h3><blockquote>
+<p>EW 是一套便携式的网络穿透工具，具有 SOCKS v5 服务架设和端口转发两大核心功能，可在复杂网络环境下完成网络穿透。但是，<strong>现在工具已经不更新了</strong></p>
 </blockquote>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEYibu8vK4b7IDbQXHyyevOJ4TsKV1JaxvxueKKEdYw2jcaJia2YgYcnPEHNyKmHDTVvictibt1IIYUtTQ/640?wx_fmt=png&random=0.5643900247770886&wxfrom=5&wx_lazy=1&wx_co=1&tp=wxpic" alt="图片"></p>
 <h3 id="1-5-2-特点"><a href="#1-5-2-特点" class="headerlink" title="1.5.2 特点"></a>1.5.2 特点</h3><ol>
@@ -451,9 +454,10 @@
 <li>但是只支持 Socks5 代理</li>
 </ol>
 <h3 id="1-5-3-使用方法"><a href="#1-5-3-使用方法" class="headerlink" title="1.5.3 使用方法"></a>1.5.3 使用方法</h3><p>以下所有样例，如无特殊说明代理端口均为 1080，服务均为 SOCKSv5 代理服务.</p>
-<p>该工具共有 6 种命令格式（ssocksd、rcsocks、rssocks、lcx_slave、lcx_listen、lcx_tran）。</p>
-<h4 id="1-5-3-1-正向SOCKS-v5服务器"><a href="#1-5-3-1-正向SOCKS-v5服务器" class="headerlink" title="1.5.3.1 正向SOCKS v5服务器"></a>1.5.3.1 正向SOCKS v5服务器</h4><p><code>./ew -s ssocksd -l 1080</code>  </p>
-<h4 id="1-5-3-2-反弹SOCKS-v5服务器"><a href="#1-5-3-2-反弹SOCKS-v5服务器" class="headerlink" title="1.5.3.2 反弹SOCKS v5服务器"></a>1.5.3.2 反弹SOCKS v5服务器</h4><p>这个操作具体分两步：</p>
+<p>该工具共有 6 种命令格式（ssocksd、rcsocks、rssocks、<code>lcx_slave</code>、<code>lcx_listen</code>、<code>lcx_tran</code>）。</p>
+<h4 id="1-5-3-1-正向-SOCKS-v5-服务器"><a href="#1-5-3-1-正向-SOCKS-v5-服务器" class="headerlink" title="1.5.3.1 正向 SOCKS v5 服务器"></a>1.5.3.1 正向 SOCKS v5 服务器</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ew -s ssocksd -l 1080</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-5-3-2-反弹-SOCKS-v5-服务器"><a href="#1-5-3-2-反弹-SOCKS-v5-服务器" class="headerlink" title="1.5.3.2 反弹 SOCKS v5 服务器"></a>1.5.3.2 反弹 SOCKS v5 服务器</h4><p>这个操作具体分两步：</p>
 <ul>
 <li>先在一台具有公网 ip 的主机 A 上运行以下命令：<code>./ew -s rcsocks -l 1080 -e 8888</code>   </li>
 <li>在目标主机 B 上启动 SOCKS v5 服务 并反弹到公网主机的 8888 端口：<code>./ew -s rssocks -d 1.1.1.1 -e 8888</code></li>
@@ -464,9 +468,9 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_listen -l  1080   -e 8888</span>    </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_tran   -l  1080   -f 2.2.2.3 -g 9999</span>    </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_slave  -d 1.1.1.1 -e 8888    -f 2.2.2.3  -g  9999</span>  </span><br></pre></td></tr></table></figure>
 
 <p>通过这些端口转发指令可以将处于网络深层的基于 TCP 的服务转发至根前,比如 SOCKS v5。首先提供两个“二级级联”本地 SOCKS 测试样例：</p>
-<h4 id="1-5-4-1-lcx-tran-的用法"><a href="#1-5-4-1-lcx-tran-的用法" class="headerlink" title="1.5.4.1 lcx_tran 的用法"></a>1.5.4.1 lcx_tran 的用法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s ssocksd  -l 9999</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_tran -l 1080 -f 127.0.0.1 -g 9999</span>  </span><br></pre></td></tr></table></figure>
+<h4 id="1-5-4-1-lcx-tran-的用法"><a href="#1-5-4-1-lcx-tran-的用法" class="headerlink" title="1.5.4.1 lcx_tran 的用法"></a>1.5.4.1 <code>lcx_tran</code> 的用法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s ssocksd  -l 9999</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_tran -l 1080 -f 127.0.0.1 -g 9999</span>  </span><br></pre></td></tr></table></figure>
 
-<h4 id="1-5-4-2-lcx-listen、lcx-slave的用法"><a href="#1-5-4-2-lcx-listen、lcx-slave的用法" class="headerlink" title="1.5.4.2 lcx_listen、lcx_slave的用法"></a>1.5.4.2 lcx_listen、lcx_slave的用法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_listen -l 1080 -e 8888</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s ssocksd    -l 9999</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_slave  -d 127.0.0.1 -e 8888 -f 127.0.0.1 -g 9999</span>  </span><br></pre></td></tr></table></figure>
+<h4 id="1-5-4-2-lcx-listen、lcx-slave-的用法"><a href="#1-5-4-2-lcx-listen、lcx-slave-的用法" class="headerlink" title="1.5.4.2 lcx_listen、lcx_slave 的用法"></a>1.5.4.2 <code>lcx_listen</code>、<code>lcx_slave</code> 的用法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_listen -l 1080 -e 8888</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s ssocksd    -l 9999</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_slave  -d 127.0.0.1 -e 8888 -f 127.0.0.1 -g 9999</span>  </span><br></pre></td></tr></table></figure>
 
 <p>再提供一个“三级级联”的本地 SOCKS 测试用例以供参考</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s rcsocks -l 1080 -e 8888</span>   </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_slave -d 127.0.0.1 -e 8888 -f 127.0.0.1 -g 9999</span>    </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_listen -l 9999 -e 7777</span>    </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s rssocks -d 127.0.0.1 -e 7777</span>  </span><br></pre></td></tr></table></figure>
@@ -507,7 +511,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://blog.puppetdev.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title="内网穿透">https://blog.puppetdev.top/20220801/技术文章/内网穿透/</a>
+      <a href="https://www.puppetdevz.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title="内网穿透">https://www.puppetdevz.top/20220801/技术文章/内网穿透/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -545,10 +549,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"># 内网穿透</a>
-              <a href="/tags/ngrok/" rel="tag"># ngrok</a>
-              <a href="/tags/natapp/" rel="tag"># natapp</a>
               <a href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag"># 软件</a>
+              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"># 内网穿透</a>
           </div>
 
         
