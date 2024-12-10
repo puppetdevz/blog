@@ -6,7 +6,7 @@
   <link href="https://www.puppetdevz.top/atom.xml" rel="self"/>
   
   <link href="https://www.puppetdevz.top/"/>
-  <updated>2024-11-09T02:36:49.000Z</updated>
+  <updated>2024-12-10T04:39:09.823Z</updated>
   <id>https://www.puppetdevz.top/</id>
   
   <author>
@@ -21,13 +21,17 @@
     <link href="https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/"/>
     <id>https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/</id>
     <published>2024-11-09T02:36:49.000Z</published>
-    <updated>2024-11-09T02:36:49.000Z</updated>
+    <updated>2024-12-10T04:39:09.823Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;img src=&quot;https://oss.puppetdev.top/image/note/ab9bff5d9f1b185ad091b0387e139630.webp&quot; alt=&quot;OMV NAS &amp;amp; NextCloud搭建私人网盘.webp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;OpenMediaVault (OMV) 是一款基于 Debian 的开源网络附加存储（NAS）解决方案，它通过易于使用的界面提供数据存储、备份和共享服务。结合 Nextcloud，用户可以在 OMV 平台上搭建一个功能强大的私人网盘，实现文件同步、分享和协作。这种组合不仅增强了数据的可访问性和安全性，也为个人和小型企业提供了一个成本效益高、隐私保护好的云存储解决方案。通过 Docker 容器或直接安装，OMV 与 Nextcloud 的整合可以轻松完成，满足现代数字生活的存储需求。&lt;/p&gt;</summary>
     
     
+    
+    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="NAS" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/"/>
     
     
   </entry>
@@ -37,7 +41,7 @@
     <link href="https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/"/>
     <id>https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/</id>
     <published>2024-10-31T03:27:47.000Z</published>
-    <updated>2024-11-04T12:22:30.000Z</updated>
+    <updated>2024-12-10T04:39:09.823Z</updated>
     
     
       
@@ -50,6 +54,10 @@
       
     
     
+    
+    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="解决方案：e1000e eno1 Detected Hardware Unit Hang" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e-eno1-Detected-Hardware-Unit-Hang/"/>
     
     
     <category term="Linux" scheme="https://www.puppetdevz.top/tags/Linux/"/>
@@ -65,13 +73,19 @@
     <link href="https://www.puppetdevz.top/20240510/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/NGINX%E6%97%A5%E5%BF%97%E5%88%87%E7%89%87/"/>
     <id>https://www.puppetdevz.top/20240510/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/NGINX%E6%97%A5%E5%BF%97%E5%88%87%E7%89%87/</id>
     <published>2024-05-10T07:36:33.000Z</published>
-    <updated>2024-05-10T07:36:33.000Z</updated>
+    <updated>2024-12-10T04:39:09.823Z</updated>
     
     
     <summary type="html">&lt;p&gt;当 NGINX 的日志文件变得过大时，通常的做法是进行日志切片（log rotation），这样可以防止单个日志文件过大，便于管理和存储。&lt;/p&gt;
 &lt;p&gt;而 NGINX 自身或者其扩展的模块均不支持类似的功能。 所以 NGINX 日志切片通常需要依赖外部工具来实现，比如 Linux 系统中常用的 &lt;code&gt;logrotate&lt;/code&gt;。以下是如何使用 &lt;code&gt;logrotate&lt;/code&gt; 对 NGINX 日志进行切片的步骤：&lt;/p&gt;</summary>
     
     
+    
+    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
+    
+    <category term="中间件" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    <category term="NGINX" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/"/>
     
     
   </entry>
@@ -345,7 +359,7 @@
     <link href="https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-radio%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8Dradio%E6%98%AF%E5%90%A6%E8%A2%AB%E9%80%89%E4%B8%AD/"/>
     <id>https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-radio%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8Dradio%E6%98%AF%E5%90%A6%E8%A2%AB%E9%80%89%E4%B8%AD/</id>
     <published>2022-10-20T16:00:00.000Z</published>
-    <updated>2023-12-17T12:54:31.000Z</updated>
+    <updated>2024-12-10T04:39:09.823Z</updated>
     
     
       
@@ -364,6 +378,8 @@
     
     <category term="前端" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/"/>
     
+    <category term="UI框架" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/"/>
+    
     
     <category term="解决方案" scheme="https://www.puppetdevz.top/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
@@ -376,7 +392,7 @@
     <link href="https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-cell%E7%9A%84title%E5%92%8Cvalue%E5%AE%BD%E5%BA%A6%E5%8D%A0%E6%AF%94%E4%BB%A5%E5%8F%8Avalue%E5%86%85%E5%AE%B9%E8%BF%87%E9%95%BF%E6%97%B6%E6%8D%A2%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <id>https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-cell%E7%9A%84title%E5%92%8Cvalue%E5%AE%BD%E5%BA%A6%E5%8D%A0%E6%AF%94%E4%BB%A5%E5%8F%8Avalue%E5%86%85%E5%AE%B9%E8%BF%87%E9%95%BF%E6%97%B6%E6%8D%A2%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/</id>
     <published>2022-10-20T16:00:00.000Z</published>
-    <updated>2023-12-17T12:54:31.000Z</updated>
+    <updated>2024-12-10T04:39:09.823Z</updated>
     
     
       
@@ -395,6 +411,8 @@
     <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
     <category term="前端" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="UI框架" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/"/>
     
     
     <category term="Vant" scheme="https://www.puppetdevz.top/tags/Vant/"/>
@@ -425,35 +443,6 @@
     
     
     <category term="文件同步" scheme="https://www.puppetdevz.top/tags/%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac软件推荐</title>
-    <link href="https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/"/>
-    <id>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</id>
-    <published>2022-10-07T16:00:00.000Z</published>
-    <updated>2024-04-07T14:57:26.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;1-1-brew-Mac&quot;&gt;&lt;a href=&quot;#1-1-brew-Mac&quot; class=&quot;headerlink&quot; title=&quot;1.1 brew(Mac)&quot;&gt;&lt;/a&gt;1.1</summary>
-        
-      
-    
-    
-    
-    <category term="测评推荐" scheme="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/"/>
-    
-    
-    <category term="MacOS" scheme="https://www.puppetdevz.top/tags/MacOS/"/>
-    
-    <category term="软件" scheme="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
@@ -489,9 +478,38 @@
   </entry>
   
   <entry>
-    <title>Windows软件</title>
-    <link href="https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Windows%E8%BD%AF%E4%BB%B6/"/>
-    <id>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Windows%E8%BD%AF%E4%BB%B6/</id>
+    <title>Mac软件推荐</title>
+    <link href="https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/"/>
+    <id>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</id>
+    <published>2022-10-07T16:00:00.000Z</published>
+    <updated>2024-04-07T14:57:26.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h2 id=&quot;1-1-brew-Mac&quot;&gt;&lt;a href=&quot;#1-1-brew-Mac&quot; class=&quot;headerlink&quot; title=&quot;1.1 brew(Mac)&quot;&gt;&lt;/a&gt;1.1</summary>
+        
+      
+    
+    
+    
+    <category term="测评推荐" scheme="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/"/>
+    
+    
+    <category term="MacOS" scheme="https://www.puppetdevz.top/tags/MacOS/"/>
+    
+    <category term="软件" scheme="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分屏软件</title>
+    <link href="https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E5%88%86%E5%B1%8F%E8%BD%AF%E4%BB%B6/"/>
+    <id>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E5%88%86%E5%B1%8F%E8%BD%AF%E4%BB%B6/</id>
     <published>2022-10-07T16:00:00.000Z</published>
     <updated>2023-12-19T15:37:00.000Z</updated>
     
@@ -502,7 +520,8 @@
         
     <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
 
-&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;Magnet&quot;&gt;&lt;a href=&quot;#Magnet&quot; class=&quot;headerlink&quot; title=&quot;Magnet&quot;&gt;&lt;/a&gt;Magnet&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;适用于</summary>
         
       
     
@@ -512,8 +531,6 @@
     
     
     <category term="软件" scheme="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/"/>
-    
-    <category term="Windows" scheme="https://www.puppetdevz.top/tags/Windows/"/>
     
   </entry>
   
