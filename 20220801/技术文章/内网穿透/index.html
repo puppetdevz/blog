@@ -26,20 +26,20 @@
 <meta property="og:site_name" content="木偶&#39;s Blog">
 <meta property="og:description" content="有时候我们还在开发，想一边开发一边分享给其他人体验和改进，但是又没有公网服务器供别人访问，又不是同一个局域网，该如何做呢？此时就需要进行“内网穿透”，让自己的本地电脑短暂地变成服务器（指定开放端口），使得其他人可以轻松访问。 内网穿透大致有两种：  第三方提供的服务。这类往往有免费的，但是免费的带宽受限且不稳定，基本只有 1~2M 带宽，如 Zerotier、花生壳、DDNSTO、ngrok、na">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://oss.puppetdev.top/image/note/bffa74bb56b9925f18c769d383b9c2f8.png">
-<meta property="og:image" content="https://oss.puppetdev.top/image/note/88fbf5d500a90eaf9a952f843b73cf1b.png">
-<meta property="og:image" content="https://oss.puppetdev.top/image/note/8278272b216a2ca8d57e52d84d391df6.png">
-<meta property="og:image" content="https://oss.puppetdev.top/image/note/c4054891abc54d25e6579229d03ef5bf.png">
-<meta property="og:image" content="https://oss.puppetdev.top/image/note/7965455b08ab7fefa547a61ac6fe418e.png">
-<meta property="og:image" content="https://oss.puppetdev.top/image/note/268c59026abae22be927055292d01a4c.png">
+<meta property="og:image" content="https://oss.puppetdevz.top/image/note/bffa74bb56b9925f18c769d383b9c2f8.png">
+<meta property="og:image" content="https://oss.puppetdevz.top/image/note/88fbf5d500a90eaf9a952f843b73cf1b.png">
+<meta property="og:image" content="https://oss.puppetdevz.top/image/note/8278272b216a2ca8d57e52d84d391df6.png">
+<meta property="og:image" content="https://oss.puppetdevz.top/image/note/c4054891abc54d25e6579229d03ef5bf.png">
+<meta property="og:image" content="https://oss.puppetdevz.top/image/note/7965455b08ab7fefa547a61ac6fe418e.png">
+<meta property="og:image" content="https://oss.puppetdevz.top/image/note/268c59026abae22be927055292d01a4c.png">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QFzRdz9libEYibu8vK4b7IDbQXHyyevOJ4TsKV1JaxvxueKKEdYw2jcaJia2YgYcnPEHNyKmHDTVvictibt1IIYUtTQ/640?wx_fmt=png&random=0.5643900247770886&wxfrom=5&wx_lazy=1&wx_co=1&tp=wxpic">
 <meta property="article:published_time" content="2022-07-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-15T07:54:34.000Z">
+<meta property="article:modified_time" content="2024-12-19T08:13:24.427Z">
 <meta property="article:author" content="木偶">
-<meta property="article:tag" content="软件">
 <meta property="article:tag" content="内网穿透">
+<meta property="article:tag" content="软件">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://oss.puppetdev.top/image/note/bffa74bb56b9925f18c769d383b9c2f8.png">
+<meta name="twitter:image" content="https://oss.puppetdevz.top/image/note/bffa74bb56b9925f18c769d383b9c2f8.png">
 
 
 <link rel="canonical" href="https://www.puppetdevz.top/20220801/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
@@ -248,7 +248,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-15 15:54:34" itemprop="dateModified" datetime="2024-09-15T15:54:34+08:00">2024-09-15</time>
+      <time title="修改时间：2024-12-19 16:13:24" itemprop="dateModified" datetime="2024-12-19T16:13:24+08:00">2024-12-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -289,7 +289,7 @@
 <li>一台有公网 IP 的服务器（VPS）运行服务端（<strong>NPS</strong>）</li>
 <li>一个或多个运行在内网的服务器或者 PC 运行客户端（<strong>NPC</strong>）</li>
 </ul>
-<p><img src="https://oss.puppetdev.top/image/note/bffa74bb56b9925f18c769d383b9c2f8.png" alt="image.png"></p>
+<p><img src="https://oss.puppetdevz.top/image/note/bffa74bb56b9925f18c769d383b9c2f8.png" alt="image.png"></p>
 <h3 id="1-1-2-特点"><a href="#1-1-2-特点" class="headerlink" title="1.1.2 特点"></a>1.1.2 特点</h3><ul>
 <li>Go 语言编写</li>
 <li>支持跨平台</li>
@@ -311,15 +311,15 @@
 
 <h3 id="1-1-5-NPC"><a href="#1-1-5-NPC" class="headerlink" title="1.1.5 NPC"></a>1.1.5 NPC</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./npc -server=你的IP:8024 -vkey=唯一验证密码 -type=tcp  </span><br></pre></td></tr></table></figure>
 
-<p><img src="https://oss.puppetdev.top/image/note/88fbf5d500a90eaf9a952f843b73cf1b.png" alt="image.png"></p>
+<p><img src="https://oss.puppetdevz.top/image/note/88fbf5d500a90eaf9a952f843b73cf1b.png" alt="image.png"></p>
 <p>新建好客户端后，也可以在 <code>+</code> 中看到，详细的客户端连接命令：</p>
-<p><img src="https://oss.puppetdev.top/image/note/8278272b216a2ca8d57e52d84d391df6.png" alt="image.png"></p>
+<p><img src="https://oss.puppetdevz.top/image/note/8278272b216a2ca8d57e52d84d391df6.png" alt="image.png"></p>
 <h3 id="1-1-6-web-管理端"><a href="#1-1-6-web-管理端" class="headerlink" title="1.1.6 web 管理端"></a>1.1.6 web 管理端</h3><p>在客户端界面可以通过 <code>新增</code> 的方式添加客户端连接，每一个连接的 vkey 都是唯一区分的。</p>
 <p>每一个客户端，在建立连接后，都可以建立多个不同协议的隧道，这一个个隧道就是不同的代理了。</p>
-<p><img src="https://oss.puppetdev.top/image/note/c4054891abc54d25e6579229d03ef5bf.png" alt="image.png"></p>
+<p><img src="https://oss.puppetdevz.top/image/note/c4054891abc54d25e6579229d03ef5bf.png" alt="image.png"></p>
 <p>通过不同的协议和端口就可以连接代理的内网机器。</p>
 <h2 id="1-2-frp（自建）"><a href="#1-2-frp（自建）" class="headerlink" title="1.2 frp（自建）"></a>1.2 frp（自建）</h2><h3 id="1-2-1-简介"><a href="#1-2-1-简介" class="headerlink" title="1.2.1 简介"></a>1.2.1 简介</h3><p>frp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。</p>
-<p><img src="https://oss.puppetdev.top/image/note/7965455b08ab7fefa547a61ac6fe418e.png" alt="image.png"></p>
+<p><img src="https://oss.puppetdevz.top/image/note/7965455b08ab7fefa547a61ac6fe418e.png" alt="image.png"></p>
 <h3 id="1-2-2-特点"><a href="#1-2-2-特点" class="headerlink" title="1.2.2 特点"></a>1.2.2 特点</h3><ul>
 <li>客户端服务端通信支持 TCP、KCP 以及 Websocket 等多种协议。</li>
 <li>端口复用，多个服务通过同一个服务端端口暴露。</li>
@@ -434,7 +434,7 @@
 <h2 id="1-4-natapp（第三方）"><a href="#1-4-natapp（第三方）" class="headerlink" title="1.4 natapp（第三方）"></a>1.4 natapp（第三方）</h2><h3 id="1-4-1-体验先行"><a href="#1-4-1-体验先行" class="headerlink" title="1.4.1 体验先行"></a>1.4.1 体验先行</h3><p>总体体验不错，有免费和收费两种通道，免费通道感觉速度也很快，但是需要实名认证。目前主要使用它来做简单的内网穿透。</p>
 <h3 id="1-4-2-使用流程"><a href="#1-4-2-使用流程" class="headerlink" title="1.4.2 使用流程"></a>1.4.2 使用流程</h3><ol>
 <li><p>进入 <a target="_blank" rel="noopener" href="https://natapp.cn/">官网</a>，注册并下载客户端</p>
-<p><img src="https://oss.puppetdev.top/image/note/268c59026abae22be927055292d01a4c.png" alt="image-20220821004721200"></p>
+<p><img src="https://oss.puppetdevz.top/image/note/268c59026abae22be927055292d01a4c.png" alt="image-20220821004721200"></p>
 </li>
 <li><p>根据 <a target="_blank" rel="noopener" href="https://natapp.cn/article/natapp_newbie">快速入门文档</a>，购买免费隧道，并获取 authtoken</p>
 </li>
@@ -459,21 +459,20 @@
 
 <h4 id="1-5-3-2-反弹-SOCKS-v5-服务器"><a href="#1-5-3-2-反弹-SOCKS-v5-服务器" class="headerlink" title="1.5.3.2 反弹 SOCKS v5 服务器"></a>1.5.3.2 反弹 SOCKS v5 服务器</h4><p>这个操作具体分两步：</p>
 <ul>
-<li>先在一台具有公网 ip 的主机 A 上运行以下命令：<code>./ew -s rcsocks -l 1080 -e 8888</code>   </li>
+<li>先在一台具有公网 ip 的主机 A 上运行以下命令：<code>./ew -s rcsocks -l 1080 -e 8888</code></li>
 <li>在目标主机 B 上启动 SOCKS v5 服务 并反弹到公网主机的 8888 端口：<code>./ew -s rssocks -d 1.1.1.1 -e 8888</code></li>
 </ul>
-<p>   </p>
 <p>成功。</p>
 <h3 id="1-5-4-多级级联"><a href="#1-5-4-多级级联" class="headerlink" title="1.5.4 多级级联"></a>1.5.4 多级级联</h3><p>工具中自带的三条端口转发指令， 它们的参数格式分别为：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_listen -l  1080   -e 8888</span>    </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_tran   -l  1080   -f 2.2.2.3 -g 9999</span>    </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_slave  -d 1.1.1.1 -e 8888    -f 2.2.2.3  -g  9999</span>  </span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./ew -s lcx_listen -l  1080   -e 8888    </span><br><span class="line">./ew -s lcx_tran   -l  1080   -f 2.2.2.3 -g 9999    </span><br><span class="line">./ew -s lcx_slave  -d 1.1.1.1 -e 8888    -f 2.2.2.3  -g  9999  </span><br></pre></td></tr></table></figure>
 
 <p>通过这些端口转发指令可以将处于网络深层的基于 TCP 的服务转发至根前,比如 SOCKS v5。首先提供两个“二级级联”本地 SOCKS 测试样例：</p>
-<h4 id="1-5-4-1-lcx-tran-的用法"><a href="#1-5-4-1-lcx-tran-的用法" class="headerlink" title="1.5.4.1 lcx_tran 的用法"></a>1.5.4.1 <code>lcx_tran</code> 的用法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s ssocksd  -l 9999</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_tran -l 1080 -f 127.0.0.1 -g 9999</span>  </span><br></pre></td></tr></table></figure>
+<h4 id="1-5-4-1-lcx-tran-的用法"><a href="#1-5-4-1-lcx-tran-的用法" class="headerlink" title="1.5.4.1 lcx_tran 的用法"></a>1.5.4.1 <code>lcx_tran</code> 的用法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./ew -s ssocksd  -l 9999  </span><br><span class="line">./ew -s lcx_tran -l 1080 -f 127.0.0.1 -g 9999  </span><br></pre></td></tr></table></figure>
 
-<h4 id="1-5-4-2-lcx-listen、lcx-slave-的用法"><a href="#1-5-4-2-lcx-listen、lcx-slave-的用法" class="headerlink" title="1.5.4.2 lcx_listen、lcx_slave 的用法"></a>1.5.4.2 <code>lcx_listen</code>、<code>lcx_slave</code> 的用法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_listen -l 1080 -e 8888</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s ssocksd    -l 9999</span>  </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_slave  -d 127.0.0.1 -e 8888 -f 127.0.0.1 -g 9999</span>  </span><br></pre></td></tr></table></figure>
+<h4 id="1-5-4-2-lcx-listen、lcx-slave-的用法"><a href="#1-5-4-2-lcx-listen、lcx-slave-的用法" class="headerlink" title="1.5.4.2 lcx_listen、lcx_slave 的用法"></a>1.5.4.2 <code>lcx_listen</code>、<code>lcx_slave</code> 的用法</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./ew -s lcx_listen -l 1080 -e 8888  </span><br><span class="line">./ew -s ssocksd    -l 9999  </span><br><span class="line">./ew -s lcx_slave  -d 127.0.0.1 -e 8888 -f 127.0.0.1 -g 9999  </span><br></pre></td></tr></table></figure>
 
 <p>再提供一个“三级级联”的本地 SOCKS 测试用例以供参考</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s rcsocks -l 1080 -e 8888</span>   </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_slave -d 127.0.0.1 -e 8888 -f 127.0.0.1 -g 9999</span>    </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s lcx_listen -l 9999 -e 7777</span>    </span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./ew -s rssocks -d 127.0.0.1 -e 7777</span>  </span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./ew -s rcsocks -l 1080 -e 8888   </span><br><span class="line">./ew -s lcx_slave -d 127.0.0.1 -e 8888 -f 127.0.0.1 -g 9999    </span><br><span class="line">./ew -s lcx_listen -l 9999 -e 7777    </span><br><span class="line">./ew -s rssocks -d 127.0.0.1 -e 7777  </span><br></pre></td></tr></table></figure>
 
 <p>数据流向: <code>SOCKS v5 -&gt; 1080 -&gt; 8888 -&gt; 9999 -&gt; 7777 -&gt; rssocks</code></p>
 
@@ -549,8 +548,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag"># 软件</a>
               <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"># 内网穿透</a>
+              <a href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag"># 软件</a>
           </div>
 
         
