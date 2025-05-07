@@ -15,11 +15,11 @@
     <atom:link href="https://www.puppetdevz.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</description>
-    <pubDate>Wed, 07 May 2025 04:31:33 GMT</pubDate>
+    <pubDate>Wed, 07 May 2025 04:42:31 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title></title>
+      <title>Github Benefits学生包新版申请指南</title>
       <link>https://www.puppetdevz.top/20250305/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Github%20Benefits%E5%AD%A6%E7%94%9F%E5%8C%85%E6%96%B0%E7%89%88%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/</link>
       <guid>https://www.puppetdevz.top/20250305/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Github%20Benefits%E5%AD%A6%E7%94%9F%E5%8C%85%E6%96%B0%E7%89%88%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/</guid>
       <pubDate>Wed, 05 Mar 2025 15:51:10 GMT</pubDate>
@@ -34,6 +34,14 @@
       
       
       
+      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
+      
+      
+      <category domain="https://www.puppetdevz.top/tags/%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81/">学生认证</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/%E6%95%99%E8%82%B2%E9%82%AE%E7%AE%B1/">教育邮箱</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/GitHub/">GitHub</category>
       
       
       <comments>https://www.puppetdevz.top/20250305/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Github%20Benefits%E5%AD%A6%E7%94%9F%E5%8C%85%E6%96%B0%E7%89%88%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/#disqus_thread</comments>
@@ -333,27 +341,6 @@
     </item>
     
     <item>
-      <title>理解造轮子的程度</title>
-      <link>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/</link>
-      <guid>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/</guid>
-      <pubDate>Tue, 25 Oct 2022 06:02:05 GMT</pubDate>
-      
-      <description>&lt;p&gt;造轮子造轮子，造法也有很多种，我们可以从零件厂采购轮毂、轮胎，自己组装，也可以从冶金、找橡胶树资源开始。&lt;/p&gt;</description>
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/">生活随笔</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/%E9%80%A0%E8%BD%AE%E5%AD%90/">造轮子</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>纯小白如何自学编程</title>
       <link>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%BA%AF%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B/</link>
       <guid>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%BA%AF%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B/</guid>
@@ -377,6 +364,27 @@
       
       
       <comments>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%BA%AF%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>理解造轮子的程度</title>
+      <link>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/</link>
+      <guid>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/</guid>
+      <pubDate>Tue, 25 Oct 2022 06:02:05 GMT</pubDate>
+      
+      <description>&lt;p&gt;造轮子造轮子，造法也有很多种，我们可以从零件厂采购轮毂、轮胎，自己组装，也可以从冶金、找橡胶树资源开始。&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://www.puppetdevz.top/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/">生活随笔</category>
+      
+      
+      <category domain="https://www.puppetdevz.top/tags/%E9%80%A0%E8%BD%AE%E5%AD%90/">造轮子</category>
+      
+      
+      <comments>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/#disqus_thread</comments>
       
     </item>
     
@@ -505,37 +513,6 @@
     </item>
     
     <item>
-      <title>Mac软件推荐</title>
-      <link>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</link>
-      <guid>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</guid>
-      <pubDate>Fri, 07 Oct 2022 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;1-1-brew-Mac&quot;&gt;&lt;a href=&quot;#1-1-brew-Mac&quot; class=&quot;headerlink&quot; title=&quot;1.1 brew(Mac)&quot;&gt;&lt;/a&gt;1.1</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/">测评推荐</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/MacOS/">MacOS</category>
-      
-      <category domain="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>商用U盘</title>
       <link>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/U%E7%9B%98/</link>
       <guid>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/U%E7%9B%98/</guid>
@@ -565,6 +542,37 @@
       
       
       <comments>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/U%E7%9B%98/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Mac软件推荐</title>
+      <link>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</link>
+      <guid>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</guid>
+      <pubDate>Fri, 07 Oct 2022 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h2 id=&quot;1-1-brew-Mac&quot;&gt;&lt;a href=&quot;#1-1-brew-Mac&quot; class=&quot;headerlink&quot; title=&quot;1.1 brew(Mac)&quot;&gt;&lt;/a&gt;1.1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/">测评推荐</category>
+      
+      
+      <category domain="https://www.puppetdevz.top/tags/MacOS/">MacOS</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
+      
+      
+      <comments>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/#disqus_thread</comments>
       
     </item>
     
