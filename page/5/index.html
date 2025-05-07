@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -190,6 +190,117 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20220921/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9AMacOS%E9%80%9A%E8%BF%87yarn%E5%AE%89%E8%A3%85%E5%85%A8%E5%B1%80%E5%8C%85%E5%90%8E%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">解决方案：通过yarn安装全局包后无法找到命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-21 00:00:00" itemprop="dateCreated datePublished" datetime="2022-09-21T00:00:00+08:00">2022-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-19 16:13:24" itemprop="dateModified" datetime="2024-12-19T16:13:24+08:00">2024-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+
+<h2 id="1-1-背景描述"><a href="#1-1-背景描述" class="headerlink" title="1.1 背景描述"></a>1.1 背景描述</h2><ul>
+<li>操作系统：macOS</li>
+<li>通过 npm 全局安装的 yarn</li>
+</ul>
+<h2 id="1-2-问题描述"><a href="#1-2-问题描述" class="headerlink" title="1.2 问题描述"></a>1.2 问题描述</h2><p>通过命令 <code>yarn global add packageName</code> 后，试图该模块的命令，发现无法找到</p>
+<img src="https://oss.puppetdevz.top/image/note/4fe618e399628724ad20b4a6323b0a59.png" alt="image-20210930135631984" style="zoom:50%;" />
+
+<h2 id="1-3-问题分析"><a href="#1-3-问题分析" class="headerlink" title="1.3 问题分析"></a>1.3 问题分析</h2><p>macOS 在安装完 npm 后，再通过 npm 安装 yarn。则 yarn 相关配置和包路径默认位于家目录下</p>
+<img src="https://oss.puppetdevz.top/image/note/5dada55a4915bb85a40e68e0f75354cd.png" alt="image-20210930135818676" style="zoom:50%;" />
+
+<p>通过 yarn global add 安装包，则会被安装到 <code>~/.config/yarn/global/node_modules/</code> 中</p>
+<p><img src="https://oss.puppetdevz.top/image/note/791f480a09702d4bbc1f5d8213509e76.png" alt="image-20210930140102368"></p>
+<p>而该路径是没有配置在环境变量中的，因此无法找到。</p>
+<h2 id="1-4-解决方案"><a href="#1-4-解决方案" class="headerlink" title="1.4 解决方案"></a>1.4 解决方案</h2><p>将上述路径配置到环境变量中即可。此处我是配置在 <code>~/.zshrc</code> 中，大家可以视自身所用的 shell 自行决定。</p>
+<p>配置如下：</p>
+<p><img src="https://oss.puppetdevz.top/image/note/8e5e85ebf430d7676443903be1407465.png" alt="image-20210930140654119"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin&quot;</span><br></pre></td></tr></table></figure>
+
+<p>配置后保存，执行 <code>source ./.zshrc</code></p>
+<p>结果如下：</p>
+<img src="https://oss.puppetdevz.top/image/note/ad02e37701153120d62feef66115b282.png" alt="image-20210930140835904" style="zoom:50%;" />
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1031,115 +1142,6 @@
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220518/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E6%89%8B%E6%9C%BAAPP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="木偶">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木偶's Blog">
-      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 木偶's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20220518/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E6%89%8B%E6%9C%BAAPP/" class="post-title-link" itemprop="url">手机APP</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-05-18 00:00:00" itemprop="dateCreated datePublished" datetime="2022-05-18T00:00:00+08:00">2022-05-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-19 16:13:24" itemprop="dateModified" datetime="2024-12-19T16:13:24+08:00">2024-12-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">测评推荐</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="睡眠质量检测APP"><a href="#睡眠质量检测APP" class="headerlink" title="睡眠质量检测APP"></a>睡眠质量检测APP</h1><h2 id="AutoSleep"><a href="#AutoSleep" class="headerlink" title="AutoSleep"></a>AutoSleep</h2><blockquote>
-<p>iOS，18元</p>
-</blockquote>
-<h2 id="Pillow"><a href="#Pillow" class="headerlink" title="Pillow"></a>Pillow</h2><blockquote>
-<p>iOS，30元</p>
-</blockquote>
-<p>与AutoSleep相比，Pillow无论从操作还是展示上，都算是非常「亲民」的那一位。</p>
-<p><img src="https://oss.puppetdevz.top/image/note/01f18fd0ce1ded402b12777a8630fa92.png" alt="img"></p>
-<p>首页简洁的圆环直观地表现出你的睡眠状况，除此之外，还提供了几个重要参数的数据详情例如睡眠时段。同时将你的睡眠质量用直方图的形式表现出来，不同的色块代表不同的睡眠参数，点击之后则能看到具体的数据。</p>
-<p>到目前为止，Pillow 的 UI 都还算是一个完美的设计，但既然拿出来对比，就说明有它的一些短处。</p>
-<h1 id="“治疗手机病”的软件"><a href="#“治疗手机病”的软件" class="headerlink" title="“治疗手机病”的软件"></a>“治疗手机病”的软件</h1><h2 id="24PI"><a href="#24PI" class="headerlink" title="24PI"></a>24PI</h2><blockquote>
-<p>Android</p>
-</blockquote>
-<p>记录手机使用时间长短的应用。</p>
-<p>你每天花费了多少时间玩手机，每隔多久使用一次手机，哪些软件占用了你最多的时间等等，这些软件全部会帮你记录下来，并且<strong>形成报告</strong>，让你更了解自己使用手机的情况。</p>
-<p>初次使用软件，简单设置后，便可以上手使用了，根据你的使用情况，软件还可以帮你合理安排时间，帮助你<strong>健康使用手机</strong>。</p>
-<p><img src="https://oss.puppetdevz.top/image/note/01f18fd0ce1ded402b12777a8630fa92.png" alt="img"></p>
-<h2 id="FOREST"><a href="#FOREST" class="headerlink" title="FOREST"></a>FOREST</h2><blockquote>
-<p>iOS、Android</p>
-</blockquote>
-<p>通过种树的小游戏，帮助你有趣，主动的减少手机使用时间。开始专注时，给自己设置一个时间，这个时间内不使用手机，你的树苗种子便会长成<strong>树木。</strong></p>
-<p><img src="https://oss.puppetdevz.top/image/note/01f18fd0ce1ded402b12777a8630fa92.png" alt="img"></p>
-<p>一旦触碰，树苗便会死亡。</p>
-<p><img src="https://oss.puppetdevz.top/image/note/01f18fd0ce1ded402b12777a8630fa92.png" alt="img"></p>
-<p>还可以建立<strong>多人种树</strong>的模式，和朋友一起慢慢戒掉手机成瘾症，实现专注。平台为了鼓励大家使用，每个人都有<strong>五颗真树</strong>种植的的机会哦。你的树苗会被种植在沙漠区域，很有价值。</p>
-
       
     </div>
 
