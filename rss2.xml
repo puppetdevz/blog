@@ -15,8 +15,30 @@
     <atom:link href="https://www.puppetdevz.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</description>
-    <pubDate>Thu, 19 Dec 2024 08:13:24 GMT</pubDate>
+    <pubDate>Wed, 07 May 2025 04:31:33 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title></title>
+      <link>https://www.puppetdevz.top/20250305/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Github%20Benefits%E5%AD%A6%E7%94%9F%E5%8C%85%E6%96%B0%E7%89%88%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/</link>
+      <guid>https://www.puppetdevz.top/20250305/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Github%20Benefits%E5%AD%A6%E7%94%9F%E5%8C%85%E6%96%B0%E7%89%88%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/</guid>
+      <pubDate>Wed, 05 Mar 2025 15:51:10 GMT</pubDate>
+      
+      <description>&lt;hr&gt;
+&lt;hr&gt;
+&lt;p&gt;本教程适用于 2024 年之后的 Github 学生认证申请，因为现在的认证流程改变了很多，所以重新进行了总结这方面的指南。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!important] 重要&lt;br&gt;学生认证优惠的审核是自动程序审核的，所以可以用一些 trick 来说服自动审核程序，帮助大家通过自动审核。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      
+      
+      <comments>https://www.puppetdevz.top/20250305/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Github%20Benefits%E5%AD%A6%E7%94%9F%E5%8C%85%E6%96%B0%E7%89%88%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>OMV结合NextCloud实现私人网盘</title>
@@ -483,6 +505,37 @@
     </item>
     
     <item>
+      <title>Mac软件推荐</title>
+      <link>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</link>
+      <guid>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</guid>
+      <pubDate>Fri, 07 Oct 2022 16:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h2 id=&quot;1-1-brew-Mac&quot;&gt;&lt;a href=&quot;#1-1-brew-Mac&quot; class=&quot;headerlink&quot; title=&quot;1.1 brew(Mac)&quot;&gt;&lt;/a&gt;1.1</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/">测评推荐</category>
+      
+      
+      <category domain="https://www.puppetdevz.top/tags/MacOS/">MacOS</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
+      
+      
+      <comments>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>商用U盘</title>
       <link>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/U%E7%9B%98/</link>
       <guid>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/U%E7%9B%98/</guid>
@@ -512,67 +565,6 @@
       
       
       <comments>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/U%E7%9B%98/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Mac软件推荐</title>
-      <link>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</link>
-      <guid>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</guid>
-      <pubDate>Fri, 07 Oct 2022 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;1-1-brew-Mac&quot;&gt;&lt;a href=&quot;#1-1-brew-Mac&quot; class=&quot;headerlink&quot; title=&quot;1.1 brew(Mac)&quot;&gt;&lt;/a&gt;1.1</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/">测评推荐</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
-      
-      <category domain="https://www.puppetdevz.top/tags/MacOS/">MacOS</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>分屏软件</title>
-      <link>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E5%88%86%E5%B1%8F%E8%BD%AF%E4%BB%B6/</link>
-      <guid>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E5%88%86%E5%B1%8F%E8%BD%AF%E4%BB%B6/</guid>
-      <pubDate>Fri, 07 Oct 2022 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;Magnet&quot;&gt;&lt;a href=&quot;#Magnet&quot; class=&quot;headerlink&quot; title=&quot;Magnet&quot;&gt;&lt;/a&gt;Magnet&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;适用于</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/">测评推荐</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E5%88%86%E5%B1%8F%E8%BD%AF%E4%BB%B6/#disqus_thread</comments>
       
     </item>
     

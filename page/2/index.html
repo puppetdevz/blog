@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -190,6 +190,103 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20221128/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%9C%A8%E9%AB%98%E7%89%88%E6%9C%ACjdk%E4%B8%AD%E4%BD%BF%E7%94%A8cglib%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%90%86%E6%97%B6%E7%9A%84%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20221128/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%9C%A8%E9%AB%98%E7%89%88%E6%9C%ACjdk%E4%B8%AD%E4%BD%BF%E7%94%A8cglib%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%90%86%E6%97%B6%E7%9A%84%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">解决方案：在高版本jdk中使用cglib进行代理时的报错问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-28 14:10:20" itemprop="dateCreated datePublished" datetime="2022-11-28T14:10:20+08:00">2022-11-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-19 16:13:24" itemprop="dateModified" datetime="2024-12-19T16:13:24+08:00">2024-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Unable-to-make-protected-final-java-lang-Class-java-lang-ClassLoader-defineClass"><a href="#Unable-to-make-protected-final-java-lang-Class-java-lang-ClassLoader-defineClass" class="headerlink" title="Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass"></a>Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在使用 Spring 集成的 cglib 手动对某个类进行代理增强时报了以下错误：</p>
+<p>Unable to make <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=protected&spm=1001.2101.3001.7020">protected</a> final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not “opens java.lang” to unnamed module @5c29bfd</p>
+<p>我的代码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CglibProxyForMultiInterfacesTest</span> &#123;</span><br><span class="line">    <span class="keyword">interface</span> <span class="title class_">Service1</span> &#123;</span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">m1</span><span class="params">()</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">interface</span> <span class="title class_">Service2</span> &#123;</span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">m2</span><span class="params">()</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Enhancer</span> <span class="variable">enhancer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Enhancer</span>();</span><br><span class="line">        enhancer.setInterfaces(<span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;Service1.class, Service2.class&#125;);</span><br><span class="line">        enhancer.setCallback(<span class="keyword">new</span> <span class="title class_">MethodInterceptor</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Object <span class="title function_">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;方法：&quot;</span> + method.getName());</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="type">Object</span> <span class="variable">proxy</span> <span class="operator">=</span> enhancer.create();</span><br><span class="line">        <span class="keyword">if</span> (proxy <span class="keyword">instanceof</span> Service1) &#123;</span><br><span class="line">            ((Service1) proxy).m1();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (proxy <span class="keyword">instanceof</span> Service2) &#123;</span><br><span class="line">            ((Service2) proxy).m2();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(proxy.getClass());</span><br><span class="line">        <span class="keyword">for</span> (Class&lt;?&gt; anInterface : proxy.getClass().getInterfaces()) &#123;</span><br><span class="line">            System.out.println(anInterface);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>貌似是高版本的 JDK 禁用了反射权限，需要添加 JVM 参数去开启</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--add-opens java.base/java.lang=ALL-UNNAMED  </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://oss.puppetdevz.top/image/note/26068c2c1d8b57fd7b41650b68e1086f.png" alt="image-20221128141538748"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -991,95 +1088,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/U%E7%9B%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="木偶">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木偶's Blog">
-      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 木偶's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/U%E7%9B%98/" class="post-title-link" itemprop="url">商用U盘</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-08 00:00:00" itemprop="dateCreated datePublished" datetime="2022-10-08T00:00:00+08:00">2022-10-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-17 20:54:31" itemprop="dateModified" datetime="2023-12-17T20:54:31+08:00">2023-12-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">测评推荐</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-<h1 id="US1指纹加密闪存盘"><a href="#US1指纹加密闪存盘" class="headerlink" title="US1指纹加密闪存盘"></a>US1指纹加密闪存盘</h1><p>品牌：Netac</p>
-<p>制造商：深圳市朗科科技股份有限公司</p>
-<p>技术支持&#x2F;客服热线：400-830-3662</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1210,7 +1218,7 @@
 <p><img src="https://oss.puppetdevz.top/image/note/cadd8b8185018ff2954d9c567b148b48.png" alt="image-20210410193733548"></p>
 <p>QQ 首选项配置截图、录制快捷键设置：</p>
 <p><img src="https://oss.puppetdevz.top/image/note/fa091375870df4021eec71195a179aba.png" alt="image-20210410193748927"></p>
-<h2 id="1-5-语雀（Windows-Mac）"><a href="#1-5-语雀（Windows-Mac）" class="headerlink" title="1.5 语雀（Windows&#x2F;Mac）"></a>1.5 语雀（Windows&#x2F;Mac）</h2><p>我的笔记之路，从白嫖有道云笔记，再到买了一年的印象笔记的高级会员，最后是买了阿里云服务器自制了蚂蚁笔记服务端，自己的笔记之路一路折腾，最后我发现还是语雀符合我对笔记知识整合的理解。本篇文章也同步发布在了语雀。</p>
+<h2 id="1-5-语雀（Windows-x2F-Mac）"><a href="#1-5-语雀（Windows-x2F-Mac）" class="headerlink" title="1.5 语雀（Windows&#x2F;Mac）"></a>1.5 语雀（Windows&#x2F;Mac）</h2><p>我的笔记之路，从白嫖有道云笔记，再到买了一年的印象笔记的高级会员，最后是买了阿里云服务器自制了蚂蚁笔记服务端，自己的笔记之路一路折腾，最后我发现还是语雀符合我对笔记知识整合的理解。本篇文章也同步发布在了语雀。</p>
 <ol>
 <li><strong>界面清新，客户端启动快。</strong>不像印象笔记，启动慢不说，运行久了还会卡。而且有很多我不必要的功能在那里。</li>
 <li><strong>支持现在流行的卡片式笔记，例如流程图、视频链接、思维导图等。</strong></li>
@@ -1230,7 +1238,7 @@
 <li>社区地址：<a target="_blank" rel="noopener" href="https://support.qq.com/products/36664">https://support.qq.com/products/36664</a></li>
 <li>下载：<code>brew cask install tencent-lemon</code></li>
 </ol>
-<h2 id="1-7-oss-brower（Windows-Mac）"><a href="#1-7-oss-brower（Windows-Mac）" class="headerlink" title="1.7 oss-brower（Windows&#x2F;Mac）"></a>1.7 oss-brower（Windows&#x2F;Mac）</h2><p>这个仅适合使用了阿里云 oss 的用户，它是快速的方便用户对自己 oss 进行操作管理，而且还有权限功能，我平常都是电脑截图，然后拖拽图片到 oss-brower 里面，接着获取地址。另外该产品是开源的，我开始很难相信这是阿里出的产品。</p>
+<h2 id="1-7-oss-brower（Windows-x2F-Mac）"><a href="#1-7-oss-brower（Windows-x2F-Mac）" class="headerlink" title="1.7 oss-brower（Windows&#x2F;Mac）"></a>1.7 oss-brower（Windows&#x2F;Mac）</h2><p>这个仅适合使用了阿里云 oss 的用户，它是快速的方便用户对自己 oss 进行操作管理，而且还有权限功能，我平常都是电脑截图，然后拖拽图片到 oss-brower 里面，接着获取地址。另外该产品是开源的，我开始很难相信这是阿里出的产品。</p>
 <p><img src="https://oss.puppetdevz.top/image/note/0e58663d089c2f055c7c70f3c7dcfac2.png" alt="image-20210410194011352"></p>
 <ol>
 <li>主页地址：<a target="_blank" rel="noopener" href="https://github.com/aliyun/oss-browser">https://github.com/aliyun/oss-browser</a></li>
@@ -1249,7 +1257,7 @@
 <li>主页地址：<a target="_blank" rel="noopener" href="https://github.com/kyleneideck/BackgroundMusic">https://github.com/kyleneideck/BackgroundMusic</a></li>
 <li>下载地址：<code>brew cask install background-music</code></li>
 </ol>
-<h2 id="1-10-another-redis-desktop-manager（Windows-Mac）"><a href="#1-10-another-redis-desktop-manager（Windows-Mac）" class="headerlink" title="1.10 another redis desktop manager（Windows&#x2F;Mac）"></a>1.10 another redis desktop manager（Windows&#x2F;Mac）</h2><p>可视化的 Redis 管理软件，开源软件。颜值高、功能多、作者更新快的可视化 Redis 管理软件。</p>
+<h2 id="1-10-another-redis-desktop-manager（Windows-x2F-Mac）"><a href="#1-10-another-redis-desktop-manager（Windows-x2F-Mac）" class="headerlink" title="1.10 another redis desktop manager（Windows&#x2F;Mac）"></a>1.10 another redis desktop manager（Windows&#x2F;Mac）</h2><p>可视化的 Redis 管理软件，开源软件。颜值高、功能多、作者更新快的可视化 Redis 管理软件。</p>
 <p><img src="https://oss.puppetdevz.top/image/note/9ac5e22d096918037a01360e92bfe52c.png" alt="image-20210410194254991"></p>
 <ol>
 <li>主页地址：<a target="_blank" rel="noopener" href="https://github.com/qishibo/AnotherRedisDesktopManager">https://github.com/qishibo/AnotherRedisDesktopManager</a></li>
@@ -1285,7 +1293,7 @@
 
   <div class="copyright">
     &copy; 2021 – 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>

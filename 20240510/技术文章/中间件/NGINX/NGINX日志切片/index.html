@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -280,10 +280,10 @@
 <span id="more"></span>
 
 <h2 id="1-1-安装-logrotate"><a href="#1-1-安装-logrotate" class="headerlink" title="1.1 安装 logrotate"></a>1.1 安装 <code>logrotate</code></h2><p>如果系统中尚未安装 <code>logrotate</code>，可以通过包管理器进行安装。例如，在基于 Debian 的系统上，可以使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install logrotate</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install logrotate</span><br></pre></td></tr></table></figure>
 
 <h2 id="1-2-配置-logrotate-为-NGINX-日志"><a href="#1-2-配置-logrotate-为-NGINX-日志" class="headerlink" title="1.2 配置 logrotate 为 NGINX 日志"></a>1.2 配置 <code>logrotate</code> 为 NGINX 日志</h2><p><code>logrotate</code> 的配置通常位于 <code>/etc/logrotate.d/</code> 目录。你可以创建或修改一个配置文件专门用于 NGINX。以下是一个基本的配置示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/logrotate.d/nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/logrotate.d/nginx</span><br></pre></td></tr></table></figure>
 
 <p>在打开的编辑器中，添加以下内容：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/var/log/nginx/*.<span class="section">log</span> &#123;</span><br><span class="line">    <span class="attribute">daily</span>                  <span class="comment"># 每天轮换日志</span></span><br><span class="line">    missingok              <span class="comment"># 如果日志丢失不报错</span></span><br><span class="line">    rotate <span class="number">7</span>               <span class="comment"># 保存7个备份</span></span><br><span class="line">    compress               <span class="comment"># 压缩日志文件</span></span><br><span class="line">    delaycompress          <span class="comment"># 延迟压缩</span></span><br><span class="line">    notifempty             <span class="comment"># 如果是空文件则不轮换</span></span><br><span class="line">    create <span class="number">0640</span> nginx adm  <span class="comment"># 创建新文件的权限</span></span><br><span class="line">    sharedscripts</span><br><span class="line">    postrotate</span><br><span class="line">        if [ -f /var/run/nginx.pid ]; <span class="attribute">then</span></span><br><span class="line">            kill -USR1 `cat /var/run/nginx.pid`</span><br><span class="line">        fi</span><br><span class="line">    endscript</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -297,7 +297,7 @@
 <li><code>postrotate</code> 脚本在完成日志轮换后发送 USR1 信号给 NGINX 主进程，这会令 NGINX 重新打开日志文件，确保日志写入不会中断。</li>
 </ul>
 <h2 id="1-3-测试-logrotate-配置"><a href="#1-3-测试-logrotate-配置" class="headerlink" title="1.3 测试 logrotate 配置"></a>1.3 测试 <code>logrotate</code> 配置</h2><p>完成配置后，可以手动运行 <code>logrotate</code> 来测试配置是否有效：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo logrotate -v /etc/logrotate.d/nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> logrotate -v /etc/logrotate.d/nginx</span><br></pre></td></tr></table></figure>
 
 <p>这条命令会以详细模式运行 <code>logrotate</code>，显示轮换过程中的详细信息，有助于确认配置是否按预期执行。</p>
 <h2 id="1-4-自动执行"><a href="#1-4-自动执行" class="headerlink" title="1.4 自动执行"></a>1.4 自动执行</h2><p><code>logrotate</code> 通常由 cron 定期自动执行。你可以检查系统的 cron 任务来确认 <code>logrotate</code> 的执行频率：</p>
@@ -409,7 +409,7 @@
 
   <div class="copyright">
     &copy; 2021 – 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2025</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
