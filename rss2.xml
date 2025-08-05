@@ -15,7 +15,7 @@
     <atom:link href="https://www.puppetdevz.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</description>
-    <pubDate>Sat, 02 Aug 2025 04:57:02 GMT</pubDate>
+    <pubDate>Tue, 05 Aug 2025 02:25:55 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -35,6 +35,8 @@
       
       
       
+      
+      <category domain="https://www.puppetdevz.top/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</category>
       
       
       
@@ -58,6 +60,8 @@
       
       
       
+      
+      <category domain="https://www.puppetdevz.top/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</category>
       
       
       
@@ -83,6 +87,8 @@
       
       
       
+      <category domain="https://www.puppetdevz.top/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</category>
+      
       
       
       <comments>https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/#disqus_thread</comments>
@@ -100,6 +106,8 @@
       
       
       
+      
+      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
       
       
       <category domain="https://www.puppetdevz.top/tags/macos/">macos</category>
@@ -133,6 +141,8 @@
       
       
       
+      
+      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
       
       
       <category domain="https://www.puppetdevz.top/tags/Nginx/">Nginx</category>
@@ -168,12 +178,14 @@
       
       
       
+      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
+      
       
       <category domain="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
       
-      <category domain="https://www.puppetdevz.top/tags/%E5%B7%A5%E5%85%B7/">工具</category>
-      
       <category domain="https://www.puppetdevz.top/tags/Windows/">Windows</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/%E5%B7%A5%E5%85%B7/">工具</category>
       
       <category domain="https://www.puppetdevz.top/tags/Typora/">Typora</category>
       
@@ -404,9 +416,7 @@
       
       
       
-      <category domain="https://www.puppetdevz.top/categories/%E6%9B%B4%E5%A4%9A%E6%8A%80%E6%9C%AF/">更多技术</category>
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%9B%B4%E5%A4%9A%E6%8A%80%E6%9C%AF/docker/">docker</category>
+      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
       
       
       <category domain="https://www.puppetdevz.top/tags/docker/">docker</category>
@@ -532,9 +542,9 @@
       <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/">后端</category>
       
       
-      <category domain="https://www.puppetdevz.top/tags/SpringBoot/">SpringBoot</category>
-      
       <category domain="https://www.puppetdevz.top/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决方案</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/SpringBoot/">SpringBoot</category>
       
       
       <comments>https://www.puppetdevz.top/20221109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9ASpringBoot-%E5%89%8D%E7%AB%AF%E6%97%B6%E9%97%B4%E4%BC%A0%E9%80%92%E5%88%B0%E5%90%8E%E7%AB%AF%E5%B0%91%E4%BA%868%E4%B8%AA%E5%B0%8F%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread</comments>
