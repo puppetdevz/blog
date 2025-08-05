@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon_32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在 macOS 上设置开机或用户登录后自动执行 Shell 脚本，最现代且可靠的方法是使用 launchd。这是 Apple 官方推荐的用于管理守护进程和服务的系统。 相比于老旧的 crontab 或简单的“登录项”，launchd 提供了更强大的控制能力和稳定性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="macos开机自动执行shell脚本">
+<meta property="og:url" content="https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:site_name" content="木偶&#39;s Blog">
+<meta property="og:description" content="在 macOS 上设置开机或用户登录后自动执行 Shell 脚本，最现代且可靠的方法是使用 launchd。这是 Apple 官方推荐的用于管理守护进程和服务的系统。 相比于老旧的 crontab 或简单的“登录项”，launchd 提供了更强大的控制能力和稳定性。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-17T07:12:05.681Z">
+<meta property="article:modified_time" content="2025-07-24T05:11:01.453Z">
+<meta property="article:author" content="木偶">
+<meta property="article:tag" content="macos">
+<meta property="article:tag" content="shell-scripts">
+<meta property="article:tag" content="launchd">
+<meta property="article:tag" content="automation">
+<meta property="article:tag" content="system-configuration">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/","path":"20250717/技术文章/macos开机自动执行shell脚本/","title":"macos开机自动执行shell脚本"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>macos开机自动执行shell脚本 | 木偶's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="木偶's Blog" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="木偶's Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">木偶's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果发现能力无法支撑自己的野心，那就静下心来学习吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-简历"><a href="/resume/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E4%BD%BF%E7%94%A8-launchd-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E4%BB%A3%E7%90%86-User-Agent"><span class="nav-text">1.1 解决方案：使用 launchd 创建用户代理 (User Agent)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%F0%9F%93%9D-%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA-plist-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">1.1.1 📝 第 1 步：创建 .plist 配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E2%9A%99%EF%B8%8F-%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E7%A1%AE%E4%BF%9D%E8%84%9A%E6%9C%AC%E5%85%B7%E6%9C%89%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="nav-text">1.1.2 ⚙️ 第 2 步：确保脚本具有执行权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%F0%9F%9A%80-%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E5%8A%A0%E8%BD%BD%E5%B9%B6%E5%90%AF%E5%8A%A8-launchd-%E4%BB%BB%E5%8A%A1"><span class="nav-text">1.1.3 🚀 第 3 步：加载并启动 launchd 任务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E2%9C%A8-%E4%B8%80%E5%88%87%E5%B0%B1%E7%BB%AA"><span class="nav-text">1.2 ✨ 一切就绪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF%E4%B8%8E%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-text">1.3 其他信息与管理命令</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木偶"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">木偶</p>
+  <div class="site-description" itemprop="description">本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/puppetdevz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;puppetdevz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:puppetdevz@163.com" title="E-Mail → mailto:puppetdevz@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="macos开机自动执行shell脚本 | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          macos开机自动执行shell脚本
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-17 15:12:05" itemprop="dateCreated datePublished" datetime="2025-07-17T15:12:05+08:00">2025-07-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-24 13:11:01" itemprop="dateModified" datetime="2025-07-24T13:11:01+08:00">2025-07-24</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在 macOS 上设置开机或用户登录后自动执行 Shell 脚本，最现代且可靠的方法是使用 <code>launchd</code>。这是 Apple 官方推荐的用于管理守护进程和服务的系统。</p>
+<p>相比于老旧的 <code>crontab</code> 或简单的“登录项”，<code>launchd</code> 提供了更强大的控制能力和稳定性。</p>
+<span id="more"></span>
+
+<h2 id="1-1-解决方案：使用-launchd-创建用户代理-User-Agent"><a href="#1-1-解决方案：使用-launchd-创建用户代理-User-Agent" class="headerlink" title="1.1 解决方案：使用 launchd 创建用户代理 (User Agent)"></a>1.1 解决方案：使用 <code>launchd</code> 创建用户代理 (User Agent)</h2><p>这个方法会在登录到 Mac 用户账户后，自动以后台方式执行指定的脚本。</p>
+<h3 id="1-1-1-📝-第-1-步：创建-plist-配置文件"><a href="#1-1-1-📝-第-1-步：创建-plist-配置文件" class="headerlink" title="1.1.1 📝 第 1 步：创建 .plist 配置文件"></a>1.1.1 📝 第 1 步：创建 <code>.plist</code> 配置文件</h3><p>首先，创建一个 <code>.plist</code> 格式的 XML 配置文件。这个文件会告诉 <code>launchd</code> 要做什么。</p>
+<ol>
+<li><p><strong>打开“终端” (Terminal) 应用程序。</strong></p>
+</li>
+<li><p><strong>创建一个新的 <code>.plist</code> 文件。</strong><code>~/Library/LaunchAgents/com.user.jetbrains-activate.plist</code>。这个目录是存放用户级别 <code>launchd</code> 任务的地方。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/Library/LaunchAgents/com.user.jetbrains-activate.plist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>将以下内容粘贴到编辑器中：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ~/Library/LaunchAgents/com.user.jetbrains-activate.plist --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">plist</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</span> <span class="string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>com.user.jetbrains-activate<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>/bin/zsh<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Users/username/Environments/JetBrainsActivateTools/scripts/install.sh<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- === 调试日志部分 === --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardOutPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Users/username/tmp/jetbrains-activate.stdout.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardErrorPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/Users/username/tmp/jetbrains-activate.stderr.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ======================= --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重要：修改脚本路径！</strong><br>请将上面代码中的 <code>/Users/username/</code> 替换成您自己的实际用户名称。例如，如果您的用户名是 <code>david</code>，那么路径就是 <code>/Users/david/Environments/JetBrainsActivateTools/scripts/install.sh</code>。</p>
+</li>
+<li><p><strong>保存并退出编辑器。</strong></p>
+</li>
+</ol>
+<h3 id="1-1-2-⚙️-第-2-步：确保脚本具有执行权限"><a href="#1-1-2-⚙️-第-2-步：确保脚本具有执行权限" class="headerlink" title="1.1.2 ⚙️ 第 2 步：确保脚本具有执行权限"></a>1.1.2 ⚙️ 第 2 步：确保脚本具有执行权限</h3><p>为了让 <code>launchd</code> 能够成功运行您的脚本，您必须给脚本文件添加可执行权限。</p>
+<p>在终端中运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x /Users/username/Environments/JetBrainsActivateTools/scripts/install.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>同样，记得替换 <code>username</code> 为您的实际用户名。</strong></p>
+<h3 id="1-1-3-🚀-第-3-步：加载并启动-launchd-任务"><a href="#1-1-3-🚀-第-3-步：加载并启动-launchd-任务" class="headerlink" title="1.1.3 🚀 第 3 步：加载并启动 launchd 任务"></a>1.1.3 🚀 第 3 步：加载并启动 <code>launchd</code> 任务</h3><p>现在，您需要告诉 <code>launchd</code> 加载您刚刚创建的这个新任务。</p>
+<ol>
+<li><p><strong>加载任务：</strong><br>在终端中运行以下命令，它会加载您的 <code>.plist</code> 文件并使其生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl load ~/Library/LaunchAgents/com.user.jetbrains-activate.plist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>(可选) 立即测试：</strong><br>如果您想立即测试脚本是否能被 <code>launchd</code> 正常执行，而不是等下次登录，可以运行以下命令来手动启动一次任务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl start com.user.jetbrains-activate</span><br></pre></td></tr></table></figure>
+
+<p>您可以检查脚本执行后的预期效果来判断是否成功。</p>
+</li>
+<li><p>如果修改了 plist 文件，那么必须先 <strong>卸载 (unload)</strong> 然后再 <strong>加载 (load)</strong> 任务。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">launchctl unload ~/Library/LaunchAgents/com.user.jetbrains-activate.plist</span><br><span class="line">launchctl load ~/Library/LaunchAgents/com.user.jetbrains-activate.plist</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="1-2-✨-一切就绪"><a href="#1-2-✨-一切就绪" class="headerlink" title="1.2 ✨ 一切就绪"></a>1.2 ✨ 一切就绪</h2><p>现在，您的设置已经全部完成。从下一次您登录 Mac 开始，<code>install.sh</code> 脚本就会在后台自动为您执行。</p>
+<h2 id="1-3-其他信息与管理命令"><a href="#1-3-其他信息与管理命令" class="headerlink" title="1.3 其他信息与管理命令"></a>1.3 其他信息与管理命令</h2><ul>
+<li><p><strong>为什么要用 <code>/bin/sh</code>？</strong><br>  在 <code>ProgramArguments</code> 中，第一个参数是执行器，第二个参数才是您的脚本。直接使用 <code>/bin/sh</code> 或 <code>/bin/zsh</code> 来运行您的 <code>.sh</code> 脚本是更稳妥的做法。</p>
+</li>
+<li><p><strong>如何停止并卸载这个自动任务？</strong><br>  如果您以后不希望再自动执行此脚本，可以按以下步骤操作：</p>
+<ol>
+<li><p><strong>卸载任务：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl unload ~/Library/LaunchAgents/com.user.jetbrains-activate.plist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>（可选）删除文件：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> ~/Library/LaunchAgents/com.user.jetbrains-activate.plist</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p><strong>如果脚本需要管理员权限怎么办？</strong><br>  如果您的脚本需要 <code>sudo</code> 权限，那么配置会更复杂。您需要将 <code>.plist</code> 文件放置在系统的 <code>/Library/LaunchDaemons</code> 目录下，并修改一些键值。但根据您的需求（在当前用户下执行），目前的方法是最佳选择。</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/uploads/wechatpay.jpeg" alt="木偶 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/uploads/alipay.jpeg" alt="木偶 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>木偶
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/" title="macos开机自动执行shell脚本">https://www.puppetdevz.top/20250717/技术文章/macos开机自动执行shell脚本/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/uploads/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/macos/" rel="tag"># macos</a>
+              <a href="/tags/shell-scripts/" rel="tag"># shell-scripts</a>
+              <a href="/tags/launchd/" rel="tag"># launchd</a>
+              <a href="/tags/automation/" rel="tag"># automation</a>
+              <a href="/tags/system-configuration/" rel="tag"># system-configuration</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/" rel="prev" title="Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)">
+                  <i class="fa fa-angle-left"></i> Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/" rel="next" title="真正零编程基础开发程序工作流">
+                  真正零编程基础开发程序工作流 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">木偶</br><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022114751号-1<a /></span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e4316b5cf25a4acaf06f6f9424ef9f5a"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon_32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文档旨在提供一个全面的指南，介绍如何在 Ubuntu 24.04 服务器上使用 Nginx 设置反向代理（以 Emby 为例），并通过 Certbot 获取和管理 Let’s Encrypt 免费 SSL 证书，实现 HTTPS 安全访问。 1.1 前提条件 Ubuntu 24.04 LTS 服务器: 拥有 sudo 权限。  域名: 拥有一个域名，并且其 DNS A 或 AAAA 记录已指向服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)">
+<meta property="og:url" content="https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/index.html">
+<meta property="og:site_name" content="木偶&#39;s Blog">
+<meta property="og:description" content="本文档旨在提供一个全面的指南，介绍如何在 Ubuntu 24.04 服务器上使用 Nginx 设置反向代理（以 Emby 为例），并通过 Certbot 获取和管理 Let’s Encrypt 免费 SSL 证书，实现 HTTPS 安全访问。 1.1 前提条件 Ubuntu 24.04 LTS 服务器: 拥有 sudo 权限。  域名: 拥有一个域名，并且其 DNS A 或 AAAA 记录已指向服">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-10T13:33:57.000Z">
+<meta property="article:modified_time" content="2025-07-10T13:33:57.000Z">
+<meta property="article:author" content="木偶">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="SSL">
+<meta property="article:tag" content="Certbot">
+<meta property="article:tag" content="HTTPS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/","path":"20250710/技术文章/Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)/","title":"Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04) | 木偶's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="木偶's Blog" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="木偶's Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">木偶's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果发现能力无法支撑自己的野心，那就静下心来学习吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-简历"><a href="/resume/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="nav-text">1.1 前提条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E6%AD%A5%E9%AA%A4%E4%B8%80%EF%BC%9A%E5%AE%89%E8%A3%85-Nginx"><span class="nav-text">1.1.1 步骤一：安装 Nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-Nginx-%E9%85%8D%E7%BD%AE%E5%88%86%E7%A6%BB%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.1.2 Nginx 配置分离介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%AD%A5%E9%AA%A4%E4%BA%8C%EF%BC%9A%E5%AE%89%E8%A3%85-Certbot-%E5%8F%8A-Nginx-%E6%8F%92%E4%BB%B6"><span class="nav-text">1.2 步骤二：安装 Certbot 及 Nginx 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E6%AD%A5%E9%AA%A4%E4%B8%89%EF%BC%9A%E4%B8%BA%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7%E8%AF%81%E4%B9%A6"><span class="nav-text">1.3 步骤三：为域名申请证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-%E8%BF%98%E6%B2%A1%E8%BF%9B%E8%A1%8C-Nginx-%E9%85%8D%E7%BD%AE"><span class="nav-text">1.3.1 还没进行 Nginx 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E5%B7%B2%E6%9C%89-Nginx-%E9%85%8D%E7%BD%AE"><span class="nav-text">1.3.2 已有 Nginx 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-%E5%AE%8C%E6%95%B4%E7%9A%84%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B%EF%BC%9AEmby"><span class="nav-text">1.3.3 完整的配置示例：Emby</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-%E7%90%86%E8%A7%A3-SSL-%E8%AF%81%E4%B9%A6%E4%B8%8E-Certbot"><span class="nav-text">1.3.4 理解 SSL 证书与 Certbot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-4-1-%E5%A6%82%E4%BD%95%E7%A1%AE%E8%AE%A4%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E4%BA%86-Certbot%EF%BC%9F"><span class="nav-text">1.3.4.1 如何确认是否使用了 Certbot？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-4-2-SSL-%E8%AF%81%E4%B9%A6%E4%B8%80%E8%88%AC%E6%94%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="nav-text">1.3.4.2 SSL 证书一般放置位置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E6%AD%A5%E9%AA%A4%E5%9B%9B%EF%BC%9A%E9%AA%8C%E8%AF%81%E4%B8%8E%E7%BB%B4%E6%8A%A4"><span class="nav-text">1.4 步骤四：验证与维护</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-%E6%B5%8B%E8%AF%95-Nginx-%E9%85%8D%E7%BD%AE"><span class="nav-text">1.4.1 测试 Nginx 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-%E9%87%8D%E8%BD%BD-Nginx-%E6%9C%8D%E5%8A%A1"><span class="nav-text">1.4.2 重载 Nginx 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-%E9%AA%8C%E8%AF%81-Certbot-%E8%87%AA%E5%8A%A8%E7%BB%AD%E6%9C%9F"><span class="nav-text">1.4.3 验证 Certbot 自动续期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E6%AD%A5%E9%AA%A4%E4%BA%94%EF%BC%9A%E5%AE%89%E5%85%A8%E5%A2%9E%E5%BC%BA-HSTS"><span class="nav-text">1.5 步骤五：安全增强 (HSTS)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木偶"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">木偶</p>
+  <div class="site-description" itemprop="description">本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/puppetdevz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;puppetdevz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:puppetdevz@163.com" title="E-Mail → mailto:puppetdevz@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04) | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-10 21:33:57" itemprop="dateCreated datePublished" datetime="2025-07-10T21:33:57+08:00">2025-07-10</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文档旨在提供一个全面的指南，介绍如何在 <strong>Ubuntu 24.04</strong> 服务器上使用 Nginx 设置反向代理（以 Emby 为例），并通过 Certbot 获取和管理 Let’s Encrypt 免费 SSL 证书，实现 HTTPS 安全访问。</p>
+<h2 id="1-1-前提条件"><a href="#1-1-前提条件" class="headerlink" title="1.1 前提条件"></a>1.1 前提条件</h2><ul>
+<li><p><strong>Ubuntu 24.04 LTS 服务器:</strong> 拥有 <code>sudo</code> 权限。</p>
+</li>
+<li><p><strong>域名:</strong> 拥有一个域名，并且其 DNS A 或 AAAA 记录已指向服务器公网 IP 地址。</p>
+</li>
+<li><p><strong>防火墙配置:</strong> 服务器防火墙（如 <code>ufw</code>）已允许外部访问 TCP 端口 80 (HTTP) 和 443 (HTTPS)。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw allow <span class="string">&#x27;Nginx Full&#x27;</span> <span class="comment"># 或者分别允许 80 和 443</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="1-1-1-步骤一：安装-Nginx"><a href="#1-1-1-步骤一：安装-Nginx" class="headerlink" title="1.1.1 步骤一：安装 Nginx"></a>1.1.1 步骤一：安装 Nginx</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt install nginx</span><br></pre></td></tr></table></figure>
+
+<p>目前通过该方式安装 Nginx，Nginx 配置默认都是采用配置分离的方式，即 Nginx 推荐的最佳实践。我们只需要在 <code>/etc/nginx/sites-available/</code> 中新增自己的站点配置，并建立软链接到 <code>/etc/nginx/sites-enabled/</code> 即可。</p>
+<h3 id="1-1-2-Nginx-配置分离介绍"><a href="#1-1-2-Nginx-配置分离介绍" class="headerlink" title="1.1.2 Nginx 配置分离介绍"></a>1.1.2 Nginx 配置分离介绍</h3><p>为了便于管理，Nginx 配置通常采用分离的方式。主配置文件 <code>nginx.conf</code> (通常在 <code>/etc/nginx/</code>) 会通过 <code>include</code> 指令加载其他目录下的配置文件。常见的做法有：</p>
+<ul>
+<li><code>/etc/nginx/conf.d/*.conf</code>: 任何在此目录下的 <code>.conf</code> 文件都会被加载。</li>
+<li><code>/etc/nginx/sites-available/</code> 和 <code>/etc/nginx/sites-enabled/</code>:<ul>
+<li><p>在 <code>sites-available/</code> 中创建站点配置文件。</p>
+</li>
+<li><p>通过在 <code>sites-enabled/</code> 中创建指向 <code>sites-available/</code> 中文件的符号链接来启用站点。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /etc/nginx/sites-available/your-site.conf /etc/nginx/sites-enabled/your-site.conf</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-步骤二：安装-Certbot-及-Nginx-插件"><a href="#1-2-步骤二：安装-Certbot-及-Nginx-插件" class="headerlink" title="1.2 步骤二：安装 Certbot 及 Nginx 插件"></a>1.2 步骤二：安装 Certbot 及 Nginx 插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt install certbot python3-certbot-nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查安装是否成功</span></span><br><span class="line">certbot --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-步骤三：为域名申请证书"><a href="#1-3-步骤三：为域名申请证书" class="headerlink" title="1.3 步骤三：为域名申请证书"></a>1.3 步骤三：为域名申请证书</h2><h3 id="1-3-1-还没进行-Nginx-配置"><a href="#1-3-1-还没进行-Nginx-配置" class="headerlink" title="1.3.1 还没进行 Nginx 配置"></a>1.3.1 还没进行 Nginx 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> certbot --nginx -d emby.yourdomain.com --cert-name yourdomain.com</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>--nginx</code>: 使用 Nginx 插件进行验证和安装。</li>
+<li><code>-d emby.yourdomain.com</code>: 指定要为其申请证书的域名。</li>
+<li><code>--cert-name yourdomain.com</code>: <strong>关键参数</strong>。告诉 Certbot 使用或创建一个名为 <code>yourdomain.com</code> 的证书。这样，证书文件会存放在 <code>/etc/letsencrypt/live/yourdomain.com/</code>，与 Nginx 配置匹配。</li>
+</ul>
+<p>回车后，Certbot 会引导：</p>
+<ol>
+<li>输入邮箱地址。</li>
+<li>同意服务条款。</li>
+<li>选择是否将 HTTP 流量自动重定向到 HTTPS (推荐)。</li>
+</ol>
+<p>过程中，Certbot 会：</p>
+<ol>
+<li>检查名为 <code>yourdomain.com</code> 的证书是否存在。</li>
+<li>确保 <code>emby.yourdomain.com</code> 被包含在该证书中（如果不存在则添加，如果证书本身不存在则创建）。</li>
+<li>通过 Nginx 插件进行域名验证。</li>
+<li>成功后，将证书文件保存在 <code>/etc/letsencrypt/live/yourdomain.com/</code>。</li>
+<li><strong>自动更新 Nginx 配置中开放了 80 端口的站点配置中的 443 Server</strong>，并设置<strong>自动续期</strong>。即如果是刚安装的 Nginx，那么默认会更新 <code>/etc/nginx/sites-available/default</code></li>
+</ol>
+<p>执行完 Certbot 命令后，证书已经保存下来，最后根据模板对自己需要的站点配置进行定制即可。可以结合被自动修改过的 <code>/etc/nginx/sites-available/default</code></p>
+<blockquote>
+<p>建议让 AI 协助生成和优化，非常方便。</p>
+</blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/emby.conf</span></span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Let&#x27;s Encrypt 续期验证需要</span></span><br><span class="line">    <span class="section">location</span> /.well-known/acme-challenge/ &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. HTTPS 服务配置</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># SSL 证书路径 (由 Certbot 自动生成)</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/emby.yourdomain.com/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/emby.yourdomain.com/privkey.pem;</span><br><span class="line">    <span class="attribute">include</span> /etc/letsencrypt/options-ssl-nginx.conf; <span class="comment"># Certbot 推荐的 SSL 安全配置</span></span><br><span class="line">    <span class="attribute">ssl_dhparam</span> /etc/letsencrypt/ssl-dhparams.pem;   <span class="comment"># Certbot 推荐的 DH 参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 其他配置...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-2-已有-Nginx-配置"><a href="#1-3-2-已有-Nginx-配置" class="headerlink" title="1.3.2 已有 Nginx 配置"></a>1.3.2 已有 Nginx 配置</h3><p>如果已经有 Nginx 配置了，那么需要在对应的站点配置上确保有如下监听 80 端口的 Server，例如：<code>/etc/nginx/sites-available/emby.conf</code> 中确保有以下配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/emby.conf</span></span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Let&#x27;s Encrypt 续期验证需要</span></span><br><span class="line">    <span class="section">location</span> /.well-known/acme-challenge/ &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着再执行 Certbot 命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> certbot --nginx -d emby.yourdomain.com --cert-name yourdomain.com</span><br></pre></td></tr></table></figure>
+
+<p>执行后，Certbot 会自动在 站点配置中的 443 Server 中生成例如以下的配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/emby.conf</span></span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># SSL 证书路径 (由 Certbot 自动生成)</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/emby.yourdomain.com/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/emby.yourdomain.com/privkey.pem;</span><br><span class="line">    <span class="attribute">include</span> /etc/letsencrypt/options-ssl-nginx.conf; <span class="comment"># Certbot 推荐的 SSL 安全配置</span></span><br><span class="line">    <span class="attribute">ssl_dhparam</span> /etc/letsencrypt/ssl-dhparams.pem;   <span class="comment"># Certbot 推荐的 DH 参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 其他配置。。。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-3-完整的配置示例：Emby"><a href="#1-3-3-完整的配置示例：Emby" class="headerlink" title="1.3.3 完整的配置示例：Emby"></a>1.3.3 完整的配置示例：Emby</h3><p>假设 Emby 运行在 <code>http://127.0.0.1:8096</code>，期望通过 <code>https://emby.yourdomain.com</code> 访问。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/emby.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># HTTP 重定向到 HTTPS</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com; <span class="comment">## 需要修改 ##: 替换为你的域名</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Certbot ACME challenge</span></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ /.well-known/acme-challenge/</span> &#123;</span><br><span class="line">        <span class="attribute">allow</span> all;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html; <span class="comment"># Certbot 默认的 webroot 或你指定的路径</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># HTTPS &amp; 反向代理配置</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">http2</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com; <span class="comment">## 需要修改 ##: 替换为你的域名</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># SSL 证书配置 (Certbot 会自动管理)</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/emby.yourdomain.com/fullchain.pem; <span class="comment">## 需要修改 ##</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/emby.yourdomain.com/privkey.pem; <span class="comment">## 需要修改 ##</span></span><br><span class="line">    <span class="attribute">include</span> /etc/letsencrypt/options-ssl-nginx.conf; <span class="comment"># Certbot 推荐的 SSL 安全配置</span></span><br><span class="line">    <span class="attribute">ssl_dhparam</span> /etc/letsencrypt/ssl-dhparams.pem; <span class="comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 增强 SSL 安全性</span></span><br><span class="line">    <span class="attribute">ssl_protocols</span> TLSv1.<span class="number">2</span> TLSv1.<span class="number">3</span>;</span><br><span class="line">    <span class="attribute">ssl_prefer_server_ciphers</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">ssl_ciphers</span> ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;</span><br><span class="line">    <span class="attribute">ssl_session_cache</span> shared:SSL:<span class="number">10m</span>;</span><br><span class="line">    <span class="attribute">ssl_session_timeout</span> <span class="number">1d</span>;</span><br><span class="line">    <span class="attribute">ssl_session_tickets</span> <span class="literal">off</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 日志</span></span><br><span class="line">    <span class="attribute">access_log</span> /var/log/nginx/emby.access.log;</span><br><span class="line">    <span class="attribute">error_log</span> /var/log/nginx/emby.<span class="literal">error</span>.log;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8096; <span class="comment">## 需要修改 ##: Emby 实际 IP 和 HTTP 端口</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Port <span class="variable">$server_port</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># WebSocket 支持</span></span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">&quot;upgrade&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">proxy_buffering</span> <span class="literal">off</span>;</span><br><span class="line">        <span class="attribute">proxy_connect_timeout</span> <span class="number">300</span>;</span><br><span class="line">        <span class="attribute">proxy_send_timeout</span> <span class="number">3600s</span>;</span><br><span class="line">        <span class="attribute">proxy_read_timeout</span> <span class="number">3600s</span>;</span><br><span class="line">        <span class="attribute">send_timeout</span> <span class="number">3600s</span>;</span><br><span class="line">        <span class="attribute">client_max_body_size</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启用配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /etc/nginx/sites-available/emby.conf /etc/nginx/sites-enabled/</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-4-理解-SSL-证书与-Certbot"><a href="#1-3-4-理解-SSL-证书与-Certbot" class="headerlink" title="1.3.4 理解 SSL 证书与 Certbot"></a>1.3.4 理解 SSL 证书与 Certbot</h3><h4 id="1-3-4-1-如何确认是否使用了-Certbot？"><a href="#1-3-4-1-如何确认是否使用了-Certbot？" class="headerlink" title="1.3.4.1 如何确认是否使用了 Certbot？"></a>1.3.4.1 如何确认是否使用了 Certbot？</h4><ol>
+<li><strong>检查 Certbot 命令:</strong> <code>certbot --version</code> 或 <code>which certbot</code>。</li>
+<li><strong>检查 Let’s Encrypt 目录:</strong> <code>ls -l /etc/letsencrypt/</code>。如果存在 <code>live</code>, <code>archive</code>, <code>renewal</code> 等子目录，则很可能使用 Certbot。</li>
+<li><strong>检查 Nginx 配置:</strong> <code>ssl_certificate</code> 和 <code>ssl_certificate_key</code> 指令是否指向 <code>/etc/letsencrypt/live/yourdomain.com/fullchain.pem</code> 和 <code>privkey.pem</code>。</li>
+<li><strong>检查自动续期任务:</strong><ul>
+<li>Systemd Timers: <code>systemctl list-timers | grep certbot</code></li>
+<li>Cron Jobs: <code>ls -l /etc/cron.d/certbot</code> 或 <code>sudo crontab -l</code></li>
+</ul>
+</li>
+</ol>
+<h4 id="1-3-4-2-SSL-证书一般放置位置"><a href="#1-3-4-2-SSL-证书一般放置位置" class="headerlink" title="1.3.4.2 SSL 证书一般放置位置"></a>1.3.4.2 SSL 证书一般放置位置</h4><ul>
+<li><strong>&#x2F;etc&#x2F;letsencrypt&#x2F; (由 Certbot 管理):</strong><ul>
+<li><code>live/yourdomain.com/fullchain.pem</code>: 完整的证书链（推荐使用）。</li>
+<li><code>live/yourdomain.com/privkey.pem</code>: 私钥。</li>
+<li><code>live</code> 目录下的文件是符号链接，指向 <code>archive</code> 目录中的最新版本。</li>
+</ul>
+</li>
+<li><code>/etc/ssl/certs/</code> 和 <code>/etc/ssl/private/</code> (Debian&#x2F;Ubuntu 传统位置): 用于非 Certbot 管理的证书。</li>
+<li><code>/etc/pki/tls/certs/</code> 和 <code>/etc/pki/tls/private/</code> (RHEL&#x2F;CentOS 传统位置)。</li>
+</ul>
+<p><strong>始终通过检查 Nginx 配置文件中的 <code>ssl_certificate</code> 和 <code>ssl_certificate_key</code> 指令来确定实际使用的证书路径。</strong></p>
+<h2 id="1-4-步骤四：验证与维护"><a href="#1-4-步骤四：验证与维护" class="headerlink" title="1.4 步骤四：验证与维护"></a>1.4 步骤四：验证与维护</h2><h3 id="1-4-1-测试-Nginx-配置"><a href="#1-4-1-测试-Nginx-配置" class="headerlink" title="1.4.1 测试 Nginx 配置"></a>1.4.1 测试 Nginx 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>确保输出 <code>syntax is ok</code> 和 <code>test is successful</code>。</p>
+<h3 id="1-4-2-重载-Nginx-服务"><a href="#1-4-2-重载-Nginx-服务" class="headerlink" title="1.4.2 重载 Nginx 服务"></a>1.4.2 重载 Nginx 服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl reload nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-3-验证-Certbot-自动续期"><a href="#1-4-3-验证-Certbot-自动续期" class="headerlink" title="1.4.3 验证 Certbot 自动续期"></a>1.4.3 验证 Certbot 自动续期</h3><p>Certbot 包通常会自动设置 systemd timer 或 cron job 来处理续期。</p>
+<p>模拟续期（不会真正续期，仅测试配置）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+
+<p>查看 systemd timer:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-timers | grep certbot</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-步骤五：安全增强-HSTS"><a href="#1-5-步骤五：安全增强-HSTS" class="headerlink" title="1.5 步骤五：安全增强 (HSTS)"></a>1.5 步骤五：安全增强 (HSTS)</h2><p>在确认 HTTPS 完全正常工作后，可以考虑在 Nginx 的 HTTPS <code>server</code> 块中添加 HSTS (HTTP Strict Transport Security) 头，强制浏览器始终使用 HTTPS 访问：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">add_header</span> Strict-Transport-Security <span class="string">&quot;max-age=63072000; includeSubDomains; preload&quot;</span> always;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong> 启用 HSTS 后，如果 SSL 配置出现问题，用户可能在 <code>max-age</code> 时间内无法通过 HTTP 访问你的站点。请谨慎操作，并确保 SSL 证书自动续期正常工作。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/uploads/wechatpay.jpeg" alt="木偶 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/uploads/alipay.jpeg" alt="木偶 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>木偶
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/" title="Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)">https://www.puppetdevz.top/20250710/技术文章/Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/uploads/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+              <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+              <a href="/tags/SSL/" rel="tag"># SSL</a>
+              <a href="/tags/Certbot/" rel="tag"># Certbot</a>
+              <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Typora%20%E5%AE%89%E8%A3%85%E6%BF%80%E6%B4%BB/" rel="prev" title="Typora 安装激活">
+                  <i class="fa fa-angle-left"></i> Typora 安装激活
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/" rel="next" title="macos开机自动执行shell脚本">
+                  macos开机自动执行shell脚本 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">木偶</br><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022114751号-1<a /></span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"48d9fd1d31bb36461d0b993346fa8218"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://oss.puppetdevz.top/image/note/ead105a7e7733e362cd3b9b330a2085c.png">
 <meta property="og:image" content="https://oss.puppetdevz.top/image/note/a836bc70ab096246b47e5836ff4061da.png">
 <meta property="article:published_time" content="2022-03-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-19T08:13:24.457Z">
+<meta property="article:modified_time" content="2025-08-05T01:53:30.870Z">
 <meta property="article:author" content="木偶">
 <meta property="article:tag" content="MacOS">
 <meta property="article:tag" content="Windows">
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-x2F-Unix"><span class="nav-text">Linux&#x2F;Unix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Linux-x2F-Unix"><span class="nav-text">1.1 Linux&#x2F;Unix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Windows"><span class="nav-text">1.2 Windows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E6%80%BB%E7%BB%93"><span class="nav-text">1.3 总结</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,18 +165,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-count">86</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -247,7 +247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-19 16:13:24" itemprop="dateModified" datetime="2024-12-19T16:13:24+08:00">2024-12-19</time>
+      <time title="修改时间：2025-08-05 09:53:30" itemprop="dateModified" datetime="2025-08-05T09:53:30+08:00">2025-08-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -279,30 +279,26 @@
 <span id="more"></span>
 
 <p>以 python 为例。</p>
-<h2 id="Linux-x2F-Unix"><a href="#Linux-x2F-Unix" class="headerlink" title="Linux&#x2F;Unix"></a>Linux&#x2F;Unix</h2><ol>
+<h2 id="1-1-Linux-x2F-Unix"><a href="#1-1-Linux-x2F-Unix" class="headerlink" title="1.1 Linux&#x2F;Unix"></a>1.1 Linux&#x2F;Unix</h2><ol>
 <li><p>使用 which python 命令查看命令所在路径</p>
-<img src="https://oss.puppetdevz.top/image/note/7b4a9f70cec28510296a070b2a839033.png" alt="image-20220322115945860" style="zoom:50%;" />
-
+<p><img src="https://oss.puppetdevz.top/image/note/7b4a9f70cec28510296a070b2a839033.png" alt="image-20220322115945860"></p>
 <p>可以看到 python 命令位于 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;python 路径下，但这还不够，因为该位置可能只是一个软连接，有可能真正的安装路径在其他地方。</p>
 </li>
 <li><p>用 <code>ll /usr/local/bin | grep python</code> 继续查看</p>
-<img src="https://oss.puppetdevz.top/image/note/d6a0332abcecbb652a8033ff458872e8.png" alt="image-20220322120214237" style="zoom:50%;" />
-
+<p><img src="https://oss.puppetdevz.top/image/note/d6a0332abcecbb652a8033ff458872e8.png" alt="image-20220322120214237"></p>
 <p>可以看到，该路径确实是一个软连接，实际的安装位置在 <code>/opt/homebrew/bin</code> 下到这里就可以找到某个命令的真实位置了。</p>
 </li>
 </ol>
 <p>但是像 Python，我们可能安装了多个版本，只是因为路径的查找顺序问题，所以先找到了 <code>/usr/local/bin/python</code>，其他的就被忽略了，现在我们想要知道，哪个路径下，还有这个命令，该如何操作？</p>
 <p>使用 <code>whereis python3</code> 可以找到哪个路径下，安装了这个命令：</p>
-<img src="https://oss.puppetdevz.top/image/note/ead105a7e7733e362cd3b9b330a2085c.png" alt="image-20220322120745525" style="zoom:50%;" />
-
-<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>Windows 上的很多命令跟 Linux&#x2F;Unix 上的不一样，两个几乎完全不同的体系。如果想要在 Windows 上确认命令的位置，一般只需要 where 命令即可，它会列举出要查找的命令的所有位置。</p>
-<img src="https://oss.puppetdevz.top/image/note/a836bc70ab096246b47e5836ff4061da.png" alt="Snipaste_2022-04-10_01-48-55" style="zoom:50%;" />
-
+<p><img src="https://oss.puppetdevz.top/image/note/ead105a7e7733e362cd3b9b330a2085c.png" alt="image-20220322120745525"></p>
+<h2 id="1-2-Windows"><a href="#1-2-Windows" class="headerlink" title="1.2 Windows"></a>1.2 Windows</h2><p>Windows 上的很多命令跟 Linux&#x2F;Unix 上的不一样，两个几乎完全不同的体系。如果想要在 Windows 上确认命令的位置，一般只需要 where 命令即可，它会列举出要查找的命令的所有位置。</p>
+<p><img src="https://oss.puppetdevz.top/image/note/a836bc70ab096246b47e5836ff4061da.png" alt="Snipaste_2022-04-10_01-48-55"></p>
 <p>但是不知道为什么，得用 CMD 命令行才能执行这个命令，PowerShell 没有这个命令。</p>
 <p>:::center</p>
 <p>2022-10-27 更新</p>
 <p>:::</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>后来发现，只需要 where 一个命令即可，全平台通用。至少在 Windows 11 22H2 版本和 MacOS Monterey 12.6 上，都支持这个命令，非常好用。</p>
+<h2 id="1-3-总结"><a href="#1-3-总结" class="headerlink" title="1.3 总结"></a>1.3 总结</h2><p>后来发现，只需要 where 一个命令即可，全平台通用。至少在 Windows 11 22H2 版本和 MacOS Monterey 12.6 上，都支持这个命令，非常好用。</p>
 
     </div>
 

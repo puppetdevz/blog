@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon_32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="有时候，我们需要在 ARM 架构的平台构建 x86 架构的镜像，这时就可以使用 docker 在 19.03 版本引入的 docker buildx 特性。  [!info] Buildx在 Docker 19.03 版本中，官方引入了一个强大的新功能 buildx，它是一个 Docker CLI 插件，通过集成 Moby BuildKit 提供了扩展的构建能力。123 其中最核心的功能之一就是支">
+<meta property="og:type" content="article">
+<meta property="og:title" content="告别繁琐编译，docker buildx 让你在任意平台构建任意架构的镜像">
+<meta property="og:url" content="https://www.puppetdevz.top/pages/9e0723/index.html">
+<meta property="og:site_name" content="木偶&#39;s Blog">
+<meta property="og:description" content="有时候，我们需要在 ARM 架构的平台构建 x86 架构的镜像，这时就可以使用 docker 在 19.03 版本引入的 docker buildx 特性。  [!info] Buildx在 Docker 19.03 版本中，官方引入了一个强大的新功能 buildx，它是一个 Docker CLI 插件，通过集成 Moby BuildKit 提供了扩展的构建能力。123 其中最核心的功能之一就是支">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://oss.puppetdevz.top/image/note/229e5f8dcd875d59214f246cab8af263.png">
+<meta property="article:published_time" content="2023-03-10T14:43:09.000Z">
+<meta property="article:modified_time" content="2025-08-05T01:51:44.424Z">
+<meta property="article:author" content="木偶">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="buildx">
+<meta property="article:tag" content="cross-platform">
+<meta property="article:tag" content="QEMU">
+<meta property="article:tag" content="containerization">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oss.puppetdevz.top/image/note/229e5f8dcd875d59214f246cab8af263.png">
+
+
+<link rel="canonical" href="https://www.puppetdevz.top/pages/9e0723/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/pages/9e0723/","path":"/pages/9e0723/","title":"告别繁琐编译，docker buildx 让你在任意平台构建任意架构的镜像"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>告别繁琐编译，docker buildx 让你在任意平台构建任意架构的镜像 | 木偶's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="木偶's Blog" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="木偶's Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">木偶's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果发现能力无法支撑自己的野心，那就静下心来学习吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-简历"><a href="/resume/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E4%BD%BF%E7%94%A8-Buildx-%E5%8A%9F%E8%83%BD%E7%9A%84%E5%85%88%E5%86%B3%E6%9D%A1%E4%BB%B6"><span class="nav-text">1.1 使用 Buildx 功能的先决条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-Docker-%E7%89%88%E6%9C%AC"><span class="nav-text">1.1.1 Docker 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E5%BC%80%E5%90%AF-Docker-CLI-%E5%AE%9E%E9%AA%8C%E6%80%A7%E5%8A%9F%E8%83%BD"><span class="nav-text">1.1.2 开启 Docker CLI 实验性功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E5%AE%89%E8%A3%85-QEMU-%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="nav-text">1.1.3 安装 QEMU 模拟器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E9%80%9A%E8%BF%87-Builder-%E8%BF%9B%E8%A1%8C%E9%AA%8C%E8%AF%81"><span class="nav-text">1.2 通过 Builder 进行验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85-QEMU-%E6%A8%A1%E6%8B%9F%E5%99%A8%EF%BC%88%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%89"><span class="nav-text">1.3 开机自动安装 QEMU 模拟器（最佳实践）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木偶"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">木偶</p>
+  <div class="site-description" itemprop="description">本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/puppetdevz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;puppetdevz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:puppetdevz@163.com" title="E-Mail → mailto:puppetdevz@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/pages/9e0723/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="告别繁琐编译，docker buildx 让你在任意平台构建任意架构的镜像 | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          告别繁琐编译，docker buildx 让你在任意平台构建任意架构的镜像
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-10 22:43:09" itemprop="dateCreated datePublished" datetime="2023-03-10T22:43:09+08:00">2023-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-05 09:51:44" itemprop="dateModified" datetime="2025-08-05T09:51:44+08:00">2025-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9B%B4%E5%A4%9A%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">更多技术</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9B%B4%E5%A4%9A%E6%8A%80%E6%9C%AF/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>有时候，我们需要在 ARM 架构的平台构建 x86 架构的镜像，这时就可以使用 docker 在 19.03 版本引入的 docker buildx 特性。</p>
+<blockquote>
+<p>[!info] Buildx<br>在 Docker 19.03 版本中，官方引入了一个强大的新功能 <code>buildx</code>，它是一个 Docker CLI 插件，通过集成 Moby BuildKit 提供了扩展的构建能力。<a target="_blank" rel="noopener" href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHM0n2wPUZEnvRZ_XxF6gaH0Dd6x-GMod-Uq7e328AMKb98IrXwGyP3-l44cNKnVSu3fR1PjrDuX5BvBsYnfltrI3ANajiPmgygQDlY7NzDlxUQRQOQISENtbWrrJvErDMIVKNgfg-rY2wy2i2PJAu4eD54R9E0fWQSj99TlQ432-j0E_dv3wZs6ntct1Q=">1</a><a target="_blank" rel="noopener" href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQxkZfd_miNQhOhnYX1Q0jX6iHX-yhRUQW81VEU99I7pPfe5nbAaIdR0FuDuFm_W102MraOuC9G68OCdPfef-UOQRq3jfLLeMvsG7qixhTPtJJZ8TTEKF7vYo=">2</a><a target="_blank" rel="noopener" href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFS3M3copQqEinxMS5uJVmLWAmCdfaXVyDuspaPZ7da7C62v0aqBxcIppIIV6dD--Viy0CeJgg7kZCewxwdzH3xVKZ7Aa-V5b8mtl2R3bpR8_B-yHf8Y2ES8Oq7b3RaYuIKZ9iHcvQRBvxcjJF_p08qdGKuugzmNCuhhmtImvWPWMKoe_2CExB5ZJTkgRAMgXlX_xgGjzZihOHLVpiq_32vMw==">3</a> 其中最核心的功能之一就是支持跨平台构建，让你可以在单一主机上（例如 x86）构建出能在多种架构（例如 ARM64）上运行的镜像。低于 19.03 版本的话，需要另外想办法。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-1-使用-Buildx-功能的先决条件"><a href="#1-1-使用-Buildx-功能的先决条件" class="headerlink" title="1.1 使用 Buildx 功能的先决条件"></a>1.1 使用 Buildx 功能的先决条件</h2><h3 id="1-1-1-Docker-版本"><a href="#1-1-1-Docker-版本" class="headerlink" title="1.1.1 Docker 版本"></a>1.1.1 Docker 版本</h3><p>Docker Engine 版本必须是 19.03 或更高。</p>
+<h3 id="1-1-2-开启-Docker-CLI-实验性功能"><a href="#1-1-2-开启-Docker-CLI-实验性功能" class="headerlink" title="1.1.2 开启 Docker CLI 实验性功能"></a>1.1.2 开启 Docker CLI 实验性功能</h3><p>在 Docker 19.03 中，<code>buildx</code> 作为一个实验性功能提供。</p>
+<p>要开启 docker buildx 功能，不仅 docker engine 要开启『实验性』功能，docker cli 也需要开启。</p>
+<p>在 docker 20.03 中，『实验性』功能是默认开启的，不需要任何操作，就可以直接使用，但是如果低于 20.03，则需要手动开启。</p>
+<p>用 <code>docker version</code> 查看是否已经开启：</p>
+<p><img src="https://oss.puppetdevz.top/image/note/229e5f8dcd875d59214f246cab8af263.png" alt="image-20230310225029172"></p>
+<p>如果没有开启，则需要在配置中对其进行开启。</p>
+<p><strong>开启 docker-cli 的实验性功能</strong></p>
+<p>在<strong>家目录</strong>下的 <code>.docker/config.json</code>（如果没有该文件，则自行创建）中加入：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;experimental&quot;</span><span class="punctuation">:</span> <span class="string">&quot;enabled&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>开启 docker-engine 的实验性功能</strong></p>
+<p>在 daemon.json 中加入：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;experimental&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-3-安装-QEMU-模拟器"><a href="#1-1-3-安装-QEMU-模拟器" class="headerlink" title="1.1.3 安装 QEMU 模拟器"></a>1.1.3 安装 QEMU 模拟器</h3><p>为了在主机上模拟其他 CPU 架构（例如在 x86 主机上模拟 ARM），需要 QEMU 的支持。Docker Desktop for Mac 和 Windows 已经内置了这项功能。但在 Linux 上，需要通过运行一个特权容器来安装和注册 QEMU 处理器模拟器：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用 tonistiigi/binfmt</span></span><br><span class="line">docker run --privileged --rm tonistiigi/binfmt --install all</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或者使用 multiarch/qemu-user-static</span></span><br><span class="line">docker run --rm --privileged multiarch/qemu-user-static --reset --persistent yes</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-通过-Builder-进行验证"><a href="#1-2-通过-Builder-进行验证" class="headerlink" title="1.2 通过 Builder 进行验证"></a>1.2 通过 Builder 进行验证</h2><blockquote>
+<p>[!info] 信息<br>不同的 builder 之间相互隔离，可以确保环境不被污染。</p>
+</blockquote>
+<p><strong>验证 buildx 是否可用</strong>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker buildx version</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建新的 Builder 实例</strong>：</p>
+<p><code>buildx</code> 允许我们创建多个独立的 builder 实例。创建一个新的 builder 可以提供一个干净且隔离的构建环境。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker buildx create --name mybuilder --use --driver docker-container</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>--name mybuilder</code>: 为 builder 指定一个名字（例如 <code>mybuilder</code>），方便后续管理。</li>
+<li><code>--use</code>: 创建后立即切换到这个新的 builder</li>
+<li><code>--driver</code>：指定驱动</li>
+</ul>
+<p><strong>启动并检查 Builder</strong>:</p>
+<p>创建 builder 后，检查它的状态并确保它支持需要的平台。<code>--bootstrap</code> 参数会确保 builder 实例处于可运行状态。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker buildx inspect --bootstrap</span><br></pre></td></tr></table></figure>
+
+<p><strong>本地构建镜像并推送：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker buildx build --platform linux/arm, linux/arm64, linux/amd64 -t test/arch --push -f ./dockerfile .</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-开机自动安装-QEMU-模拟器（最佳实践）"><a href="#1-3-开机自动安装-QEMU-模拟器（最佳实践）" class="headerlink" title="1.3 开机自动安装 QEMU 模拟器（最佳实践）"></a>1.3 开机自动安装 QEMU 模拟器（最佳实践）</h2><p><strong>在 Linux 机器上，通过 <code>docker run --privileged --rm tonistiigi/binfmt --install all</code> 命令安装的 QEMU 模拟器注册信息在系统重启后会失效。</strong></p>
+<p>这个命令的本质是向 Linux 内核的 <code>binfmt_misc</code> 模块注册一系列规则。这些规则告诉内核，当遇到特定架构（如 ARM64）的可执行文件时，应该使用哪个解释器（即 QEMU 模拟器）来运行它。</p>
+<p>这些注册信息是保存在一个特殊的、基于内存的虚拟文件系统中的（通常挂载在 <code>/proc/sys/fs/binfmt_misc</code>）。因为它是虚拟文件系统，其内容并不会被保存到硬盘上。当你的 Linux 系统重启时，内核会重新初始化，这个虚拟文件系统也会被重置为空，所有之前注册的规则都会丢失。</p>
+<p>因此，每次重启后，<code>buildx</code> 会因为找不到执行非本地架构二进制文件的模拟器而无法进行跨平台构建。</p>
+<p>为了解决这个问题，需要在系统每次启动时自动重新运行注册命令。在现代使用 <code>systemd</code> 的 Linux 发行版（如 CentOS 7+, Ubuntu 16.04+, Debian 8+）上，最佳实践是创建一个 systemd 服务。</p>
+<p>这样可以确保在 Docker 服务启动之后，自动完成 QEMU 的注册。</p>
+<p>创建一个新的服务单元文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/systemd/system/register-qemu-binfmt.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">内容如下：</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=Register QEMU binfmt_misc handlers</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">确保在 Docker 服务启动后才执行此服务</span></span><br><span class="line">After=docker.service</span><br><span class="line">Requires=docker.service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=oneshot</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用绝对路径来运行 docker 命令</span></span><br><span class="line">ExecStart=/usr/bin/docker run --privileged --rm tonistiigi/binfmt --install all</span><br><span class="line">RemainAfterExit=yes</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">表明这个服务应该在多用户目标（标准运行级别）下被启用</span></span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>保存并关闭文件后，执行以下命令来让 systemd 加载并启用这个新服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 重新加载 systemd 管理器配置</span></span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 启用服务，使其开机自启</span></span><br><span class="line">sudo systemctl enable register-qemu-binfmt.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 立即启动服务以完成本次注册（无需重启）</span></span><br><span class="line">sudo systemctl start register-qemu-binfmt.service</span><br></pre></td></tr></table></figure>
+
+<p>可以检查服务的状态来确认它是否成功运行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status register-qemu-binfmt.service</span><br></pre></td></tr></table></figure>
+
+<p>如果一切正常，会看到 <code>active (exited)</code> 的状态，并且日志中没有错误信息。</p>
+<p>现在， QEMU 模拟器就已经被配置为开机自动注册了。即使重启机器，<code>docker buildx</code> 的多架构构建环境也会保持可用，无需任何手动干预。这是一个一劳永逸的解决方案。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/uploads/wechatpay.jpeg" alt="木偶 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/uploads/alipay.jpeg" alt="木偶 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>[object Object]
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://www.puppetdevz.top/pages/9e0723/" title="告别繁琐编译，docker buildx 让你在任意平台构建任意架构的镜像">https://www.puppetdevz.top/pages/9e0723/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/uploads/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+              <a href="/tags/buildx/" rel="tag"># buildx</a>
+              <a href="/tags/cross-platform/" rel="tag"># cross-platform</a>
+              <a href="/tags/QEMU/" rel="tag"># QEMU</a>
+              <a href="/tags/containerization/" rel="tag"># containerization</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20230208/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java%E3%80%81Go%E5%92%8CPython%E9%80%82%E5%90%88%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/" rel="prev" title="Java、Go和Python适合做的事情">
+                  <i class="fa fa-angle-left"></i> Java、Go和Python适合做的事情
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20230907/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%9C%A8ServiceComb%E4%B8%ADVertx%E3%80%81Highway%E4%B8%8EHTTP%E7%9A%84%E5%85%B3%E7%B3%BB/" rel="next" title="在ServiceComb中Vertx、Highway与HTTP的关系">
+                  在ServiceComb中Vertx、Highway与HTTP的关系 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">木偶</br><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022114751号-1<a /></span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4e0451cf69d6c7c60bec68b7eaf36eb9"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

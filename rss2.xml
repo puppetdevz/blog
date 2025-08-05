@@ -15,8 +15,174 @@
     <atom:link href="https://www.puppetdevz.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</description>
-    <pubDate>Wed, 07 May 2025 08:47:27 GMT</pubDate>
+    <pubDate>Sat, 02 Aug 2025 04:57:02 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>为 GPT-Load、New-API 更换数据库：我是如何顺利将 MySQL 迁移到 PostgreSQL 的</title>
+      <link>https://www.puppetdevz.top/20250730/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%B8%BA%20GPT-Load%E3%80%81New-API%20%E6%9B%B4%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E9%A1%BA%E5%88%A9%E5%B0%86%20MySQL%20%E8%BF%81%E7%A7%BB%E5%88%B0%20PostgreSQL%20%E7%9A%84/</link>
+      <guid>https://www.puppetdevz.top/20250730/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%B8%BA%20GPT-Load%E3%80%81New-API%20%E6%9B%B4%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E9%A1%BA%E5%88%A9%E5%B0%86%20MySQL%20%E8%BF%81%E7%A7%BB%E5%88%B0%20PostgreSQL%20%E7%9A%84/</guid>
+      <pubDate>Wed, 30 Jul 2025 00:55:57 GMT</pubDate>
+      
+      <description>&lt;p&gt;自部署了 T 佬的 GPT-Load 和 New API，一开始使用的是 MySQL，想迁移到 PostgreSQL，因此轻微折腾了一下，过程极其顺利，稍微写一篇记录一下。&lt;/p&gt;
+&lt;p&gt;相关版本：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MySQL：8.3.0&lt;/li&gt;
+&lt;li&gt;PostgreSQL 16.9.0&lt;/li&gt;
+&lt;li&gt;pgloader：3.6.7~devel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;该方案理论适合多数项目服务的迁移，细节方面需要根据实际情况做调整，只在 T 佬的 GPT-Load 和 New API 测试操作成功，运行了一段时间也没有问题。&lt;/p&gt;</description>
+      
+      
+      
+      
+      
+      
+      <comments>https://www.puppetdevz.top/20250730/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%B8%BA%20GPT-Load%E3%80%81New-API%20%E6%9B%B4%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E9%A1%BA%E5%88%A9%E5%B0%86%20MySQL%20%E8%BF%81%E7%A7%BB%E5%88%B0%20PostgreSQL%20%E7%9A%84/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型</title>
+      <link>https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/</link>
+      <guid>https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/</guid>
+      <pubDate>Tue, 29 Jul 2025 13:43:11 GMT</pubDate>
+      
+      <description>&lt;p&gt;Claude Code 发布以来，编程能力是目前公认最强的，但是对国内不太友好，封控严重，国内一封一大片，我也在一直观望，否则秒封白折腾。&lt;/p&gt;
+&lt;p&gt;但是 7 月 11 号晚上 &lt;a href=&quot;https://mp.weixin.qq.com/s/2RPmHf_8KqIjXbY5jLdztQ&quot;&gt;月之暗面发布 Kimi K2&lt;/a&gt;，总参数 1T，支持 Anthropic API，价格还便宜，可以替换 Claude Code 的默认模型，实现国内无痛用上 Claude Code&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.anthropic.com/claude-code&quot; title=&quot;Claude Code: Deep coding at terminal velocity &#92; Anthropic&quot;&gt;Claude Code: Deep coding at terminal velocity &#92; Anthropic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/anthropics/claude-code&quot; title=&quot;anthropics/claude-code: Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.&quot;&gt;anthropics&amp;#x2F;claude-code: Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最新 7 月 28 号，&lt;a href=&quot;https://mp.weixin.qq.com/s/Psb5TJSFszReCQ8SwnjFyA&quot;&gt;智谱发布 GLM 4.5&lt;/a&gt;，综合评分全球第三、开源第一，总参数 3550 亿，高速低成本，API 调用价格低至输入 0.8 元&amp;#x2F;百万 tokens、输出 2 元&amp;#x2F;百万 tokens，同样也支持 anthropic 格式的 API，直接爽炸！&lt;/p&gt;</description>
+      
+      
+      
+      
+      
+      
+      <comments>https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>真正零编程基础开发程序工作流</title>
+      <link>https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/</link>
+      <guid>https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/</guid>
+      <pubDate>Wed, 23 Jul 2025 08:31:42 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;完全不懂编程，毫无经验，折腾了两个月的一些想法 (心得都算不上)。&lt;/p&gt;
+&lt;h2 id=&quot;1-1-适用人群&quot;&gt;&lt;a href=&quot;#1-1-适用人群&quot; class=&quot;headerlink&quot; title=&quot;1.1 适用人群&quot;&gt;&lt;/a&gt;1.1</description>
+          
+        
+      
+      
+      
+      
+      
+      
+      <comments>https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>macos开机自动执行shell脚本</title>
+      <link>https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/</link>
+      <guid>https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/</guid>
+      <pubDate>Thu, 17 Jul 2025 07:12:05 GMT</pubDate>
+      
+      <description>&lt;p&gt;在 macOS 上设置开机或用户登录后自动执行 Shell 脚本，最现代且可靠的方法是使用 &lt;code&gt;launchd&lt;/code&gt;。这是 Apple 官方推荐的用于管理守护进程和服务的系统。&lt;/p&gt;
+&lt;p&gt;相比于老旧的 &lt;code&gt;crontab&lt;/code&gt; 或简单的“登录项”，&lt;code&gt;launchd&lt;/code&gt; 提供了更强大的控制能力和稳定性。&lt;/p&gt;</description>
+      
+      
+      
+      
+      
+      <category domain="https://www.puppetdevz.top/tags/macos/">macos</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/shell-scripts/">shell-scripts</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/launchd/">launchd</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/automation/">automation</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/system-configuration/">system-configuration</category>
+      
+      
+      <comments>https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)</title>
+      <link>https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/</link>
+      <guid>https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/</guid>
+      <pubDate>Thu, 10 Jul 2025 13:33:57 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;本文档旨在提供一个全面的指南，介绍如何在 &lt;strong&gt;Ubuntu 24.04&lt;/strong&gt; 服务器上使用 Nginx 设置反向代理（以 Emby 为例），并通过 Certbot 获取和管理 Let’s Encrypt 免费 SSL 证书，实现 HTTPS</description>
+          
+        
+      
+      
+      
+      
+      
+      <category domain="https://www.puppetdevz.top/tags/Nginx/">Nginx</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/Ubuntu/">Ubuntu</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/SSL/">SSL</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/Certbot/">Certbot</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/HTTPS/">HTTPS</category>
+      
+      
+      <comments>https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Typora 安装激活</title>
+      <link>https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Typora%20%E5%AE%89%E8%A3%85%E6%BF%80%E6%B4%BB/</link>
+      <guid>https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Typora%20%E5%AE%89%E8%A3%85%E6%BF%80%E6%B4%BB/</guid>
+      <pubDate>Thu, 10 Jul 2025 01:27:52 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;如果之前使用过其他激活方式，建议先彻底卸载 Typora 再重新安装。放心，卸载不会导致本地配置或笔记丢失。&lt;/p&gt;
+&lt;h2 id=&quot;1-1-步骤一：下载与安装&quot;&gt;&lt;a href=&quot;#1-1-步骤一：下载与安装&quot; class=&quot;headerlink&quot; title=&quot;1.1</description>
+          
+        
+      
+      
+      
+      
+      
+      <category domain="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/Windows/">Windows</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/Typora/">Typora</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/%E6%BF%80%E6%B4%BB/">激活</category>
+      
+      
+      <comments>https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Typora%20%E5%AE%89%E8%A3%85%E6%BF%80%E6%B4%BB/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Cursor申请学生优惠找不到China怎么办？</title>
@@ -35,6 +201,10 @@
       
       
       
+      
+      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
+      
+      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Cursor%E7%94%B3%E8%AF%B7%E5%AD%A6%E7%94%9F%E4%BC%98%E6%83%A0%E6%89%BE%E4%B8%8D%E5%88%B0China%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/">Cursor申请学生优惠找不到China怎么办？</category>
       
       
       
@@ -221,6 +391,40 @@
     </item>
     
     <item>
+      <title>告别繁琐编译，docker buildx 让你在任意平台构建任意架构的镜像</title>
+      <link>https://www.puppetdevz.top/pages/9e0723/</link>
+      <guid>https://www.puppetdevz.top/pages/9e0723/</guid>
+      <pubDate>Fri, 10 Mar 2023 14:43:09 GMT</pubDate>
+      
+      <description>&lt;p&gt;有时候，我们需要在 ARM 架构的平台构建 x86 架构的镜像，这时就可以使用 docker 在 19.03 版本引入的 docker buildx 特性。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!info] Buildx&lt;br&gt;在 Docker 19.03 版本中，官方引入了一个强大的新功能 &lt;code&gt;buildx&lt;/code&gt;，它是一个 Docker CLI 插件，通过集成 Moby BuildKit 提供了扩展的构建能力。&lt;a href=&quot;https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHM0n2wPUZEnvRZ_XxF6gaH0Dd6x-GMod-Uq7e328AMKb98IrXwGyP3-l44cNKnVSu3fR1PjrDuX5BvBsYnfltrI3ANajiPmgygQDlY7NzDlxUQRQOQISENtbWrrJvErDMIVKNgfg-rY2wy2i2PJAu4eD54R9E0fWQSj99TlQ432-j0E_dv3wZs6ntct1Q=&quot;&gt;1&lt;/a&gt;&lt;a href=&quot;https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQxkZfd_miNQhOhnYX1Q0jX6iHX-yhRUQW81VEU99I7pPfe5nbAaIdR0FuDuFm_W102MraOuC9G68OCdPfef-UOQRq3jfLLeMvsG7qixhTPtJJZ8TTEKF7vYo=&quot;&gt;2&lt;/a&gt;&lt;a href=&quot;https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFS3M3copQqEinxMS5uJVmLWAmCdfaXVyDuspaPZ7da7C62v0aqBxcIppIIV6dD--Viy0CeJgg7kZCewxwdzH3xVKZ7Aa-V5b8mtl2R3bpR8_B-yHf8Y2ES8Oq7b3RaYuIKZ9iHcvQRBvxcjJF_p08qdGKuugzmNCuhhmtImvWPWMKoe_2CExB5ZJTkgRAMgXlX_xgGjzZihOHLVpiq_32vMw==&quot;&gt;3&lt;/a&gt; 其中最核心的功能之一就是支持跨平台构建，让你可以在单一主机上（例如 x86）构建出能在多种架构（例如 ARM64）上运行的镜像。低于 19.03 版本的话，需要另外想办法。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+      
+      
+      
+      
+      <category domain="https://www.puppetdevz.top/categories/%E6%9B%B4%E5%A4%9A%E6%8A%80%E6%9C%AF/">更多技术</category>
+      
+      <category domain="https://www.puppetdevz.top/categories/%E6%9B%B4%E5%A4%9A%E6%8A%80%E6%9C%AF/docker/">docker</category>
+      
+      
+      <category domain="https://www.puppetdevz.top/tags/docker/">docker</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/buildx/">buildx</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/cross-platform/">cross-platform</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/QEMU/">QEMU</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/containerization/">containerization</category>
+      
+      
+      <comments>https://www.puppetdevz.top/pages/9e0723/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>Java、Go和Python适合做的事情</title>
       <link>https://www.puppetdevz.top/20230208/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java%E3%80%81Go%E5%92%8CPython%E9%80%82%E5%90%88%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/</link>
       <guid>https://www.puppetdevz.top/20230208/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java%E3%80%81Go%E5%92%8CPython%E9%80%82%E5%90%88%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/</guid>
@@ -248,7 +452,7 @@
     </item>
     
     <item>
-      <title>Docker导入进行报错：invalid diffID for layer xx：expected “sha256:xxx</title>
+      <title>解决方案：Docker导入镜像报错</title>
       <link>https://www.puppetdevz.top/20221201/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9ADocker%E5%AF%BC%E5%85%A5%E9%95%9C%E5%83%8F%E6%8A%A5%E9%94%99/</link>
       <guid>https://www.puppetdevz.top/20221201/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9ADocker%E5%AF%BC%E5%85%A5%E9%95%9C%E5%83%8F%E6%8A%A5%E9%94%99/</guid>
       <pubDate>Thu, 01 Dec 2022 07:30:45 GMT</pubDate>
@@ -328,9 +532,9 @@
       <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/">后端</category>
       
       
-      <category domain="https://www.puppetdevz.top/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决方案</category>
-      
       <category domain="https://www.puppetdevz.top/tags/SpringBoot/">SpringBoot</category>
+      
+      <category domain="https://www.puppetdevz.top/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决方案</category>
       
       
       <comments>https://www.puppetdevz.top/20221109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9ASpringBoot-%E5%89%8D%E7%AB%AF%E6%97%B6%E9%97%B4%E4%BC%A0%E9%80%92%E5%88%B0%E5%90%8E%E7%AB%AF%E5%B0%91%E4%BA%868%E4%B8%AA%E5%B0%8F%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread</comments>
@@ -361,209 +565,6 @@
       
       
       <comments>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E5%BA%94%E5%B1%8A%E6%AF%95%E4%B8%9A%E7%94%9F%E6%B1%82%E8%81%8C%E5%B0%B1%E4%B8%9A%E6%97%B6%E7%9A%84%E7%9B%B8%E5%85%B3%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>纯小白如何自学编程</title>
-      <link>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%BA%AF%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B/</link>
-      <guid>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%BA%AF%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B/</guid>
-      <pubDate>Tue, 25 Oct 2022 06:02:05 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;纯小白如何自学编程&quot;&gt;&lt;a href=&quot;#纯小白如何自学编程&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/">生活随笔</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/%E8%87%AA%E5%AD%A6/">自学</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%BA%AF%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E8%87%AA%E5%AD%A6%E7%BC%96%E7%A8%8B/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>理解造轮子的程度</title>
-      <link>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/</link>
-      <guid>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/</guid>
-      <pubDate>Tue, 25 Oct 2022 06:02:05 GMT</pubDate>
-      
-      <description>&lt;p&gt;造轮子造轮子，造法也有很多种，我们可以从零件厂采购轮毂、轮胎，自己组装，也可以从冶金、找橡胶树资源开始。&lt;/p&gt;</description>
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/">生活随笔</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/%E9%80%A0%E8%BD%AE%E5%AD%90/">造轮子</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E7%90%86%E8%A7%A3%E9%80%A0%E8%BD%AE%E5%AD%90%E7%9A%84%E7%A8%8B%E5%BA%A6/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>前后端联调之跨域问题</title>
-      <link>https://www.puppetdevz.top/20221023/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83%E4%B9%8B%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/</link>
-      <guid>https://www.puppetdevz.top/20221023/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83%E4%B9%8B%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/</guid>
-      <pubDate>Sat, 22 Oct 2022 16:00:00 GMT</pubDate>
-      
-      <description>&lt;p&gt;本地计算机同时起了 前端 和 后端 项目，想要进行联调。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;前端项目为 vue 3.0，端口为 5173&lt;/li&gt;
-&lt;li&gt;后端项目为 Django，端口为 8000&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;此时出现了『跨域』问题，需要解决。&lt;/p&gt;</description>
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/%E8%B7%A8%E5%9F%9F/">跨域</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221023/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83%E4%B9%8B%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>解决方案：van-cell的title和value宽度占比以及value内容过长时换行的问题</title>
-      <link>https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-cell%E7%9A%84title%E5%92%8Cvalue%E5%AE%BD%E5%BA%A6%E5%8D%A0%E6%AF%94%E4%BB%A5%E5%8F%8Avalue%E5%86%85%E5%AE%B9%E8%BF%87%E9%95%BF%E6%97%B6%E6%8D%A2%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/</link>
-      <guid>https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-cell%E7%9A%84title%E5%92%8Cvalue%E5%AE%BD%E5%BA%A6%E5%8D%A0%E6%AF%94%E4%BB%A5%E5%8F%8Avalue%E5%86%85%E5%AE%B9%E8%BF%87%E9%95%BF%E6%97%B6%E6%8D%A2%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
-      <pubDate>Thu, 20 Oct 2022 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;ol&gt;
-&lt;li&gt;van-cell 组件默认 title 和 value 宽度为各占 50%，如果想要增加 value 的宽度，可以给当前的组件的 &lt;code&gt;van-cell__value&lt;/code&gt; 设置</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/">前端</category>
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/">UI框架</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/Vant/">Vant</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-cell%E7%9A%84title%E5%92%8Cvalue%E5%AE%BD%E5%BA%A6%E5%8D%A0%E6%AF%94%E4%BB%A5%E5%8F%8Avalue%E5%86%85%E5%AE%B9%E8%BF%87%E9%95%BF%E6%97%B6%E6%8D%A2%E8%A1%8C%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>解决方案：van-radio判断当前radio是否被选中</title>
-      <link>https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-radio%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8Dradio%E6%98%AF%E5%90%A6%E8%A2%AB%E9%80%89%E4%B8%AD/</link>
-      <guid>https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-radio%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8Dradio%E6%98%AF%E5%90%A6%E8%A2%AB%E9%80%89%E4%B8%AD/</guid>
-      <pubDate>Thu, 20 Oct 2022 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h2&gt;&lt;p&gt;当我点击 van-radio 时，我需要先判断当前点击的 van-radio</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">技术文章</category>
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/">前端</category>
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/">UI框架</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决方案</category>
-      
-      <category domain="https://www.puppetdevz.top/tags/Vant/">Vant</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221021/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/UI%E6%A1%86%E6%9E%B6/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Avan-radio%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8Dradio%E6%98%AF%E5%90%A6%E8%A2%AB%E9%80%89%E4%B8%AD/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>文件数据同步工具</title>
-      <link>https://www.puppetdevz.top/20221012/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/</link>
-      <guid>https://www.puppetdevz.top/20221012/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/</guid>
-      <pubDate>Tue, 11 Oct 2022 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;跨平台&quot;&gt;&lt;a href=&quot;#跨平台&quot; class=&quot;headerlink&quot; title=&quot;跨平台&quot;&gt;&lt;/a&gt;跨平台&lt;/h2&gt;&lt;h3 id=&quot;GoodSync&quot;&gt;&lt;a href=&quot;#GoodSync&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/">测评推荐</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5/">文件同步</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221012/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Mac软件推荐</title>
-      <link>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</link>
-      <guid>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/</guid>
-      <pubDate>Fri, 07 Oct 2022 16:00:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;1-1-brew-Mac&quot;&gt;&lt;a href=&quot;#1-1-brew-Mac&quot; class=&quot;headerlink&quot; title=&quot;1.1 brew(Mac)&quot;&gt;&lt;/a&gt;1.1</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://www.puppetdevz.top/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/">测评推荐</category>
-      
-      
-      <category domain="https://www.puppetdevz.top/tags/MacOS/">MacOS</category>
-      
-      <category domain="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/">软件</category>
-      
-      
-      <comments>https://www.puppetdevz.top/20221008/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/Mac%E8%BD%AF%E4%BB%B6/#disqus_thread</comments>
       
     </item>
     

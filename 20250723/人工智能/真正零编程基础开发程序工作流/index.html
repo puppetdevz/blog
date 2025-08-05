@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon_32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="完全不懂编程，毫无经验，折腾了两个月的一些想法 (心得都算不上)。 1.1 适用人群 啥叫 Python？啥叫 Java？前端，后端是个啥？你说的我都听不懂 有能力搞定 GPT plus 个人账号 不管什么途径，能够使用 Pro 账号权限下的 Gemini Deepresearch, Claude 4 的两个模型 心态平和，无搞钱想法，未被类似“敏捷开发，MVP 先行”这种大厂思维植入  1.2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="真正零编程基础开发程序工作流">
+<meta property="og:url" content="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/index.html">
+<meta property="og:site_name" content="木偶&#39;s Blog">
+<meta property="og:description" content="完全不懂编程，毫无经验，折腾了两个月的一些想法 (心得都算不上)。 1.1 适用人群 啥叫 Python？啥叫 Java？前端，后端是个啥？你说的我都听不懂 有能力搞定 GPT plus 个人账号 不管什么途径，能够使用 Pro 账号权限下的 Gemini Deepresearch, Claude 4 的两个模型 心态平和，无搞钱想法，未被类似“敏捷开发，MVP 先行”这种大厂思维植入  1.2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-07-23T08:31:42.000Z">
+<meta property="article:modified_time" content="2025-07-23T08:31:42.000Z">
+<meta property="article:author" content="木偶">
+<meta property="article:tag" content="前端,后端,框架,web,学习,面试,JavaScript,ES6,TypeScript,vue,css3,html5,Node,markdown,算法,C,Cpp,Linux,Go,Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/","path":"20250723/人工智能/真正零编程基础开发程序工作流/","title":"真正零编程基础开发程序工作流"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>真正零编程基础开发程序工作流 | 木偶's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="木偶's Blog" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="木偶's Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">木偶's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果发现能力无法支撑自己的野心，那就静下心来学习吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-简历"><a href="/resume/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E9%80%82%E7%94%A8%E4%BA%BA%E7%BE%A4"><span class="nav-text">1.1 适用人群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%83%B3%E6%B3%95%E6%B1%87%E6%80%BB"><span class="nav-text">1.2 第一阶段：想法汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%92"><span class="nav-text">1.3 第二阶段：项目规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9A%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99"><span class="nav-text">1.4 第三阶段：代码编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-%E5%88%9D%E6%AD%A5%E4%BB%A3%E7%A0%81"><span class="nav-text">1.4.1 初步代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-%E4%BB%A3%E7%A0%81%E7%B2%BE%E4%BF%AE"><span class="nav-text">1.4.2 代码精修</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%85%A8%E5%B1%80%E5%BE%AE%E8%B0%83"><span class="nav-text">1.5 第四阶段：全局微调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-%E6%80%BB%E7%BB%93"><span class="nav-text">1.6 总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木偶"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">木偶</p>
+  <div class="site-description" itemprop="description">本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/puppetdevz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;puppetdevz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:puppetdevz@163.com" title="E-Mail → mailto:puppetdevz@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="真正零编程基础开发程序工作流 | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          真正零编程基础开发程序工作流
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-23 16:31:42" itemprop="dateCreated datePublished" datetime="2025-07-23T16:31:42+08:00">2025-07-23</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>完全不懂编程，毫无经验，折腾了两个月的一些想法 (心得都算不上)。</p>
+<h2 id="1-1-适用人群"><a href="#1-1-适用人群" class="headerlink" title="1.1 适用人群"></a>1.1 适用人群</h2><ul>
+<li>啥叫 Python？啥叫 Java？前端，后端是个啥？你说的我都听不懂</li>
+<li>有能力搞定 GPT plus 个人账号</li>
+<li>不管什么途径，能够使用 Pro 账号权限下的 Gemini Deepresearch, Claude 4 的两个模型</li>
+<li>心态平和，无搞钱想法，未被类似“敏捷开发，MVP 先行”这种大厂思维植入</li>
+</ul>
+<h2 id="1-2-第一阶段：想法汇总"><a href="#1-2-第一阶段：想法汇总" class="headerlink" title="1.2 第一阶段：想法汇总"></a>1.2 第一阶段：想法汇总</h2><p><strong>使用模型：chatgpt-4o</strong></p>
+<blockquote>
+<p>[!info] chatgpt-4o 与 gpt-4o 的区别<br>chatgpt-4o 是 OAI 给客户端聊天用的，实时更新，而 gpt-4o 则是给 API 调用的，更新速度比较慢。chatgpt-4o 相对比较贵，但效果更好</p>
+</blockquote>
+<p><strong>原因</strong>：GPT 跟其他大模型最有竞争力的地方就是他的记忆功能，以及最近加强的全局记忆，可以使我们在一个对话过长的情况下，新开一个对话，仍然能保留大部分进度对齐，对于前期零散，不成体系的想法阶段效率最高。这也是为什么需要有 plus 个人账号，这样才能使用管理对话记忆。</p>
+<p><strong>思路</strong>：</p>
+<ul>
+<li>这个阶段就是随便聊，GPT 对普通人，特别是连提示词都不会怎么写的初学者支持最好，这也是 GPT 模型训练的思路。</li>
+<li>把自己的想法跟他聊，问问他建议，然后自己再想想，最终达到项目的想法雏形出来就可以了，只需要想法，其他别管，注意点就是遇到有价值的点一定要他记忆，便于后面总结。</li>
+<li>这个阶段可以慢慢来，今天想一点，明天想一点，别急。</li>
+<li>想法差不多了，让 GPT 总结自己的思路，直到达到要求为止。</li>
+<li><strong>重要</strong>：告诉 GPT 你需要一个详细的提示词，根据想法去开发一个程序，需要 AI 去帮你做深度研究，出一份研究报告详细说明程序如何实现。</li>
+</ul>
+<h2 id="1-3-第二阶段：项目规划"><a href="#1-3-第二阶段：项目规划" class="headerlink" title="1.3 第二阶段：项目规划"></a>1.3 第二阶段：项目规划</h2><p><strong>使用模型：Gemini-2.5pro, Claude-Opus 4</strong></p>
+<p><strong>原因</strong>：GPT-O3 降智厉害，如果是满血 O3，确实做深度研究还不错，但从实际使用上来看，O3 都不会思考太久，效果不太行。</p>
+<p><strong>思路</strong>：</p>
+<ul>
+<li>拿着 GPT 写好的提示词和思路总结，分别对 Gemini 和 Claude 使用 Deepresearch 对话，帮你搭项目框架和实现逻辑，技术栈等等，一般他们都会给你很长的设计文档报告告诉你如何去做这个项目。</li>
+<li><strong>注意点</strong>：<ul>
+<li>Claude 如果你提示词不干预的话，他会直接扔给你很多代码，这个阶段其实不需要具体代码，所以给 Claude 的提示词要特别说明只做研究，不用写具体代码，这样生成的报告质量会比较好。</li>
+<li>这两个模型都会有个毛病，不太关注 UI 的设计，或者给个简单的 UI 实现方案，所以提示词这块也要注意 UI 的开发也是重点。</li>
+</ul>
+</li>
+<li>拿着两份生成好的报告，这会自己要去做对比，理解，大概提取下哪些点符合你的要求，总结要点。</li>
+<li>将 Claude 生成的报告丢给 Gemini，同理将 Gemini 的报告丢给 Claude，让他们互相评价，同时给出你自己的观点，让他们修改报告。</li>
+<li>重新生成的两份报告，可以再新开一个对话，自我感觉 Opus 会更强，让他把两份报告合并成最终版，自己再微调，达到自己想要的效果。</li>
+</ul>
+<h2 id="1-4-第三阶段：代码编写"><a href="#1-4-第三阶段：代码编写" class="headerlink" title="1.4 第三阶段：代码编写"></a>1.4 第三阶段：代码编写</h2><p><strong>使用模型：Gemini-2.5pro, Claude-Sonnet 4</strong></p>
+<p><strong>原因</strong>：Sonnet 4 代码能力足够，Opus 使用次数限制太多了。</p>
+<p><strong>思路</strong>：<br>这里分两个阶段，</p>
+<h3 id="1-4-1-初步代码"><a href="#1-4-1-初步代码" class="headerlink" title="1.4.1 初步代码"></a>1.4.1 初步代码</h3><ul>
+<li>拿着生成的报告，开启 Gemini-2.5pro 新对话，让他理解报告内容并指定生成计划。</li>
+<li>这里也可以找任意一个模型写个提示词丢给他更好。</li>
+<li>根据计划，让 Gemini 一个文件一个文件的把代码丢给你，千万不要让他一次生成多个文件，他会很偷偷很多代码简写，幻觉很高，要给他定规则，不让他写什么占位这些。</li>
+<li>为什么选 Gemini，因为他单个对话的 token 最长，上下文记忆能力最强，一般来说一个对话足以把代码架构全部搭起来，实在不行可以开两，三个对话，基本能有一个很好的全局思维完成任务。</li>
+</ul>
+<h3 id="1-4-2-代码精修"><a href="#1-4-2-代码精修" class="headerlink" title="1.4.2 代码精修"></a>1.4.2 代码精修</h3><ul>
+<li>代码搭完后，让 Gemini 给个提示词，说明要新开对话对代码进行调整等，让他总结整个程序的逻辑等等，以及需要干什么。</li>
+<li>拿着提示词给到 Claude，然后告诉他一个代码一个代码的进行修改，这点 Claude 理解能力很强，会把代码的健壮性处理的很好，同时解决很多逻辑或者语法问题。</li>
+<li>这里要注意的就是单个对话可能处理不完，预感到 token 不够的时候，一定要提前让 Claude 写好提示词，用于新开对话衔接进度。</li>
+<li>遇到无法调试 &#x2F; 报错提示看不懂时，不用自己查，直接截图 + 日志丢给 Claude 或 Gemini，它们会帮你解释。</li>
+</ul>
+<h2 id="1-5-第四阶段：全局微调"><a href="#1-5-第四阶段：全局微调" class="headerlink" title="1.5 第四阶段：全局微调"></a>1.5 第四阶段：全局微调</h2><p><strong>使用模型：GPT-Codex</strong></p>
+<p><strong>原因</strong>：Gemini 和 Claude 都没有记忆功能，虽然都能接入 Github，但实际用起来他们也无法通读整个程序文件，所以代码在全局性上可能会出现一些错误，靠我们这种没基础的很难去做全局的微调。</p>
+<p><strong>思路</strong>：</p>
+<ul>
+<li>使用 Codex 之前，记得 <code>Git Push</code></li>
+<li>接入 Github，告诉 Codex 对整个程序文件进行解读，注意只用 <code>Ask</code> 功能，让他发现错误</li>
+<li>Codex 发现几个错误创建不同任务之后，再运行 <code>Coding</code>，解决个别代码问题</li>
+<li>来过几轮之后，不再用报语法错误，开始运行程序</li>
+<li>如果发现问题，就再丢给 Codex，让他修复。如果是单个文件问题，也可以让 Claude 修复</li>
+<li>最终完成程序</li>
+</ul>
+<h2 id="1-6-总结"><a href="#1-6-总结" class="headerlink" title="1.6 总结"></a>1.6 总结</h2><ul>
+<li><strong>为什么不用 Cursor, Roocode 或者新出的 CLI, Claude Code 这些？</strong> 因为… 没有程序基础，用不太明白，说个需求，要求更改都说不明白，这些更适合有程序开发基础的佬哥。</li>
+<li><strong>为什么没有测试？</strong> 因为… 看不懂… 给我测试文件我也整不明白。。</li>
+<li><strong>为什么不用 MCP？</strong> 因为… 还没学到这里….</li>
+<li><strong>为什么不说版本控制策略？</strong> 懒得写…</li>
+</ul>
+<p>几个模型互有优势，靠单一模型，或者就几个程序文件生成几千行代码，感觉也只能实现一些基础的应用。看 B 站好多 up 主就知道让大模型做个 to do list，或者打个飞机小游戏，这些不是真正的具体需求。虽然没有程序基础，但是想法大家都有，如何利用各大模型的优势去弥补自己编程能力的不足，从而完整的实现自己的想法才是个人的价值所在，AI 始终只是个工具，真正的核心还是人。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/uploads/wechatpay.jpeg" alt="木偶 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/uploads/alipay.jpeg" alt="木偶 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>木偶
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/" title="真正零编程基础开发程序工作流">https://www.puppetdevz.top/20250723/人工智能/真正零编程基础开发程序工作流/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/uploads/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/" rel="prev" title="macos开机自动执行shell脚本">
+                  <i class="fa fa-angle-left"></i> macos开机自动执行shell脚本
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/" rel="next" title="我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型">
+                  我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">木偶</br><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022114751号-1<a /></span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e75f920486cceb41b445e7f214ad6a8b"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

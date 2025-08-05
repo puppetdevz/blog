@@ -154,18 +154,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-count">86</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -299,6 +299,671 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250730/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%B8%BA%20GPT-Load%E3%80%81New-API%20%E6%9B%B4%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E9%A1%BA%E5%88%A9%E5%B0%86%20MySQL%20%E8%BF%81%E7%A7%BB%E5%88%B0%20PostgreSQL%20%E7%9A%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20250730/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%B8%BA%20GPT-Load%E3%80%81New-API%20%E6%9B%B4%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E9%A1%BA%E5%88%A9%E5%B0%86%20MySQL%20%E8%BF%81%E7%A7%BB%E5%88%B0%20PostgreSQL%20%E7%9A%84/" class="post-title-link" itemprop="url">为 GPT-Load、New-API 更换数据库：我是如何顺利将 MySQL 迁移到 PostgreSQL 的</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-30 08:55:57" itemprop="dateCreated datePublished" datetime="2025-07-30T08:55:57+08:00">2025-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-02 12:57:02" itemprop="dateModified" datetime="2025-08-02T12:57:02+08:00">2025-08-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>自部署了 T 佬的 GPT-Load 和 New API，一开始使用的是 MySQL，想迁移到 PostgreSQL，因此轻微折腾了一下，过程极其顺利，稍微写一篇记录一下。</p>
+<p>相关版本：</p>
+<ul>
+<li>MySQL：8.3.0</li>
+<li>PostgreSQL 16.9.0</li>
+<li>pgloader：3.6.7~devel</li>
+</ul>
+<p>该方案理论适合多数项目服务的迁移，细节方面需要根据实际情况做调整，只在 T 佬的 GPT-Load 和 New API 测试操作成功，运行了一段时间也没有问题。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20250730/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%B8%BA%20GPT-Load%E3%80%81New-API%20%E6%9B%B4%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E9%A1%BA%E5%88%A9%E5%B0%86%20MySQL%20%E8%BF%81%E7%A7%BB%E5%88%B0%20PostgreSQL%20%E7%9A%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-29 21:43:11" itemprop="dateCreated datePublished" datetime="2025-07-29T21:43:11+08:00">2025-07-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Claude Code 发布以来，编程能力是目前公认最强的，但是对国内不太友好，封控严重，国内一封一大片，我也在一直观望，否则秒封白折腾。</p>
+<p>但是 7 月 11 号晚上 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/2RPmHf_8KqIjXbY5jLdztQ">月之暗面发布 Kimi K2</a>，总参数 1T，支持 Anthropic API，价格还便宜，可以替换 Claude Code 的默认模型，实现国内无痛用上 Claude Code</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/claude-code" title="Claude Code: Deep coding at terminal velocity \ Anthropic">Claude Code: Deep coding at terminal velocity \ Anthropic</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/anthropics/claude-code" title="anthropics/claude-code: Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.">anthropics&#x2F;claude-code: Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.</a></li>
+</ul>
+<p>最新 7 月 28 号，<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Psb5TJSFszReCQ8SwnjFyA">智谱发布 GLM 4.5</a>，综合评分全球第三、开源第一，总参数 3550 亿，高速低成本，API 调用价格低至输入 0.8 元&#x2F;百万 tokens、输出 2 元&#x2F;百万 tokens，同样也支持 anthropic 格式的 API，直接爽炸！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="post-title-link" itemprop="url">真正零编程基础开发程序工作流</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-23 16:31:42" itemprop="dateCreated datePublished" datetime="2025-07-23T16:31:42+08:00">2025-07-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>完全不懂编程，毫无经验，折腾了两个月的一些想法 (心得都算不上)。</p>
+<h2 id="1-1-适用人群"><a href="#1-1-适用人群" class="headerlink" title="1.1 适用人群"></a>1.1 适用人群</h2><ul>
+<li>啥叫 Python？啥叫 Java？前端，后端是个啥？你说的我都听不懂</li>
+<li>有能力搞定 GPT plus 个人账号</li>
+<li>不管什么途径，能够使用 Pro 账号权限下的 Gemini Deepresearch, Claude 4 的两个模型</li>
+<li>心态平和，无搞钱想法，未被类似“敏捷开发，MVP 先行”这种大厂思维植入</li>
+</ul>
+<h2 id="1-2-第一阶段：想法汇总"><a href="#1-2-第一阶段：想法汇总" class="headerlink" title="1.2 第一阶段：想法汇总"></a>1.2 第一阶段：想法汇总</h2><p><strong>使用模型：chatgpt-4o</strong></p>
+<blockquote>
+<p>[!info] chatgpt-4o 与 gpt-4o 的区别<br>chatgpt-4o 是 OAI 给客户端聊天用的，实时更新，而 gpt-4o 则是给 API 调用的，更新速度比较慢。chatgpt-4o 相对比较贵，但效果更好</p>
+</blockquote>
+<p><strong>原因</strong>：GPT 跟其他大模型最有竞争力的地方就是他的记忆功能，以及最近加强的全局记忆，可以使我们在一个对话过长的情况下，新开一个对话，仍然能保留大部分进度对齐，对于前期零散，不成体系的想法阶段效率最高。这也是为什么需要有 plus 个人账号，这样才能使用管理对话记忆。</p>
+<p><strong>思路</strong>：</p>
+<ul>
+<li>这个阶段就是随便聊，GPT 对普通人，特别是连提示词都不会怎么写的初学者支持最好，这也是 GPT 模型训练的思路。</li>
+<li>把自己的想法跟他聊，问问他建议，然后自己再想想，最终达到项目的想法雏形出来就可以了，只需要想法，其他别管，注意点就是遇到有价值的点一定要他记忆，便于后面总结。</li>
+<li>这个阶段可以慢慢来，今天想一点，明天想一点，别急。</li>
+<li>想法差不多了，让 GPT 总结自己的思路，直到达到要求为止。</li>
+<li><strong>重要</strong>：告诉 GPT 你需要一个详细的提示词，根据想法去开发一个程序，需要 AI 去帮你做深度研究，出一份研究报告详细说明程序如何实现。</li>
+</ul>
+<h2 id="1-3-第二阶段：项目规划"><a href="#1-3-第二阶段：项目规划" class="headerlink" title="1.3 第二阶段：项目规划"></a>1.3 第二阶段：项目规划</h2><p><strong>使用模型：Gemini-2.5pro, Claude-Opus 4</strong></p>
+<p><strong>原因</strong>：GPT-O3 降智厉害，如果是满血 O3，确实做深度研究还不错，但从实际使用上来看，O3 都不会思考太久，效果不太行。</p>
+<p><strong>思路</strong>：</p>
+<ul>
+<li>拿着 GPT 写好的提示词和思路总结，分别对 Gemini 和 Claude 使用 Deepresearch 对话，帮你搭项目框架和实现逻辑，技术栈等等，一般他们都会给你很长的设计文档报告告诉你如何去做这个项目。</li>
+<li><strong>注意点</strong>：<ul>
+<li>Claude 如果你提示词不干预的话，他会直接扔给你很多代码，这个阶段其实不需要具体代码，所以给 Claude 的提示词要特别说明只做研究，不用写具体代码，这样生成的报告质量会比较好。</li>
+<li>这两个模型都会有个毛病，不太关注 UI 的设计，或者给个简单的 UI 实现方案，所以提示词这块也要注意 UI 的开发也是重点。</li>
+</ul>
+</li>
+<li>拿着两份生成好的报告，这会自己要去做对比，理解，大概提取下哪些点符合你的要求，总结要点。</li>
+<li>将 Claude 生成的报告丢给 Gemini，同理将 Gemini 的报告丢给 Claude，让他们互相评价，同时给出你自己的观点，让他们修改报告。</li>
+<li>重新生成的两份报告，可以再新开一个对话，自我感觉 Opus 会更强，让他把两份报告合并成最终版，自己再微调，达到自己想要的效果。</li>
+</ul>
+<h2 id="1-4-第三阶段：代码编写"><a href="#1-4-第三阶段：代码编写" class="headerlink" title="1.4 第三阶段：代码编写"></a>1.4 第三阶段：代码编写</h2><p><strong>使用模型：Gemini-2.5pro, Claude-Sonnet 4</strong></p>
+<p><strong>原因</strong>：Sonnet 4 代码能力足够，Opus 使用次数限制太多了。</p>
+<p><strong>思路</strong>：<br>这里分两个阶段，</p>
+<h3 id="1-4-1-初步代码"><a href="#1-4-1-初步代码" class="headerlink" title="1.4.1 初步代码"></a>1.4.1 初步代码</h3><ul>
+<li>拿着生成的报告，开启 Gemini-2.5pro 新对话，让他理解报告内容并指定生成计划。</li>
+<li>这里也可以找任意一个模型写个提示词丢给他更好。</li>
+<li>根据计划，让 Gemini 一个文件一个文件的把代码丢给你，千万不要让他一次生成多个文件，他会很偷偷很多代码简写，幻觉很高，要给他定规则，不让他写什么占位这些。</li>
+<li>为什么选 Gemini，因为他单个对话的 token 最长，上下文记忆能力最强，一般来说一个对话足以把代码架构全部搭起来，实在不行可以开两，三个对话，基本能有一个很好的全局思维完成任务。</li>
+</ul>
+<h3 id="1-4-2-代码精修"><a href="#1-4-2-代码精修" class="headerlink" title="1.4.2 代码精修"></a>1.4.2 代码精修</h3><ul>
+<li>代码搭完后，让 Gemini 给个提示词，说明要新开对话对代码进行调整等，让他总结整个程序的逻辑等等，以及需要干什么。</li>
+<li>拿着提示词给到 Claude，然后告诉他一个代码一个代码的进行修改，这点 Claude 理解能力很强，会把代码的健壮性处理的很好，同时解决很多逻辑或者语法问题。</li>
+<li>这里要注意的就是单个对话可能处理不完，预感到 token 不够的时候，一定要提前让 Claude 写好提示词，用于新开对话衔接进度。</li>
+<li>遇到无法调试 &#x2F; 报错提示看不懂时，不用自己查，直接截图 + 日志丢给 Claude 或 Gemini，它们会帮你解释。</li>
+</ul>
+<h2 id="1-5-第四阶段：全局微调"><a href="#1-5-第四阶段：全局微调" class="headerlink" title="1.5 第四阶段：全局微调"></a>1.5 第四阶段：全局微调</h2><p><strong>使用模型：GPT-Codex</strong></p>
+<p><strong>原因</strong>：Gemini 和 Claude 都没有记忆功能，虽然都能接入 Github，但实际用起来他们也无法通读整个程序文件，所以代码在全局性上可能会出现一些错误，靠我们这种没基础的很难去做全局的微调。</p>
+<p><strong>思路</strong>：</p>
+<ul>
+<li>使用 Codex 之前，记得 <code>Git Push</code></li>
+<li>接入 Github，告诉 Codex 对整个程序文件进行解读，注意只用 <code>Ask</code> 功能，让他发现错误</li>
+<li>Codex 发现几个错误创建不同任务之后，再运行 <code>Coding</code>，解决个别代码问题</li>
+<li>来过几轮之后，不再用报语法错误，开始运行程序</li>
+<li>如果发现问题，就再丢给 Codex，让他修复。如果是单个文件问题，也可以让 Claude 修复</li>
+<li>最终完成程序</li>
+</ul>
+<h2 id="1-6-总结"><a href="#1-6-总结" class="headerlink" title="1.6 总结"></a>1.6 总结</h2><ul>
+<li><strong>为什么不用 Cursor, Roocode 或者新出的 CLI, Claude Code 这些？</strong> 因为… 没有程序基础，用不太明白，说个需求，要求更改都说不明白，这些更适合有程序开发基础的佬哥。</li>
+<li><strong>为什么没有测试？</strong> 因为… 看不懂… 给我测试文件我也整不明白。。</li>
+<li><strong>为什么不用 MCP？</strong> 因为… 还没学到这里….</li>
+<li><strong>为什么不说版本控制策略？</strong> 懒得写…</li>
+</ul>
+<p>几个模型互有优势，靠单一模型，或者就几个程序文件生成几千行代码，感觉也只能实现一些基础的应用。看 B 站好多 up 主就知道让大模型做个 to do list，或者打个飞机小游戏，这些不是真正的具体需求。虽然没有程序基础，但是想法大家都有，如何利用各大模型的优势去弥补自己编程能力的不足，从而完整的实现自己的想法才是个人的价值所在，AI 始终只是个工具，真正的核心还是人。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">macos开机自动执行shell脚本</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-17 15:12:05" itemprop="dateCreated datePublished" datetime="2025-07-17T15:12:05+08:00">2025-07-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-24 13:11:01" itemprop="dateModified" datetime="2025-07-24T13:11:01+08:00">2025-07-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 macOS 上设置开机或用户登录后自动执行 Shell 脚本，最现代且可靠的方法是使用 <code>launchd</code>。这是 Apple 官方推荐的用于管理守护进程和服务的系统。</p>
+<p>相比于老旧的 <code>crontab</code> 或简单的“登录项”，<code>launchd</code> 提供了更强大的控制能力和稳定性。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/" class="post-title-link" itemprop="url">Nginx结合Certbot SSL证书配置指南 (Ubuntu 24.04)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-07-10 21:33:57" itemprop="dateCreated datePublished" datetime="2025-07-10T21:33:57+08:00">2025-07-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本文档旨在提供一个全面的指南，介绍如何在 <strong>Ubuntu 24.04</strong> 服务器上使用 Nginx 设置反向代理（以 Emby 为例），并通过 Certbot 获取和管理 Let’s Encrypt 免费 SSL 证书，实现 HTTPS 安全访问。</p>
+<h2 id="1-1-前提条件"><a href="#1-1-前提条件" class="headerlink" title="1.1 前提条件"></a>1.1 前提条件</h2><ul>
+<li><p><strong>Ubuntu 24.04 LTS 服务器:</strong> 拥有 <code>sudo</code> 权限。</p>
+</li>
+<li><p><strong>域名:</strong> 拥有一个域名，并且其 DNS A 或 AAAA 记录已指向服务器公网 IP 地址。</p>
+</li>
+<li><p><strong>防火墙配置:</strong> 服务器防火墙（如 <code>ufw</code>）已允许外部访问 TCP 端口 80 (HTTP) 和 443 (HTTPS)。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw allow <span class="string">&#x27;Nginx Full&#x27;</span> <span class="comment"># 或者分别允许 80 和 443</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="1-1-1-步骤一：安装-Nginx"><a href="#1-1-1-步骤一：安装-Nginx" class="headerlink" title="1.1.1 步骤一：安装 Nginx"></a>1.1.1 步骤一：安装 Nginx</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt install nginx</span><br></pre></td></tr></table></figure>
+
+<p>目前通过该方式安装 Nginx，Nginx 配置默认都是采用配置分离的方式，即 Nginx 推荐的最佳实践。我们只需要在 <code>/etc/nginx/sites-available/</code> 中新增自己的站点配置，并建立软链接到 <code>/etc/nginx/sites-enabled/</code> 即可。</p>
+<h3 id="1-1-2-Nginx-配置分离介绍"><a href="#1-1-2-Nginx-配置分离介绍" class="headerlink" title="1.1.2 Nginx 配置分离介绍"></a>1.1.2 Nginx 配置分离介绍</h3><p>为了便于管理，Nginx 配置通常采用分离的方式。主配置文件 <code>nginx.conf</code> (通常在 <code>/etc/nginx/</code>) 会通过 <code>include</code> 指令加载其他目录下的配置文件。常见的做法有：</p>
+<ul>
+<li><code>/etc/nginx/conf.d/*.conf</code>: 任何在此目录下的 <code>.conf</code> 文件都会被加载。</li>
+<li><code>/etc/nginx/sites-available/</code> 和 <code>/etc/nginx/sites-enabled/</code>:<ul>
+<li><p>在 <code>sites-available/</code> 中创建站点配置文件。</p>
+</li>
+<li><p>通过在 <code>sites-enabled/</code> 中创建指向 <code>sites-available/</code> 中文件的符号链接来启用站点。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /etc/nginx/sites-available/your-site.conf /etc/nginx/sites-enabled/your-site.conf</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-步骤二：安装-Certbot-及-Nginx-插件"><a href="#1-2-步骤二：安装-Certbot-及-Nginx-插件" class="headerlink" title="1.2 步骤二：安装 Certbot 及 Nginx 插件"></a>1.2 步骤二：安装 Certbot 及 Nginx 插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt install certbot python3-certbot-nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查安装是否成功</span></span><br><span class="line">certbot --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-步骤三：为域名申请证书"><a href="#1-3-步骤三：为域名申请证书" class="headerlink" title="1.3 步骤三：为域名申请证书"></a>1.3 步骤三：为域名申请证书</h2><h3 id="1-3-1-还没进行-Nginx-配置"><a href="#1-3-1-还没进行-Nginx-配置" class="headerlink" title="1.3.1 还没进行 Nginx 配置"></a>1.3.1 还没进行 Nginx 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> certbot --nginx -d emby.yourdomain.com --cert-name yourdomain.com</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>--nginx</code>: 使用 Nginx 插件进行验证和安装。</li>
+<li><code>-d emby.yourdomain.com</code>: 指定要为其申请证书的域名。</li>
+<li><code>--cert-name yourdomain.com</code>: <strong>关键参数</strong>。告诉 Certbot 使用或创建一个名为 <code>yourdomain.com</code> 的证书。这样，证书文件会存放在 <code>/etc/letsencrypt/live/yourdomain.com/</code>，与 Nginx 配置匹配。</li>
+</ul>
+<p>回车后，Certbot 会引导：</p>
+<ol>
+<li>输入邮箱地址。</li>
+<li>同意服务条款。</li>
+<li>选择是否将 HTTP 流量自动重定向到 HTTPS (推荐)。</li>
+</ol>
+<p>过程中，Certbot 会：</p>
+<ol>
+<li>检查名为 <code>yourdomain.com</code> 的证书是否存在。</li>
+<li>确保 <code>emby.yourdomain.com</code> 被包含在该证书中（如果不存在则添加，如果证书本身不存在则创建）。</li>
+<li>通过 Nginx 插件进行域名验证。</li>
+<li>成功后，将证书文件保存在 <code>/etc/letsencrypt/live/yourdomain.com/</code>。</li>
+<li><strong>自动更新 Nginx 配置中开放了 80 端口的站点配置中的 443 Server</strong>，并设置<strong>自动续期</strong>。即如果是刚安装的 Nginx，那么默认会更新 <code>/etc/nginx/sites-available/default</code></li>
+</ol>
+<p>执行完 Certbot 命令后，证书已经保存下来，最后根据模板对自己需要的站点配置进行定制即可。可以结合被自动修改过的 <code>/etc/nginx/sites-available/default</code></p>
+<blockquote>
+<p>建议让 AI 协助生成和优化，非常方便。</p>
+</blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/emby.conf</span></span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Let&#x27;s Encrypt 续期验证需要</span></span><br><span class="line">    <span class="section">location</span> /.well-known/acme-challenge/ &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. HTTPS 服务配置</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># SSL 证书路径 (由 Certbot 自动生成)</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/emby.yourdomain.com/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/emby.yourdomain.com/privkey.pem;</span><br><span class="line">    <span class="attribute">include</span> /etc/letsencrypt/options-ssl-nginx.conf; <span class="comment"># Certbot 推荐的 SSL 安全配置</span></span><br><span class="line">    <span class="attribute">ssl_dhparam</span> /etc/letsencrypt/ssl-dhparams.pem;   <span class="comment"># Certbot 推荐的 DH 参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 其他配置...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-2-已有-Nginx-配置"><a href="#1-3-2-已有-Nginx-配置" class="headerlink" title="1.3.2 已有 Nginx 配置"></a>1.3.2 已有 Nginx 配置</h3><p>如果已经有 Nginx 配置了，那么需要在对应的站点配置上确保有如下监听 80 端口的 Server，例如：<code>/etc/nginx/sites-available/emby.conf</code> 中确保有以下配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/emby.conf</span></span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Let&#x27;s Encrypt 续期验证需要</span></span><br><span class="line">    <span class="section">location</span> /.well-known/acme-challenge/ &#123;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着再执行 Certbot 命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> certbot --nginx -d emby.yourdomain.com --cert-name yourdomain.com</span><br></pre></td></tr></table></figure>
+
+<p>执行后，Certbot 会自动在 站点配置中的 443 Server 中生成例如以下的配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/emby.conf</span></span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">443</span> ssl http2;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># SSL 证书路径 (由 Certbot 自动生成)</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/emby.yourdomain.com/fullchain.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/emby.yourdomain.com/privkey.pem;</span><br><span class="line">    <span class="attribute">include</span> /etc/letsencrypt/options-ssl-nginx.conf; <span class="comment"># Certbot 推荐的 SSL 安全配置</span></span><br><span class="line">    <span class="attribute">ssl_dhparam</span> /etc/letsencrypt/ssl-dhparams.pem;   <span class="comment"># Certbot 推荐的 DH 参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 其他配置。。。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-3-完整的配置示例：Emby"><a href="#1-3-3-完整的配置示例：Emby" class="headerlink" title="1.3.3 完整的配置示例：Emby"></a>1.3.3 完整的配置示例：Emby</h3><p>假设 Emby 运行在 <code>http://127.0.0.1:8096</code>，期望通过 <code>https://emby.yourdomain.com</code> 访问。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/emby.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># HTTP 重定向到 HTTPS</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com; <span class="comment">## 需要修改 ##: 替换为你的域名</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Certbot ACME challenge</span></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ /.well-known/acme-challenge/</span> &#123;</span><br><span class="line">        <span class="attribute">allow</span> all;</span><br><span class="line">        <span class="attribute">root</span> /var/www/html; <span class="comment"># Certbot 默认的 webroot 或你指定的路径</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># HTTPS &amp; 反向代理配置</span></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">http2</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">server_name</span> emby.yourdomain.com; <span class="comment">## 需要修改 ##: 替换为你的域名</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># SSL 证书配置 (Certbot 会自动管理)</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/emby.yourdomain.com/fullchain.pem; <span class="comment">## 需要修改 ##</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/emby.yourdomain.com/privkey.pem; <span class="comment">## 需要修改 ##</span></span><br><span class="line">    <span class="attribute">include</span> /etc/letsencrypt/options-ssl-nginx.conf; <span class="comment"># Certbot 推荐的 SSL 安全配置</span></span><br><span class="line">    <span class="attribute">ssl_dhparam</span> /etc/letsencrypt/ssl-dhparams.pem; <span class="comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 增强 SSL 安全性</span></span><br><span class="line">    <span class="attribute">ssl_protocols</span> TLSv1.<span class="number">2</span> TLSv1.<span class="number">3</span>;</span><br><span class="line">    <span class="attribute">ssl_prefer_server_ciphers</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">ssl_ciphers</span> ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;</span><br><span class="line">    <span class="attribute">ssl_session_cache</span> shared:SSL:<span class="number">10m</span>;</span><br><span class="line">    <span class="attribute">ssl_session_timeout</span> <span class="number">1d</span>;</span><br><span class="line">    <span class="attribute">ssl_session_tickets</span> <span class="literal">off</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 日志</span></span><br><span class="line">    <span class="attribute">access_log</span> /var/log/nginx/emby.access.log;</span><br><span class="line">    <span class="attribute">error_log</span> /var/log/nginx/emby.<span class="literal">error</span>.log;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8096; <span class="comment">## 需要修改 ##: Emby 实际 IP 和 HTTP 端口</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Port <span class="variable">$server_port</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># WebSocket 支持</span></span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">&quot;upgrade&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">proxy_buffering</span> <span class="literal">off</span>;</span><br><span class="line">        <span class="attribute">proxy_connect_timeout</span> <span class="number">300</span>;</span><br><span class="line">        <span class="attribute">proxy_send_timeout</span> <span class="number">3600s</span>;</span><br><span class="line">        <span class="attribute">proxy_read_timeout</span> <span class="number">3600s</span>;</span><br><span class="line">        <span class="attribute">send_timeout</span> <span class="number">3600s</span>;</span><br><span class="line">        <span class="attribute">client_max_body_size</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启用配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /etc/nginx/sites-available/emby.conf /etc/nginx/sites-enabled/</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-4-理解-SSL-证书与-Certbot"><a href="#1-3-4-理解-SSL-证书与-Certbot" class="headerlink" title="1.3.4 理解 SSL 证书与 Certbot"></a>1.3.4 理解 SSL 证书与 Certbot</h3><h4 id="1-3-4-1-如何确认是否使用了-Certbot？"><a href="#1-3-4-1-如何确认是否使用了-Certbot？" class="headerlink" title="1.3.4.1 如何确认是否使用了 Certbot？"></a>1.3.4.1 如何确认是否使用了 Certbot？</h4><ol>
+<li><strong>检查 Certbot 命令:</strong> <code>certbot --version</code> 或 <code>which certbot</code>。</li>
+<li><strong>检查 Let’s Encrypt 目录:</strong> <code>ls -l /etc/letsencrypt/</code>。如果存在 <code>live</code>, <code>archive</code>, <code>renewal</code> 等子目录，则很可能使用 Certbot。</li>
+<li><strong>检查 Nginx 配置:</strong> <code>ssl_certificate</code> 和 <code>ssl_certificate_key</code> 指令是否指向 <code>/etc/letsencrypt/live/yourdomain.com/fullchain.pem</code> 和 <code>privkey.pem</code>。</li>
+<li><strong>检查自动续期任务:</strong><ul>
+<li>Systemd Timers: <code>systemctl list-timers | grep certbot</code></li>
+<li>Cron Jobs: <code>ls -l /etc/cron.d/certbot</code> 或 <code>sudo crontab -l</code></li>
+</ul>
+</li>
+</ol>
+<h4 id="1-3-4-2-SSL-证书一般放置位置"><a href="#1-3-4-2-SSL-证书一般放置位置" class="headerlink" title="1.3.4.2 SSL 证书一般放置位置"></a>1.3.4.2 SSL 证书一般放置位置</h4><ul>
+<li><strong>&#x2F;etc&#x2F;letsencrypt&#x2F; (由 Certbot 管理):</strong><ul>
+<li><code>live/yourdomain.com/fullchain.pem</code>: 完整的证书链（推荐使用）。</li>
+<li><code>live/yourdomain.com/privkey.pem</code>: 私钥。</li>
+<li><code>live</code> 目录下的文件是符号链接，指向 <code>archive</code> 目录中的最新版本。</li>
+</ul>
+</li>
+<li><code>/etc/ssl/certs/</code> 和 <code>/etc/ssl/private/</code> (Debian&#x2F;Ubuntu 传统位置): 用于非 Certbot 管理的证书。</li>
+<li><code>/etc/pki/tls/certs/</code> 和 <code>/etc/pki/tls/private/</code> (RHEL&#x2F;CentOS 传统位置)。</li>
+</ul>
+<p><strong>始终通过检查 Nginx 配置文件中的 <code>ssl_certificate</code> 和 <code>ssl_certificate_key</code> 指令来确定实际使用的证书路径。</strong></p>
+<h2 id="1-4-步骤四：验证与维护"><a href="#1-4-步骤四：验证与维护" class="headerlink" title="1.4 步骤四：验证与维护"></a>1.4 步骤四：验证与维护</h2><h3 id="1-4-1-测试-Nginx-配置"><a href="#1-4-1-测试-Nginx-配置" class="headerlink" title="1.4.1 测试 Nginx 配置"></a>1.4.1 测试 Nginx 配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>确保输出 <code>syntax is ok</code> 和 <code>test is successful</code>。</p>
+<h3 id="1-4-2-重载-Nginx-服务"><a href="#1-4-2-重载-Nginx-服务" class="headerlink" title="1.4.2 重载 Nginx 服务"></a>1.4.2 重载 Nginx 服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl reload nginx</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-3-验证-Certbot-自动续期"><a href="#1-4-3-验证-Certbot-自动续期" class="headerlink" title="1.4.3 验证 Certbot 自动续期"></a>1.4.3 验证 Certbot 自动续期</h3><p>Certbot 包通常会自动设置 systemd timer 或 cron job 来处理续期。</p>
+<p>模拟续期（不会真正续期，仅测试配置）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+
+<p>查看 systemd timer:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-timers | grep certbot</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-步骤五：安全增强-HSTS"><a href="#1-5-步骤五：安全增强-HSTS" class="headerlink" title="1.5 步骤五：安全增强 (HSTS)"></a>1.5 步骤五：安全增强 (HSTS)</h2><p>在确认 HTTPS 完全正常工作后，可以考虑在 Nginx 的 HTTPS <code>server</code> 块中添加 HSTS (HTTP Strict Transport Security) 头，强制浏览器始终使用 HTTPS 访问：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">add_header</span> Strict-Transport-Security <span class="string">&quot;max-age=63072000; includeSubDomains; preload&quot;</span> always;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong> 启用 HSTS 后，如果 SSL 配置出现问题，用户可能在 <code>max-age</code> 时间内无法通过 HTTP 访问你的站点。请谨慎操作，并确保 SSL 证书自动续期正常工作。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Typora%20%E5%AE%89%E8%A3%85%E6%BF%80%E6%B4%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Typora%20%E5%AE%89%E8%A3%85%E6%BF%80%E6%B4%BB/" class="post-title-link" itemprop="url">Typora 安装激活</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-10 09:27:52 / 修改时间：09:35:05" itemprop="dateCreated datePublished" datetime="2025-07-10T09:27:52+08:00">2025-07-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>如果之前使用过其他激活方式，建议先彻底卸载 Typora 再重新安装。放心，卸载不会导致本地配置或笔记丢失。</p>
+<h2 id="1-1-步骤一：下载与安装"><a href="#1-1-步骤一：下载与安装" class="headerlink" title="1.1 步骤一：下载与安装"></a>1.1 步骤一：下载与安装</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://file.ff2a.com/s/typora">点击此处前往下载 Typora 安装包</a>。</li>
+<li>运行 <code>typora-setup-x64.exe</code>，在安装选项中，请务必选择 <strong>“仅为当前用户安装”</strong> (Install for current user only)。</li>
+<li>下载激活文件：<a target="_blank" rel="noopener" href="https://gofile.io/d/8abMTx"><code>version.dll</code></a></li>
+</ol>
+<h2 id="1-2-步骤二：放置激活补丁"><a href="#1-2-步骤二：放置激活补丁" class="headerlink" title="1.2 步骤二：放置激活补丁"></a>1.2 步骤二：放置激活补丁</h2><ol>
+<li>将下载好的激活文件 <code>version.dll</code> 复制到 Typora 的安装目录中。</li>
+<li>该目录的默认路径为：<code>%AppData%\Local\Programs\Typora</code></li>
+</ol>
+<h2 id="1-3-步骤三：修改-Hosts-文件"><a href="#1-3-步骤三：修改-Hosts-文件" class="headerlink" title="1.3 步骤三：修改 Hosts 文件"></a>1.3 步骤三：修改 Hosts 文件</h2><p>此步骤的目的是屏蔽 Typora 的在线激活验证。</p>
+<ol>
+<li><p>按下 <code>Win + R</code> 快捷键，打开 “运行” 对话框。</p>
+</li>
+<li><p>输入以下命令： <code>notepad C:\Windows\System32\drivers\etc\hosts</code></p>
+</li>
+<li><p>紧接着按下 <code>Ctrl + Shift + Enter</code> 组合键，以 <strong>管理员身份</strong> 运行记事本。</p>
+</li>
+<li><p>在打开的 <code>hosts</code> 文件末尾，添加以下内容并保存：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 store.typora.io</span><br><span class="line">127.0.0.1 typoraio.cn</span><br><span class="line">127.0.0.1 dian.typora.com.cn</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按下 <code>Win + R</code> 快捷键，打开 “运行” 对话框。输入以下命令：<code>powershell</code></p>
+</li>
+<li><p>在打开的终端输入，将会刷新缓存：<code>ipconfig /flushdns</code></p>
+</li>
+</ol>
+<h2 id="1-4-步骤四：生成并使用激活码"><a href="#1-4-步骤四：生成并使用激活码" class="headerlink" title="1.4 步骤四：生成并使用激活码"></a>1.4 步骤四：生成并使用激活码</h2><ol>
+<li>打开 Typora，在弹出的激活窗口中选择 <strong>“离线激活”</strong> (Enter License Manually)。</li>
+<li>复制窗口中显示的 <strong>机器码</strong> (Machine Code)。</li>
+<li>访问 <a target="_blank" rel="noopener" href="https://typora.rubleeee.com/">Typora 激活码生成器</a> (需要使用 LinuxDO 登录)。</li>
+<li>输入您的邮箱和刚刚复制的机器码，点击 <strong>“生成激活码”</strong>。</li>
+<li>回到 Typora 的激活窗口，粘贴生成的激活码，完成激活。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250507/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Cursor%E7%94%B3%E8%AF%B7%E5%AD%A6%E7%94%9F%E4%BC%98%E6%83%A0%E6%89%BE%E4%B8%8D%E5%88%B0China%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/Cursor%E7%94%B3%E8%AF%B7%E5%AD%A6%E7%94%9F%E4%BC%98%E6%83%A0%E6%89%BE%E4%B8%8D%E5%88%B0China%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -329,7 +994,20 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-05-07 16:17:12 / 修改时间：16:47:27" itemprop="dateCreated datePublished" datetime="2025-05-07T16:17:12+08:00">2025-05-07</time>
+      <time title="创建时间：2025-05-07 16:17:12 / 修改时间：19:36:10" itemprop="dateCreated datePublished" datetime="2025-05-07T16:17:12+08:00">2025-05-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Cursor%E7%94%B3%E8%AF%B7%E5%AD%A6%E7%94%9F%E4%BC%98%E6%83%A0%E6%89%BE%E4%B8%8D%E5%88%B0China%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/" itemprop="url" rel="index"><span itemprop="name">Cursor申请学生优惠找不到China怎么办？</span></a>
+        </span>
     </span>
 
   
@@ -360,12 +1038,12 @@
 <li>在 “Network” 面板的请求列表中，找到这个特定的请求。可以使用顶部的 “Filter”，输入 <code>theme?locale=en-US</code> 定位 API</li>
 </ul>
 <p><img src="https://oss.puppetdevz.top/image/note/a79be3e3e56a649f5729161120f0f512.png" alt="d5cc14a35e2f08871f2560f5b9559772"></p>
-<h2 id="1-2-重写-API-请求内容"><a href="#1-2-重写-API-请求内容" class="headerlink" title="1.2 重写 API 请求内容"></a>1.2 重写 API 请求内容</h2><p><img src="https://oss.puppetdevz.top/image/note/a31a22c9ae5b1a1aaa527f6b9e2487e1.png" alt="a6619c59ddd4427dc3ca48cb87db45c8"></p>
+<h3 id="1-1-3-重写-API-请求内容"><a href="#1-1-3-重写-API-请求内容" class="headerlink" title="1.1.3 重写 API 请求内容"></a>1.1.3 重写 API 请求内容</h3><p><img src="https://oss.puppetdevz.top/image/note/a31a22c9ae5b1a1aaa527f6b9e2487e1.png" alt="a6619c59ddd4427dc3ca48cb87db45c8"></p>
 <p><img src="https://oss.puppetdevz.top/image/note/e1eafbb43677dd9a2a8ada75d558dfbb.png" alt="eeeae5b36bf609f0a7cdfa90c2a99d5a"></p>
 <p>找到 <code>config.countries</code>，添加 <code>CN</code></p>
 <p><img src="https://oss.puppetdevz.top/image/note/d9701d11729b9a604c4c3f1c95db6d04.png" alt="3efca4984181d78fe1a090738067509b"></p>
-<p>此时就 OK 了，回到页面，输入 China：<img src="https://oss.puppetdevz.top/image/note/0c24f43035019a018e607566aed31354.png" alt="a18c8ff6ab5cfce78ceb0e232b06f588"></p>
-<p>搜索你的学校：</p>
+<p>Ctrl + S 保存，此时就 OK 了，回来刷新页面，输入 China：<img src="https://oss.puppetdevz.top/image/note/0c24f43035019a018e607566aed31354.png" alt="a18c8ff6ab5cfce78ceb0e232b06f588"></p>
+<h2 id="1-2-继续填写"><a href="#1-2-继续填写" class="headerlink" title="1.2 继续填写"></a>1.2 继续填写</h2><p>搜索你的学校：</p>
 <p><img src="https://oss.puppetdevz.top/image/note/77aeec21fcfb573d4168151ea786f231.png" alt="303fa436c76c0bf6b091f882b3f1f1c8"></p>
 <p>如果有你的学校，那么恭喜你，可以继续下一步，如果没有，那就 sorry 了。</p>
 <p>接着正常填写，提交，等待审核！</p>
@@ -582,650 +1260,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="木偶">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木偶's Blog">
-      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 木偶's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/" class="post-title-link" itemprop="url">解决方案：e1000e eno1 Detected Hardware Unit Hang</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-10-31 11:27:47" itemprop="dateCreated datePublished" datetime="2024-10-31T11:27:47+08:00">2024-10-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-19 16:13:24" itemprop="dateModified" datetime="2024-12-19T16:13:24+08:00">2024-12-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e-eno1-Detected-Hardware-Unit-Hang/" itemprop="url" rel="index"><span itemprop="name">解决方案：e1000e eno1 Detected Hardware Unit Hang</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><img src="https://oss.puppetdevz.top/image/note/8a813c25c40bdf839d7466c7a2da9098.png" alt="fjy89"></p>
-<p>在 Proxmox 6.5.11-8 中，偶发性会出现以下报错，尤其是在进行大文件传输后：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[97377.240263] e1000e 0000:00:1f eno1: Detected Hardware Unit Hang:</span><br><span class="line">                 TDH                  &lt;22&gt;</span><br><span class="line">                 TDT                  &lt;2f&gt;</span><br><span class="line">                 next_to_use          &lt;2f&gt;</span><br><span class="line">                 next_to_clean        &lt;21&gt;</span><br><span class="line">               buffer_info[next_to_clean]:</span><br><span class="line">                 time_stamp           &lt;101725292&gt;</span><br><span class="line">                 next_to_watch        &lt;22&gt;</span><br><span class="line">                 jiffies              &lt;1017253e0&gt;</span><br><span class="line">                 next_to_watch.status &lt;0&gt;</span><br><span class="line">               MAC Status             &lt;40080083&gt;</span><br><span class="line">               PHY Status             &lt;796d&gt;</span><br><span class="line">               PHY 1000BASE-T Status  &lt;3800&gt;</span><br><span class="line">               PHY Extended Status    &lt;3000&gt;</span><br><span class="line">               PCI Status             &lt;10&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>一旦出现该问题，Synology NAS 就会进入不可用的状态。</strong></p>
-<h2 id="1-1-Intel-网卡驱动问题，特别是-e1000e"><a href="#1-1-Intel-网卡驱动问题，特别是-e1000e" class="headerlink" title="1.1 Intel 网卡驱动问题，特别是 e1000e"></a>1.1 Intel 网卡驱动问题，特别是 e1000e</h2><p>错误信息表明网络接口卡（NIC）在进行数据传输时遇到了硬件单元挂起的问题。这种情况在<strong>重网络负载</strong>时更容易发生。</p>
-<p>这是多年来 I219-V、I218-V… 网卡型号及其驱动程序的一个已知错误。不仅在 proxmox 上，在 xcp-ng 上也是如此。</p>
-<p>这个问题，截止 Proxmox 6.5.11-8 仍未被彻底解决，只能通过禁用 TCP 校验和卸载。</p>
-<h2 id="1-2-解决方案"><a href="#1-2-解决方案" class="headerlink" title="1.2 解决方案"></a>1.2 解决方案</h2><p>通过执行命令：<code>ethtool -K eno1 tso off gso off gro off</code> 即可解决，但是每次重启机器或者网卡，都会失效。具体含义下方会说明。</p>
-<p>如何长期解决？</p>
-<p>在 <code>/etc/network/interfaces</code> 中，添加以下代码：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iface eno1 inet manual</span><br><span class="line">    post-up /usr/bin/logger -p debug -t ifup <span class="string">&quot;Disabling offload for eno1&quot;</span> &amp;&amp; /sbin/ethtool -K <span class="variable">$IFACE</span> tso off gso off gro off &amp;&amp; /usr/bin/logger -p debug -t ifup <span class="string">&quot;Disabled offload for eno1&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>post-up</strong>：这是一个钩子命令，它会在接口被成功激活（“up”状态）后执行。这里的命令会在 <code>eno1</code> 接口启动之后执行一系列动作。</li>
-<li><strong>&#x2F;usr&#x2F;bin&#x2F;logger -p debug -t ifup “Disabling offload for eno1”</strong>：这条命令使用 <code>logger</code> 程序，将一条调试级别（<code>debug</code>）的信息写入系统日志。日志内容为 <code>&quot;Disabling offload for eno1&quot;</code>，标记为 <code>ifup</code>。这样做的目的是记录接口启动时禁用某些功能的动作，方便日后查看系统日志，了解配置是否按预期执行。（可通过 <code>journalctl -t ifup -p debug</code> 查看日志）</li>
-<li><strong>&#x2F;sbin&#x2F;ethtool -K $IFACE tso off gso off gro off tx off rx off</strong>：这里使用 <code>ethtool</code> 工具来关闭网络接口的一些“硬件卸载（offload）”功能。具体地：<ul>
-<li><strong>tso（TCP Segmentation Offload）</strong>：关闭 TCP 分段卸载。TSO 允许网卡将大型 TCP 数据包分段，减轻 CPU 负担。如果关闭，系统会由 CPU 进行 TCP 分段。</li>
-<li><strong>gso（Generic Segmentation Offload）</strong>：关闭通用分段卸载。GSO 是一种将不同协议的数据分段处理的技术，关闭它会让系统自己处理分段。</li>
-<li><strong>gro（Generic Receive Offload）</strong>：关闭通用接收卸载。GRO 是一种接收数据包处理优化技术。关闭它意味着数据包接收将完全交由 CPU 处理。</li>
-<li><strong>tx（Transmit Checksum Offload）</strong>：完全关闭传输时的校验和卸载。网卡不会自动处理数据包的校验和，而是让系统自行处理。</li>
-<li><strong>rx（Receive Checksum Offload）</strong>：完全关闭接收时的校验和卸载，网卡不会校验接收到的数据包，需要系统来进行检查。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>[!info] 信息</p>
-<ul>
-<li><strong>TSO</strong>、<strong>GSO</strong> 和 <strong>GRO</strong> 分别用于控制 TCP 分段、通用分段和接收卸载，这三个是针对传输层和网络层的优化。</li>
-<li><strong>tx off</strong> 和 <strong>rx off</strong> 是更通用的选项，用于关闭整个发送（TX）和接收（RX）的卸载功能。</li>
-</ul>
-<p>如果已经关闭了 TSO、GSO 和 GRO，那么 <code>tx off</code> 和 <code>rx off</code> 可能会显得多余，因为这些设置会影响整个数据包的处理，而不只是特定的卸载功能。</p>
-<p>在大多数情况下，只需关闭 TSO、GSO 和 GRO 就可以了，<code>tx off</code> 和 <code>rx off</code> 可以根据需要选择是否使用。如果需要彻底禁用卸载功能，可以使用它们，但通常只关闭 TSO、GSO 和 GRO 是足够的。</p>
-</blockquote>
-<blockquote>
-<p>[!note] 注意<br>这对于一些系统可能没有生效，那么可以尝试通过注册 Service 的方式执行。这里不赘述。</p>
-</blockquote>
-<p>如何查看 tso、gso、gro 是否已经关闭：<code>ethtool -k eno1 | grep -E &#39;tso|gso|gro&#39;</code></p>
-<p><img src="https://oss.puppetdevz.top/image/note/9ebac05995653141eb5529a53e633a8b.png" alt="yp93w"></p>
-<p>均为 off，说明已经关闭。</p>
-<p>如何查看 TCP 校验和卸载是否开启：<code>ethtool -a eno1</code></p>
-<p><img src="https://oss.puppetdevz.top/image/note/a6de0c3547bf2b8d8868b0885dd1f2e1.png" alt="qegq7"></p>
-<p>些参数主要用于控制网络接口的流量控制，以减少数据包丢失，确保在网络拥堵时网络的稳定性。</p>
-<ul>
-<li><strong>Autonegotiate</strong>：开启表示接口支持自动协商功能，允许网络接口和连接到的设备协商最佳的传输模式（如全双工或半双工）和流量控制。</li>
-<li><strong>RX（Receive）</strong>：此项“on”表示接收暂停帧的能力已开启。也就是说，网络接口在接收到暂停帧时会暂停接收数据。这在数据接收方无法及时处理流量时非常有用。</li>
-<li><strong>TX（Transmit）</strong>：此项“on”表示发送暂停帧的能力已开启。网络接口可以在需要的时候发送暂停帧，指示对方暂停发送数据。这在本设备负载过高时很有帮助。</li>
-<li><strong>RX negotiated</strong>：表示接收暂停帧的能力已协商开启，表明两端设备在连接时已协商启用了接收流量控制。</li>
-<li><strong>TX negotiated</strong>：表示发送暂停帧的能力已协商开启，表明两端设备在连接时已协商启用了发送流量控制。</li>
-</ul>
-<p>配置后，Synology NAS 终于不会再“突发恶疾”了！！！</p>
-<h2 id="1-3-参考文献"><a href="#1-3-参考文献" class="headerlink" title="1.3 参考文献"></a>1.3 参考文献</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://forum.proxmox.com/threads/e1000e-eno1-detected-hardware-unit-hang.59928/" title="e1000e eno1: Detected Hardware Unit Hang: | Proxmox Support Forum">e1000e eno1: Detected Hardware Unit Hang: | Proxmox Support Forum</a></li>
-<li><a target="_blank" rel="noopener" href="https://forum.proxmox.com/threads/e1000-driver-hang.58284/page-8#post-390709" title="e1000 driver hang | Page 8 | Proxmox Support Forum">e1000 driver hang | Page 8 | Proxmox Support Forum</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20240510/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/NGINX%E6%97%A5%E5%BF%97%E5%88%87%E7%89%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="木偶">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木偶's Blog">
-      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 木偶's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20240510/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/NGINX%E6%97%A5%E5%BF%97%E5%88%87%E7%89%87/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-05-10 15:36:33" itemprop="dateCreated datePublished" datetime="2024-05-10T15:36:33+08:00">2024-05-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-16 15:56:26" itemprop="dateModified" datetime="2024-12-16T15:56:26+08:00">2024-12-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/" itemprop="url" rel="index"><span itemprop="name">NGINX</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>当 NGINX 的日志文件变得过大时，通常的做法是进行日志切片（log rotation），这样可以防止单个日志文件过大，便于管理和存储。</p>
-<p>而 NGINX 自身或者其扩展的模块均不支持类似的功能。 所以 NGINX 日志切片通常需要依赖外部工具来实现，比如 Linux 系统中常用的 <code>logrotate</code>。以下是如何使用 <code>logrotate</code> 对 NGINX 日志进行切片的步骤：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/20240510/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/NGINX%E6%97%A5%E5%BF%97%E5%88%87%E7%89%87/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20240112/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E5%90%88%E9%9B%86%EF%BC%9AJenkins%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%89%8D%E7%AB%AF%E7%BC%96%E8%AF%91%E6%89%93%E5%8C%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="木偶">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木偶's Blog">
-      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 木偶's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20240112/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E5%90%88%E9%9B%86%EF%BC%9AJenkins%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%89%8D%E7%AB%AF%E7%BC%96%E8%AF%91%E6%89%93%E5%8C%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">合集：Jenkins流水线前端编译打包失败问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-12 21:59:19" itemprop="dateCreated datePublished" datetime="2024-01-12T21:59:19+08:00">2024-01-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-19 16:13:24" itemprop="dateModified" datetime="2024-12-19T16:13:24+08:00">2024-12-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><img src="https://oss.puppetdevz.top/image/note/21c20a886cd579bb5965fea1e9843e49.png" alt="the webpack how to work.png"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/20240112/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E5%90%88%E9%9B%86%EF%BC%9AJenkins%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%89%8D%E7%AB%AF%E7%BC%96%E8%AF%91%E6%89%93%E5%8C%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20240103/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Windows%E7%AB%AF%E5%8F%A3%E4%B8%8D%E5%8F%AF%E7%94%A8%EF%BC%9AError%EF%BC%9Alisten%20EACCES%EF%BC%9Apermission%20denied%200.0.0.0%EF%BC%9A5200/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="木偶">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木偶's Blog">
-      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 木偶's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20240103/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Windows%E7%AB%AF%E5%8F%A3%E4%B8%8D%E5%8F%AF%E7%94%A8%EF%BC%9AError%EF%BC%9Alisten%20EACCES%EF%BC%9Apermission%20denied%200.0.0.0%EF%BC%9A5200/" class="post-title-link" itemprop="url">Windows端口不可用：Error：listen EACCES：permission denied 0.0.0.0：5200</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-01-03 00:32:40" itemprop="dateCreated datePublished" datetime="2024-01-03T00:32:40+08:00">2024-01-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-19 16:13:24" itemprop="dateModified" datetime="2024-12-19T16:13:24+08:00">2024-12-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>当我使用 Windows 11 下的 VSCode 启动 Vue 项目时，出现以下报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ERROR  error when starting dev server:                                        </span><br><span class="line">Error: listen EACCES: permission denied 0.0.0.0:5200</span><br><span class="line">    at Server.setupListenHandle [as _listen2] (node:net:1800:21)</span><br><span class="line">    at listenInCluster (node:net:1865:12)</span><br><span class="line">    at doListen (node:net:2014:7)</span><br><span class="line">    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)</span><br><span class="line"></span><br><span class="line"> ELIFECYCLE  Command failed with exit code 1</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/20240103/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Windows%E7%AB%AF%E5%8F%A3%E4%B8%8D%E5%8F%AF%E7%94%A8%EF%BC%9AError%EF%BC%9Alisten%20EACCES%EF%BC%9Apermission%20denied%200.0.0.0%EF%BC%9A5200/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20230907/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%9C%A8ServiceComb%E4%B8%ADVertx%E3%80%81Highway%E4%B8%8EHTTP%E7%9A%84%E5%85%B3%E7%B3%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="木偶">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木偶's Blog">
-      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 木偶's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20230907/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%9C%A8ServiceComb%E4%B8%ADVertx%E3%80%81Highway%E4%B8%8EHTTP%E7%9A%84%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">在ServiceComb中Vertx、Highway与HTTP的关系</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-07 12:01:16" itemprop="dateCreated datePublished" datetime="2023-09-07T12:01:16+08:00">2023-09-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-17 20:54:31" itemprop="dateModified" datetime="2023-12-17T20:54:31+08:00">2023-12-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在 Apache ServiceComb 中，<code>Highway</code>, <code>Vertx</code>, 和 <code>HTTP</code> 都与微服务间的通信有关，但它们之间的角色和关系是不同的。下面是一个简要的描述来解释它们之间的关系：</p>
-<ol>
-<li><p><strong>Highway</strong>:</p>
-<ul>
-<li>Highway 是 ServiceComb 的一个通信协议。它是专为微服务通信而设计的一个高性能的二进制协议。如果两个微服务都支持 Highway，则它们可以使用此协议进行通信，通常会有更好的性能和更低的延迟。</li>
-</ul>
-</li>
-<li><p><strong>Vertx</strong>:</p>
-<ul>
-<li>Vert.x 是一个为 JVM 提供的工具包，用于构建响应式应用程序。ServiceComb 使用 Vert.x 作为其反应性框架，这使其可以有效地处理大量并发连接和通信。</li>
-<li>Vert.x 也支持多种通信协议，包括 HTTP&#x2F;HTTP2 和其他定制协议（例如 Highway）。在 ServiceComb 中，Vert.x 主要用于处理请求&#x2F;响应的生命周期、非阻塞的 I&#x2F;O 处理以及提供异步编程模型。</li>
-</ul>
-</li>
-<li><p><strong>HTTP</strong>:</p>
-<ul>
-<li>HTTP 是一个应用层的通信协议，用于在互联网上传输数据。在微服务架构中，HTTP（特别是 HTTP&#x2F;2）常被用作微服务间的通信协议。</li>
-<li>ServiceComb 支持基于 HTTP 的 RESTful 服务通信。这意味着微服务可以使用标准的 HTTP 方法（如 GET、POST、PUT 等）进行通信。</li>
-</ul>
-</li>
-</ol>
-<p>关系总结：</p>
-<ul>
-<li><strong>Highway</strong> 是 ServiceComb 中的一个专用通信协议，主要针对微服务间的高性能通信。</li>
-<li><strong>Vertx</strong> 是 ServiceComb 使用的反应性框架，提供了异步编程模型，并支持多种通信协议（包括 Highway 和 HTTP）。</li>
-<li><strong>HTTP</strong> 是一个标准的通信协议，在 ServiceComb 中，它常被用作微服务间的通信协议，特别是当使用 RESTful 服务时。</li>
-</ul>
-<p>基于以上的描述，我们可以看到，Highway 和 HTTP 都是通信协议，但目标和设计思路略有不同，而 Vert.x 是提供通信框架和异步处理能力的库。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20230208/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java%E3%80%81Go%E5%92%8CPython%E9%80%82%E5%90%88%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="木偶">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木偶's Blog">
-      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 木偶's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20230208/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java%E3%80%81Go%E5%92%8CPython%E9%80%82%E5%90%88%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/" class="post-title-link" itemprop="url">Java、Go和Python适合做的事情</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-02-08 16:47:11" itemprop="dateCreated datePublished" datetime="2023-02-08T16:47:11+08:00">2023-02-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-17 20:54:31" itemprop="dateModified" datetime="2023-12-17T20:54:31+08:00">2023-12-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><p>Java 语言普遍用于开发各种类型的软件系统、应用程序和 Web 服务，包括财务软件系统、社交网络软件、移动应用程序（虽然现在多用 Kotlin）、虚拟现实系统、嵌入式系统、大数据应用程序等。</p>
-<p>此外，Java 还常用于开发游戏服务器和游戏客户端、智能家居软件和安全相关软件。</p>
-<h2 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h2><p>Go 语言很适合构建高性能的高并发的服务，可以在游戏、金融、物联网、系统工具等方面得到应用。Go 语言还可以开发分布式系统，构建容器、虚拟化、存储等云计算基础架构。因此 Go 语言可以用于以下任务：</p>
-<ol>
-<li><strong>后端服务</strong>：可以用 Go 语言构建高性能和高并发的后端服务</li>
-<li>游戏开发：可以使用 Go 语言开发游戏；</li>
-<li>网络编程：可以使用 Go 语言编写网络编程代码；</li>
-<li>云计算：Go 语言可以编写容器、虚拟化、存储等基础云计算架构；</li>
-<li>工具库：用 Go 语言可以构建各种高效工具库。</li>
-<li>脚本语言：类似 Python 和 Shell</li>
-</ol>
-<p>此外，Go 易学快捷，而且可以完成高效的字节码编译，所以适合建立大型应用系统和分布式系统。</p>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>Python 语言常用来做程序开发&#x2F;应用开发、桌面开发（PyQt）、网络编程、Web 开发、科学计算、自动化测试、人工智能、大数据等任务。</p>
-<p>此外，Python 还可以用来编写游戏，移动应用等，但很少被用来做这类事情。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
