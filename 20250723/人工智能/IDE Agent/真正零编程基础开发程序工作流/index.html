@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
@@ -22,22 +22,22 @@
     <meta name="description" content="完全不懂编程，毫无经验，折腾了两个月的一些想法 (心得都算不上)。 1.1 适用人群 啥叫 Python？啥叫 Java？前端，后端是个啥？你说的我都听不懂 有能力搞定 GPT plus 个人账号 不管什么途径，能够使用 Pro 账号权限下的 Gemini Deepresearch, Claude 4 的两个模型 心态平和，无搞钱想法，未被类似“敏捷开发，MVP 先行”这种大厂思维植入  1.2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="真正零编程基础开发程序工作流">
-<meta property="og:url" content="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/index.html">
+<meta property="og:url" content="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/index.html">
 <meta property="og:site_name" content="木偶&#39;s Blog">
 <meta property="og:description" content="完全不懂编程，毫无经验，折腾了两个月的一些想法 (心得都算不上)。 1.1 适用人群 啥叫 Python？啥叫 Java？前端，后端是个啥？你说的我都听不懂 有能力搞定 GPT plus 个人账号 不管什么途径，能够使用 Pro 账号权限下的 Gemini Deepresearch, Claude 4 的两个模型 心态平和，无搞钱想法，未被类似“敏捷开发，MVP 先行”这种大厂思维植入  1.2">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-23T08:31:42.000Z">
-<meta property="article:modified_time" content="2025-08-05T02:25:55.538Z">
+<meta property="article:modified_time" content="2025-08-05T02:25:55.000Z">
 <meta property="article:author" content="木偶">
 <meta property="article:tag" content="前端,后端,框架,web,学习,面试,JavaScript,ES6,TypeScript,vue,css3,html5,Node,markdown,算法,C,Cpp,Linux,Go,Python">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+<link rel="canonical" href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/","path":"20250723/人工智能/真正零编程基础开发程序工作流/","title":"真正零编程基础开发程序工作流"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/","path":"20250723/人工智能/IDE Agent/真正零编程基础开发程序工作流/","title":"真正零编程基础开发程序工作流"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>真正零编程基础开发程序工作流 | 木偶's Blog</title>
@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -168,7 +168,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -203,7 +203,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -369,7 +369,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/" title="真正零编程基础开发程序工作流">https://www.puppetdevz.top/20250723/人工智能/真正零编程基础开发程序工作流/</a>
+      <a href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/" title="真正零编程基础开发程序工作流">https://www.puppetdevz.top/20250723/人工智能/IDE Agent/真正零编程基础开发程序工作流/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -416,7 +416,7 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/" rel="next" title="我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型">
+                <a href="/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/" rel="next" title="我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型">
                   我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
@@ -500,7 +500,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e75f920486cceb41b445e7f214ad6a8b"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"da0552b084ae8db3923d9a51a9851927"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

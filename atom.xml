@@ -6,7 +6,7 @@
   <link href="https://www.puppetdevz.top/atom.xml" rel="self"/>
   
   <link href="https://www.puppetdevz.top/"/>
-  <updated>2025-08-05T02:25:55.538Z</updated>
+  <updated>2025-12-06T06:33:20.000Z</updated>
   <id>https://www.puppetdevz.top/</id>
   
   <author>
@@ -17,11 +17,173 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>📝 macOS &quot;系统数据&quot; 爆满问题完全解决指南</title>
+    <link href="https://www.puppetdevz.top/20251206/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%F0%9F%93%9D%20macOS%20%22%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%22%20%E7%88%86%E6%BB%A1%E9%97%AE%E9%A2%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E5%86%B3%E6%8C%87%E5%8D%97/"/>
+    <id>https://www.puppetdevz.top/20251206/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%F0%9F%93%9D%20macOS%20%22%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%22%20%E7%88%86%E6%BB%A1%E9%97%AE%E9%A2%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E5%86%B3%E6%8C%87%E5%8D%97/</id>
+    <published>2025-12-06T04:30:11.000Z</published>
+    <updated>2025-12-06T06:33:20.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-1-🔴-问题现象&quot;&gt;&lt;a href=&quot;#1-1-🔴-问题现象&quot; class=&quot;headerlink&quot; title=&quot;1.1 🔴 问题现象&quot;&gt;&lt;/a&gt;1.1 🔴 问题现象&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;macOS</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南</title>
+    <link href="https://www.puppetdevz.top/20251119/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%A5%9E%E5%99%A8%E8%AF%A6%E8%A7%A3%EF%BC%9ABark%20%E4%B8%8E%20PushPlus%20%E5%85%A8%E6%96%B9%E4%BD%8D%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/"/>
+    <id>https://www.puppetdevz.top/20251119/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%A5%9E%E5%99%A8%E8%AF%A6%E8%A7%A3%EF%BC%9ABark%20%E4%B8%8E%20PushPlus%20%E5%85%A8%E6%96%B9%E4%BD%8D%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/</id>
+    <published>2025-11-19T14:55:58.000Z</published>
+    <updated>2025-11-19T14:56:50.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在自动化脚本、服务器监控或智能家居场景中，我们经常需要将通知实时推送到手机。传统的短信或邮件要么成本高，要么时效性差。&lt;/p&gt;
+&lt;p&gt;本文将深度解析两款主流的轻量级推送服务——&lt;strong&gt;Bark&lt;/strong&gt; 和</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ClaudeCode提示词 - macOS版本</title>
+    <link href="https://www.puppetdevz.top/20251119/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/ClaudeCode%E6%8F%90%E7%A4%BA%E8%AF%8D%20-%20macOS%E7%89%88%E6%9C%AC/"/>
+    <id>https://www.puppetdevz.top/20251119/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/ClaudeCode%E6%8F%90%E7%A4%BA%E8%AF%8D%20-%20macOS%E7%89%88%E6%9C%AC/</id>
+    <published>2025-11-19T09:30:42.179Z</published>
+    <updated>2025-11-21T10:23:49.802Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-1-全局提示词&quot;&gt;&lt;a href=&quot;#1-1-全局提示词&quot; class=&quot;headerlink&quot; title=&quot;1.1 全局提示词&quot;&gt;&lt;/a&gt;1.1</summary>
+        
+      
+    
+    
+    
+    
+    <category term="macos-development" scheme="https://www.puppetdevz.top/tags/macos-development/"/>
+    
+    <category term="shell-commands" scheme="https://www.puppetdevz.top/tags/shell-commands/"/>
+    
+    <category term="git-workflow" scheme="https://www.puppetdevz.top/tags/git-workflow/"/>
+    
+    <category term="requirements-analysis" scheme="https://www.puppetdevz.top/tags/requirements-analysis/"/>
+    
+    <category term="software-configuration" scheme="https://www.puppetdevz.top/tags/software-configuration/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Claude Code自定义StatusLine</title>
+    <link href="https://www.puppetdevz.top/20251011/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/Claude%20Code%E8%87%AA%E5%AE%9A%E4%B9%89StatusLine/"/>
+    <id>https://www.puppetdevz.top/20251011/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/Claude%20Code%E8%87%AA%E5%AE%9A%E4%B9%89StatusLine/</id>
+    <published>2025-10-11T14:58:27.000Z</published>
+    <updated>2025-10-11T15:02:13.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://oss.puppetdevz.top/image/note/01ad1dd962b9943a4500aa256c7c01b2.png&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Claude Code最佳实践</title>
+    <link href="https://www.puppetdevz.top/20251011/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/Claude%20Code%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
+    <id>https://www.puppetdevz.top/20251011/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/Claude%20Code%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</id>
+    <published>2025-10-11T14:31:53.000Z</published>
+    <updated>2025-12-04T14:38:34.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;除非在 planmode，永远不要纠正 CC。如果 CC 做错了，直接 clear → git reset -&amp;gt;修改原始 prompt 叫他不要犯这个错。不然你去纠正他的话，你就会收到典中典的“您说的对”。&lt;/li&gt;
+&lt;li&gt;永远不要使用</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在Windows中优雅使用VSCode+codex</title>
+    <link href="https://www.puppetdevz.top/20251011/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E5%9C%A8Windows%E4%B8%AD%E4%BC%98%E9%9B%85%E4%BD%BF%E7%94%A8VSCode+codex/"/>
+    <id>https://www.puppetdevz.top/20251011/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E5%9C%A8Windows%E4%B8%AD%E4%BC%98%E9%9B%85%E4%BD%BF%E7%94%A8VSCode+codex/</id>
+    <published>2025-10-11T09:03:05.000Z</published>
+    <updated>2025-10-11T09:11:09.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我的主力系统是最近在用 vscode + codex，主力系统是 windows。众所周知，codex 对 windows 的 ps 终端支持简直是一坨，连读取文件这样简单的命令都需要用户手动确认运行。为了使用 codex，我一度将开发主力更换到了 mac</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CCR+NewAPI+ClaudeCode</title>
+    <link href="https://www.puppetdevz.top/20251008/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/CCR+NewAPI+ClaudeCode/"/>
+    <id>https://www.puppetdevz.top/20251008/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/CCR+NewAPI+ClaudeCode/</id>
+    <published>2025-10-08T13:58:33.000Z</published>
+    <updated>2025-10-09T15:04:26.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;修改配置文件前请更新 CCR 和 CC&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>为 GPT-Load、New-API 更换数据库：我是如何顺利将 MySQL 迁移到 PostgreSQL 的</title>
     <link href="https://www.puppetdevz.top/20250730/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%B8%BA%20GPT-Load%E3%80%81New-API%20%E6%9B%B4%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E9%A1%BA%E5%88%A9%E5%B0%86%20MySQL%20%E8%BF%81%E7%A7%BB%E5%88%B0%20PostgreSQL%20%E7%9A%84/"/>
     <id>https://www.puppetdevz.top/20250730/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E4%B8%BA%20GPT-Load%E3%80%81New-API%20%E6%9B%B4%E6%8D%A2%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E9%A1%BA%E5%88%A9%E5%B0%86%20MySQL%20%E8%BF%81%E7%A7%BB%E5%88%B0%20PostgreSQL%20%E7%9A%84/</id>
-    <published>2025-07-30T00:55:57.714Z</published>
-    <updated>2025-08-05T02:25:55.538Z</updated>
+    <published>2025-07-30T00:55:57.000Z</published>
+    <updated>2025-08-05T02:25:55.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;自部署了 T 佬的 GPT-Load 和 New API，一开始使用的是 MySQL，想迁移到 PostgreSQL，因此轻微折腾了一下，过程极其顺利，稍微写一篇记录一下。&lt;/p&gt;
@@ -42,10 +204,10 @@
   
   <entry>
     <title>我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型</title>
-    <link href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/</id>
+    <link href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/</id>
     <published>2025-07-29T13:43:11.000Z</published>
-    <updated>2025-08-05T02:25:55.538Z</updated>
+    <updated>2025-08-05T02:25:55.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;Claude Code 发布以来，编程能力是目前公认最强的，但是对国内不太友好，封控严重，国内一封一大片，我也在一直观望，否则秒封白折腾。&lt;/p&gt;
@@ -65,10 +227,10 @@
   
   <entry>
     <title>真正零编程基础开发程序工作流</title>
-    <link href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/"/>
-    <id>https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/</id>
+    <link href="https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/"/>
+    <id>https://www.puppetdevz.top/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/</id>
     <published>2025-07-23T08:31:42.000Z</published>
-    <updated>2025-08-05T02:25:55.538Z</updated>
+    <updated>2025-08-05T02:25:55.000Z</updated>
     
     
       
@@ -91,8 +253,8 @@
     <title>macos开机自动执行shell脚本</title>
     <link href="https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/"/>
     <id>https://www.puppetdevz.top/20250717/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/macos%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8Cshell%E8%84%9A%E6%9C%AC/</id>
-    <published>2025-07-17T07:12:05.681Z</published>
-    <updated>2025-08-05T02:25:55.538Z</updated>
+    <published>2025-07-17T07:12:05.000Z</published>
+    <updated>2025-08-05T02:25:55.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;在 macOS 上设置开机或用户登录后自动执行 Shell 脚本，最现代且可靠的方法是使用 &lt;code&gt;launchd&lt;/code&gt;。这是 Apple 官方推荐的用于管理守护进程和服务的系统。&lt;/p&gt;
@@ -120,7 +282,7 @@
     <link href="https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/"/>
     <id>https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Nginx%E7%BB%93%E5%90%88Certbot%20SSL%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97%20(Ubuntu%2024.04)/</id>
     <published>2025-07-10T13:33:57.000Z</published>
-    <updated>2025-08-05T02:25:55.538Z</updated>
+    <updated>2025-08-05T02:25:55.000Z</updated>
     
     
       
@@ -152,8 +314,8 @@
     <title>Typora 安装激活</title>
     <link href="https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Typora%20%E5%AE%89%E8%A3%85%E6%BF%80%E6%B4%BB/"/>
     <id>https://www.puppetdevz.top/20250710/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Typora%20%E5%AE%89%E8%A3%85%E6%BF%80%E6%B4%BB/</id>
-    <published>2025-07-10T01:27:52.570Z</published>
-    <updated>2025-08-05T02:25:55.538Z</updated>
+    <published>2025-07-10T01:27:52.000Z</published>
+    <updated>2025-08-05T02:25:55.000Z</updated>
     
     
       
@@ -170,9 +332,9 @@
     <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
     
-    <category term="软件" scheme="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/"/>
-    
     <category term="Windows" scheme="https://www.puppetdevz.top/tags/Windows/"/>
+    
+    <category term="软件" scheme="https://www.puppetdevz.top/tags/%E8%BD%AF%E4%BB%B6/"/>
     
     <category term="工具" scheme="https://www.puppetdevz.top/tags/%E5%B7%A5%E5%85%B7/"/>
     
@@ -186,8 +348,8 @@
     <title>Cursor申请学生优惠找不到China怎么办？</title>
     <link href="https://www.puppetdevz.top/20250507/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Cursor%E7%94%B3%E8%AF%B7%E5%AD%A6%E7%94%9F%E4%BC%98%E6%83%A0%E6%89%BE%E4%B8%8D%E5%88%B0China%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/Cursor%E7%94%B3%E8%AF%B7%E5%AD%A6%E7%94%9F%E4%BC%98%E6%83%A0%E6%89%BE%E4%B8%8D%E5%88%B0China%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/"/>
     <id>https://www.puppetdevz.top/20250507/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Cursor%E7%94%B3%E8%AF%B7%E5%AD%A6%E7%94%9F%E4%BC%98%E6%83%A0%E6%89%BE%E4%B8%8D%E5%88%B0China%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/Cursor%E7%94%B3%E8%AF%B7%E5%AD%A6%E7%94%9F%E4%BC%98%E6%83%A0%E6%89%BE%E4%B8%8D%E5%88%B0China%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/</id>
-    <published>2025-05-07T08:17:12.783Z</published>
-    <updated>2025-05-07T11:36:10.923Z</updated>
+    <published>2025-05-07T08:17:12.000Z</published>
+    <updated>2025-11-24T08:54:00.944Z</updated>
     
     
       
@@ -213,7 +375,7 @@
     <link href="https://www.puppetdevz.top/20250305/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Github%20Benefits%E5%AD%A6%E7%94%9F%E5%8C%85%E6%96%B0%E7%89%88%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/"/>
     <id>https://www.puppetdevz.top/20250305/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Github%20Benefits%E5%AD%A6%E7%94%9F%E5%8C%85%E6%96%B0%E7%89%88%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97/</id>
     <published>2025-03-05T15:51:10.000Z</published>
-    <updated>2025-05-07T04:42:31.698Z</updated>
+    <updated>2025-11-24T08:54:00.644Z</updated>
     
     
     <summary type="html">&lt;hr&gt;
@@ -241,10 +403,10 @@
     <link href="https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/"/>
     <id>https://www.puppetdevz.top/20241109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/NAS/OMV%E7%BB%93%E5%90%88NextCloud%E5%AE%9E%E7%8E%B0%E7%A7%81%E4%BA%BA%E7%BD%91%E7%9B%98/</id>
     <published>2024-11-09T02:36:49.000Z</published>
-    <updated>2024-12-19T08:13:24.884Z</updated>
+    <updated>2025-11-24T08:54:00.944Z</updated>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://oss.puppetdevz.top/image/note/ab9bff5d9f1b185ad091b0387e139630.webp&quot; alt=&quot;OMV NAS &amp;amp; NextCloud搭建私人网盘.webp&quot;&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img.puppetdevz.top/image/note/ab9bff5d9f1b185ad091b0387e139630.webp&quot; alt=&quot;OMV NAS &amp;amp; NextCloud搭建私人网盘.webp&quot;&gt;&lt;/p&gt;
 &lt;p&gt;OpenMediaVault (OMV) 是一款基于 Debian 的开源网络附加存储（NAS）解决方案，它通过易于使用的界面提供数据存储、备份和共享服务。结合 Nextcloud，用户可以在 OMV 平台上搭建一个功能强大的私人网盘，实现文件同步、分享和协作。这种组合不仅增强了数据的可访问性和安全性，也为个人和小型企业提供了一个成本效益高、隐私保护好的云存储解决方案。通过 Docker 容器或直接安装，OMV 与 Nextcloud 的整合可以轻松完成，满足现代数字生活的存储需求。&lt;/p&gt;</summary>
     
     
@@ -261,14 +423,14 @@
     <link href="https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/"/>
     <id>https://www.puppetdevz.top/20241031/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Ae1000e%20eno1%20Detected%20Hardware%20Unit%20Hang%EF%BC%88PVE%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%EF%BC%89/</id>
     <published>2024-10-31T03:27:47.000Z</published>
-    <updated>2024-12-19T08:13:24.431Z</updated>
+    <updated>2025-11-24T08:54:00.947Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://oss.puppetdevz.top/image/note/8a813c25c40bdf839d7466c7a2da9098.png&quot; alt=&quot;fjy89&quot;&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img.puppetdevz.top/image/note/8a813c25c40bdf839d7466c7a2da9098.png&quot; alt=&quot;fjy89&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在 Proxmox 6.5.11-8</summary>
         
       
@@ -293,7 +455,7 @@
     <link href="https://www.puppetdevz.top/20240510/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/NGINX%E6%97%A5%E5%BF%97%E5%88%87%E7%89%87/"/>
     <id>https://www.puppetdevz.top/20240510/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E4%B8%AD%E9%97%B4%E4%BB%B6/NGINX/NGINX%E6%97%A5%E5%BF%97%E5%88%87%E7%89%87/</id>
     <published>2024-05-10T07:36:33.000Z</published>
-    <updated>2024-12-16T07:56:26.071Z</updated>
+    <updated>2024-12-16T07:56:26.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;当 NGINX 的日志文件变得过大时，通常的做法是进行日志切片（log rotation），这样可以防止单个日志文件过大，便于管理和存储。&lt;/p&gt;
@@ -315,10 +477,10 @@
     <link href="https://www.puppetdevz.top/20240112/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E5%90%88%E9%9B%86%EF%BC%9AJenkins%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%89%8D%E7%AB%AF%E7%BC%96%E8%AF%91%E6%89%93%E5%8C%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
     <id>https://www.puppetdevz.top/20240112/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E5%90%88%E9%9B%86%EF%BC%9AJenkins%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%89%8D%E7%AB%AF%E7%BC%96%E8%AF%91%E6%89%93%E5%8C%85%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/</id>
     <published>2024-01-12T13:59:19.000Z</published>
-    <updated>2024-12-19T08:13:24.427Z</updated>
+    <updated>2025-11-24T08:54:00.939Z</updated>
     
     
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://oss.puppetdevz.top/image/note/21c20a886cd579bb5965fea1e9843e49.png&quot; alt=&quot;the webpack how to work.png&quot;&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://img.puppetdevz.top/image/note/21c20a886cd579bb5965fea1e9843e49.png&quot; alt=&quot;the webpack how to work.png&quot;&gt;&lt;/p&gt;</summary>
     
     
     
@@ -334,7 +496,7 @@
     <link href="https://www.puppetdevz.top/20240103/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Windows%E7%AB%AF%E5%8F%A3%E4%B8%8D%E5%8F%AF%E7%94%A8%EF%BC%9AError%EF%BC%9Alisten%20EACCES%EF%BC%9Apermission%20denied%200.0.0.0%EF%BC%9A5200/"/>
     <id>https://www.puppetdevz.top/20240103/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Windows%E7%AB%AF%E5%8F%A3%E4%B8%8D%E5%8F%AF%E7%94%A8%EF%BC%9AError%EF%BC%9Alisten%20EACCES%EF%BC%9Apermission%20denied%200.0.0.0%EF%BC%9A5200/</id>
     <published>2024-01-02T16:32:40.000Z</published>
-    <updated>2024-12-19T08:13:24.427Z</updated>
+    <updated>2025-11-24T08:54:00.938Z</updated>
     
     
     <summary type="html">&lt;p&gt;当我使用 Windows 11 下的 VSCode 启动 Vue 项目时，出现以下报错：&lt;/p&gt;
@@ -344,195 +506,6 @@
     
     <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>在ServiceComb中Vertx、Highway与HTTP的关系</title>
-    <link href="https://www.puppetdevz.top/20230907/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%9C%A8ServiceComb%E4%B8%ADVertx%E3%80%81Highway%E4%B8%8EHTTP%E7%9A%84%E5%85%B3%E7%B3%BB/"/>
-    <id>https://www.puppetdevz.top/20230907/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%9C%A8ServiceComb%E4%B8%ADVertx%E3%80%81Highway%E4%B8%8EHTTP%E7%9A%84%E5%85%B3%E7%B3%BB/</id>
-    <published>2023-09-07T04:01:16.000Z</published>
-    <updated>2023-12-17T12:54:31.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在 Apache ServiceComb 中，&lt;code&gt;Highway&lt;/code&gt;, &lt;code&gt;Vertx&lt;/code&gt;, 和 &lt;code&gt;HTTP&lt;/code&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-    <category term="ServiceComb" scheme="https://www.puppetdevz.top/tags/ServiceComb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>告别繁琐编译，docker buildx 让你在任意平台构建任意架构的镜像</title>
-    <link href="https://www.puppetdevz.top/pages/9e0723/"/>
-    <id>https://www.puppetdevz.top/pages/9e0723/</id>
-    <published>2023-03-10T14:43:09.000Z</published>
-    <updated>2025-08-05T02:25:55.538Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;有时候，我们需要在 ARM 架构的平台构建 x86 架构的镜像，这时就可以使用 docker 在 19.03 版本引入的 docker buildx 特性。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[!info] Buildx&lt;br&gt;在 Docker 19.03 版本中，官方引入了一个强大的新功能 &lt;code&gt;buildx&lt;/code&gt;，它是一个 Docker CLI 插件，通过集成 Moby BuildKit 提供了扩展的构建能力。&lt;a href=&quot;https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHM0n2wPUZEnvRZ_XxF6gaH0Dd6x-GMod-Uq7e328AMKb98IrXwGyP3-l44cNKnVSu3fR1PjrDuX5BvBsYnfltrI3ANajiPmgygQDlY7NzDlxUQRQOQISENtbWrrJvErDMIVKNgfg-rY2wy2i2PJAu4eD54R9E0fWQSj99TlQ432-j0E_dv3wZs6ntct1Q=&quot;&gt;1&lt;/a&gt;&lt;a href=&quot;https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQxkZfd_miNQhOhnYX1Q0jX6iHX-yhRUQW81VEU99I7pPfe5nbAaIdR0FuDuFm_W102MraOuC9G68OCdPfef-UOQRq3jfLLeMvsG7qixhTPtJJZ8TTEKF7vYo=&quot;&gt;2&lt;/a&gt;&lt;a href=&quot;https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFS3M3copQqEinxMS5uJVmLWAmCdfaXVyDuspaPZ7da7C62v0aqBxcIppIIV6dD--Viy0CeJgg7kZCewxwdzH3xVKZ7Aa-V5b8mtl2R3bpR8_B-yHf8Y2ES8Oq7b3RaYuIKZ9iHcvQRBvxcjJF_p08qdGKuugzmNCuhhmtImvWPWMKoe_2CExB5ZJTkgRAMgXlX_xgGjzZihOHLVpiq_32vMw==&quot;&gt;3&lt;/a&gt; 其中最核心的功能之一就是支持跨平台构建，让你可以在单一主机上（例如 x86）构建出能在多种架构（例如 ARM64）上运行的镜像。低于 19.03 版本的话，需要另外想办法。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-    <category term="docker" scheme="https://www.puppetdevz.top/tags/docker/"/>
-    
-    <category term="buildx" scheme="https://www.puppetdevz.top/tags/buildx/"/>
-    
-    <category term="cross-platform" scheme="https://www.puppetdevz.top/tags/cross-platform/"/>
-    
-    <category term="QEMU" scheme="https://www.puppetdevz.top/tags/QEMU/"/>
-    
-    <category term="containerization" scheme="https://www.puppetdevz.top/tags/containerization/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java、Go和Python适合做的事情</title>
-    <link href="https://www.puppetdevz.top/20230208/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java%E3%80%81Go%E5%92%8CPython%E9%80%82%E5%90%88%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/"/>
-    <id>https://www.puppetdevz.top/20230208/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Java%E3%80%81Go%E5%92%8CPython%E9%80%82%E5%90%88%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/</id>
-    <published>2023-02-08T08:47:11.000Z</published>
-    <updated>2023-12-17T12:54:31.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Java&quot;&gt;&lt;a href=&quot;#Java&quot; class=&quot;headerlink&quot; title=&quot;Java&quot;&gt;&lt;/a&gt;Java&lt;/h2&gt;&lt;p&gt;Java 语言普遍用于开发各种类型的软件系统、应用程序和 Web</summary>
-        
-      
-    
-    
-    
-    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-    <category term="编程语言" scheme="https://www.puppetdevz.top/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决方案：Docker导入镜像报错</title>
-    <link href="https://www.puppetdevz.top/20221201/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9ADocker%E5%AF%BC%E5%85%A5%E9%95%9C%E5%83%8F%E6%8A%A5%E9%94%99/"/>
-    <id>https://www.puppetdevz.top/20221201/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9ADocker%E5%AF%BC%E5%85%A5%E9%95%9C%E5%83%8F%E6%8A%A5%E9%94%99/</id>
-    <published>2022-12-01T07:30:45.000Z</published>
-    <updated>2025-08-05T01:53:23.354Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1-1-问题描述&quot;&gt;&lt;a href=&quot;#1-1-问题描述&quot; class=&quot;headerlink&quot; title=&quot;1.1 问题描述&quot;&gt;&lt;/a&gt;1.1 问题描述&lt;/h2&gt;&lt;p&gt;docker 导入镜像 tar 包报错，报错信息如下：&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    
-    <category term="Docker" scheme="https://www.puppetdevz.top/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决方案：在高版本jdk中使用cglib进行代理时的报错问题</title>
-    <link href="https://www.puppetdevz.top/20221128/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%9C%A8%E9%AB%98%E7%89%88%E6%9C%ACjdk%E4%B8%AD%E4%BD%BF%E7%94%A8cglib%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%90%86%E6%97%B6%E7%9A%84%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/"/>
-    <id>https://www.puppetdevz.top/20221128/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E5%9C%A8%E9%AB%98%E7%89%88%E6%9C%ACjdk%E4%B8%AD%E4%BD%BF%E7%94%A8cglib%E8%BF%9B%E8%A1%8C%E4%BB%A3%E7%90%86%E6%97%B6%E7%9A%84%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/</id>
-    <published>2022-11-28T06:10:20.000Z</published>
-    <updated>2024-12-19T08:13:24.431Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Unable-to-make-protected-final-java-lang-Class-java-lang-ClassLoader-defineClass&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    <category term="后端" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-    <category term="JDK" scheme="https://www.puppetdevz.top/tags/JDK/"/>
-    
-    <category term="解决方案" scheme="https://www.puppetdevz.top/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决方案：SpringBoot-前端时间传递到后端少了8个小时的问题</title>
-    <link href="https://www.puppetdevz.top/20221109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9ASpringBoot-%E5%89%8D%E7%AB%AF%E6%97%B6%E9%97%B4%E4%BC%A0%E9%80%92%E5%88%B0%E5%90%8E%E7%AB%AF%E5%B0%91%E4%BA%868%E4%B8%AA%E5%B0%8F%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://www.puppetdevz.top/20221109/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9ASpringBoot-%E5%89%8D%E7%AB%AF%E6%97%B6%E9%97%B4%E4%BC%A0%E9%80%92%E5%88%B0%E5%90%8E%E7%AB%AF%E5%B0%91%E4%BA%868%E4%B8%AA%E5%B0%8F%E6%97%B6%E7%9A%84%E9%97%AE%E9%A2%98/</id>
-    <published>2022-11-09T03:25:00.000Z</published>
-    <updated>2024-01-10T13:32:40.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;前端向后端发送 POST 请求，请求数据为 JSON 格式，其中有个字段为日期，后端 SpringBoot 通过 Date</summary>
-        
-      
-    
-    
-    
-    <category term="技术文章" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/"/>
-    
-    <category term="后端" scheme="https://www.puppetdevz.top/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-    <category term="解决方案" scheme="https://www.puppetdevz.top/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    <category term="SpringBoot" scheme="https://www.puppetdevz.top/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>应届毕业生求职就业时的相关注意事项</title>
-    <link href="https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E5%BA%94%E5%B1%8A%E6%AF%95%E4%B8%9A%E7%94%9F%E6%B1%82%E8%81%8C%E5%B0%B1%E4%B8%9A%E6%97%B6%E7%9A%84%E7%9B%B8%E5%85%B3%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"/>
-    <id>https://www.puppetdevz.top/20221025/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E5%BA%94%E5%B1%8A%E6%AF%95%E4%B8%9A%E7%94%9F%E6%B1%82%E8%81%8C%E5%B0%B1%E4%B8%9A%E6%97%B6%E7%9A%84%E7%9B%B8%E5%85%B3%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</id>
-    <published>2022-10-25T06:02:05.000Z</published>
-    <updated>2023-12-17T12:54:31.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;应届毕业生求职就业时的相关注意事项&quot;&gt;&lt;a href=&quot;#应届毕业生求职就业时的相关注意事项&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="生活随笔" scheme="https://www.puppetdevz.top/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="求职" scheme="https://www.puppetdevz.top/tags/%E6%B1%82%E8%81%8C/"/>
     
   </entry>
   

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
@@ -154,7 +154,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -165,7 +165,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -190,6 +190,666 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220317/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Anpm%20install%E6%8A%A5%E9%94%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20220317/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9Anpm%20install%E6%8A%A5%E9%94%99/" class="post-title-link" itemprop="url">解决方案：npm install报错</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-17 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-17T00:00:00+08:00">2022-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-11-24 16:54:00" itemprop="dateModified" datetime="2025-11-24T16:54:00+08:00">2025-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-1-pm-ERR-code-EINTEGRITY"><a href="#1-1-pm-ERR-code-EINTEGRITY" class="headerlink" title="1.1 pm ERR! code EINTEGRITY"></a>1.1 pm ERR! code EINTEGRITY</h2><h3 id="1-1-1-问题描述"><a href="#1-1-1-问题描述" class="headerlink" title="1.1.1 问题描述"></a>1.1.1 问题描述</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">：pm ERR! code EINTEGRITY</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.puppetdevz.top/image/note/0df6ae6fb0bd9e492fb05a3d8d15b2d3.png" alt="image-20220317132008831"></p>
+<h3 id="1-1-2-问题解决"><a href="#1-1-2-问题解决" class="headerlink" title="1.1.2 问题解决"></a>1.1.2 问题解决</h3><ol>
+<li>删除本地的 package-lock.json 文件</li>
+<li>【可选】更新自己的 npm 版本 （npm i -g npm）</li>
+<li>【可选】清空 npm 缓存 （npm cache clean –force | npm cache verify）</li>
+<li>重新安装 （npm install）</li>
+</ol>
+<h2 id="1-2-Can’t-find-Python-executable-python"><a href="#1-2-Can’t-find-Python-executable-python" class="headerlink" title="1.2 Can’t find Python executable python"></a>1.2 Can’t find Python executable python</h2><h3 id="1-2-1-问题描述"><a href="#1-2-1-问题描述" class="headerlink" title="1.2.1 问题描述"></a>1.2.1 问题描述</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack Error: Can&#x27;t find Python executable python</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-2-问题解决"><a href="#1-2-2-问题解决" class="headerlink" title="1.2.2 问题解决"></a>1.2.2 问题解决</h3><p>因为 node-gyp 的安装需要，它只能支持 python2，官方推荐 python2.7，</p>
+<ol>
+<li><p>下载安装 python 2.7，并设置系统路径</p>
+</li>
+<li><p>终端中进行设置：<code>npm config set python &quot;C:\Python27\python.exe&quot;</code></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220315/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%89%BE%E7%94%B5%E5%AD%90%E4%B9%A6%E7%B1%8D%E3%80%81%E6%95%99%E7%A8%8B%E7%AD%89%E8%B5%84%E6%BA%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20220315/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%89%BE%E7%94%B5%E5%AD%90%E4%B9%A6%E7%B1%8D%E3%80%81%E6%95%99%E7%A8%8B%E7%AD%89%E8%B5%84%E6%BA%90/" class="post-title-link" itemprop="url">如何去找电子书籍、教程等资源</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-15 11:16:58" itemprop="dateCreated datePublished" datetime="2022-03-15T11:16:58+08:00">2022-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-17 20:54:31" itemprop="dateModified" datetime="2023-12-17T20:54:31+08:00">2023-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">生活随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>平时我们经常需要各种各样的资源，但不知道如何去找，又或者没有形成系统性的搜索方式，而没有办法找到自己想要的资源，这篇文章就主要记录一下平时个人查找资源的方式。</p>
+<p>可以说，掌握了这些技巧，几乎市面上可以看到的任何书籍、任何文档、教程，都能够找到。再也不用买很多书籍，占地方还重，妈妈再也不用担心我的学习了。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20220315/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E5%A6%82%E4%BD%95%E5%8E%BB%E6%89%BE%E7%94%B5%E5%AD%90%E4%B9%A6%E7%B1%8D%E3%80%81%E6%95%99%E7%A8%8B%E7%AD%89%E8%B5%84%E6%BA%90/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220218/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%B0%86%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%BABoolean/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20220218/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%B0%86%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%BABoolean/" class="post-title-link" itemprop="url">将整数型转为Boolean类型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-18 13:04:00" itemprop="dateCreated datePublished" datetime="2022-02-18T13:04:00+08:00">2022-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-17 20:54:31" itemprop="dateModified" datetime="2023-12-17T20:54:31+08:00">2023-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>跟 Python 不同，Java 中的非 0 不能直接为 true</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20220218/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%B0%86%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%BABoolean/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220218/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/HashMap%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E8%B5%8B%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20220218/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/HashMap%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E8%B5%8B%E5%80%BC/" class="post-title-link" itemprop="url">HashMap初始化时赋值</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-18 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-18T00:00:00+08:00">2022-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-08-05 09:53:24" itemprop="dateModified" datetime="2025-08-05T09:53:24+08:00">2025-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在 Java 中，HashMap、ArrayList 和 HashSet 等是常用的数据结构，如果我们想在初始化时就直接给它们赋值，该怎么写呢？（而不是创建一个空的集合后，用 put&#x2F;add 等方法添加进去）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20220218/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/HashMap%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E8%B5%8B%E5%80%BC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220213/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowrocket%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E6%9C%80%E4%BD%B3%E8%8A%82%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20220213/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowrocket%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E6%9C%80%E4%BD%B3%E8%8A%82%E7%82%B9/" class="post-title-link" itemprop="url">如何使用Shadowrocket自动切换最佳节点</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-13 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-13T00:00:00+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-11-24 16:54:00" itemprop="dateModified" datetime="2025-11-24T16:54:00+08:00">2025-11-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/" itemprop="url" rel="index"><span itemprop="name">技术文章</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Shadowrocket 有一个功能是可以自动对列表节点进行定时测速并切换到最快节点，如果某个节点无法访问，会自动进行切换而不需要手动进行干预，下面就是设置的方法。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20220213/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Shadowrocket%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E6%9C%80%E4%BD%B3%E8%8A%82%E7%82%B9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220212/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20220212/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">油猴脚本</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-12 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-12T00:00:00+08:00">2022-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-05-29 14:25:21" itemprop="dateModified" datetime="2025-05-29T14:25:21+08:00">2025-05-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/" itemprop="url" rel="index"><span itemprop="name">测评推荐</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>几个常用好用的油猴脚本推荐</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20220212/%E6%B5%8B%E8%AF%84%E6%8E%A8%E8%8D%90/%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20220128/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E6%88%91%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA%E6%89%8B%E5%86%99%E6%98%A5%E8%81%94%E5%B0%8F%E7%BD%91%E9%A1%B5%EF%BC%8C%E7%A5%9D%E5%A4%A7%E5%AE%B6%E8%99%8E%E5%B9%B4%E6%9A%B4%E5%AF%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20220128/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E6%88%91%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA%E6%89%8B%E5%86%99%E6%98%A5%E8%81%94%E5%B0%8F%E7%BD%91%E9%A1%B5%EF%BC%8C%E7%A5%9D%E5%A4%A7%E5%AE%B6%E8%99%8E%E5%B9%B4%E6%9A%B4%E5%AF%8C/" class="post-title-link" itemprop="url">我做了一个手写春联小网页，祝大家虎年暴富</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-28 14:59:51" itemprop="dateCreated datePublished" datetime="2022-01-28T14:59:51+08:00">2022-01-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-17 20:54:31" itemprop="dateModified" datetime="2023-12-17T20:54:31+08:00">2023-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">生活随笔</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>手写春联：<a target="_blank" rel="noopener" href="https://cl.xugaoyi.com/">https://cl.xugaoyi.com/</a></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>虎年春节快到了，首先祝大家新年快乐，轻松暴富。<br>最近在网上经常看到生成春联的文章，不过这些小demo要么功能简陋,要么UI特别‘程序员’，满足不了我挑剔的眼光。干脆我自己做一个吧，顺便简单体验一下vite+vue3。（因为页面相对简单，vue组件风格还是使用选项式api，重点还是想把产品快速做出来。）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/20220128/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/%E6%88%91%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA%E6%89%8B%E5%86%99%E6%98%A5%E8%81%94%E5%B0%8F%E7%BD%91%E9%A1%B5%EF%BC%8C%E7%A5%9D%E5%A4%A7%E5%AE%B6%E8%99%8E%E5%B9%B4%E6%9A%B4%E5%AF%8C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

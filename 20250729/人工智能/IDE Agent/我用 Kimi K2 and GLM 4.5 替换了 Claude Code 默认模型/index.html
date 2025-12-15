@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
@@ -22,7 +22,7 @@
     <meta name="description" content="Claude Code 发布以来，编程能力是目前公认最强的，但是对国内不太友好，封控严重，国内一封一大片，我也在一直观望，否则秒封白折腾。 但是 7 月 11 号晚上 月之暗面发布 Kimi K2，总参数 1T，支持 Anthropic API，价格还便宜，可以替换 Claude Code 的默认模型，实现国内无痛用上 Claude Code  Claude Code: Deep coding a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型">
-<meta property="og:url" content="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:url" content="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="木偶&#39;s Blog">
 <meta property="og:description" content="Claude Code 发布以来，编程能力是目前公认最强的，但是对国内不太友好，封控严重，国内一封一大片，我也在一直观望，否则秒封白折腾。 但是 7 月 11 号晚上 月之暗面发布 Kimi K2，总参数 1T，支持 Anthropic API，价格还便宜，可以替换 Claude Code 的默认模型，实现国内无痛用上 Claude Code  Claude Code: Deep coding a">
 <meta property="og:locale" content="zh_CN">
@@ -31,18 +31,18 @@
 <meta property="og:image" content="https://jonssonyan.com/images/2025/8/3.webp">
 <meta property="og:image" content="https://jonssonyan.com/images/2025/8/4.webp">
 <meta property="article:published_time" content="2025-07-29T13:43:11.000Z">
-<meta property="article:modified_time" content="2025-08-05T02:25:55.538Z">
+<meta property="article:modified_time" content="2025-08-05T02:25:55.000Z">
 <meta property="article:author" content="木偶">
 <meta property="article:tag" content="前端,后端,框架,web,学习,面试,JavaScript,ES6,TypeScript,vue,css3,html5,Node,markdown,算法,C,Cpp,Linux,Go,Python">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jonssonyan.com/images/2025/8/1.webp">
 
 
-<link rel="canonical" href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/">
+<link rel="canonical" href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/","path":"20250729/人工智能/我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型/","title":"我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/","path":"20250729/人工智能/IDE Agent/我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型/","title":"我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型 | 木偶's Blog</title>
@@ -162,7 +162,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -173,7 +173,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -208,7 +208,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -343,7 +343,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/" title="我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型">https://www.puppetdevz.top/20250729/人工智能/我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型/</a>
+      <a href="https://www.puppetdevz.top/20250729/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E6%88%91%E7%94%A8%20Kimi%20K2%20and%20GLM%204.5%20%E6%9B%BF%E6%8D%A2%E4%BA%86%20Claude%20Code%20%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B/" title="我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型">https://www.puppetdevz.top/20250729/人工智能/IDE Agent/我用 Kimi K2 and GLM 4.5 替换了 Claude Code 默认模型/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -385,7 +385,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/" rel="prev" title="真正零编程基础开发程序工作流">
+                <a href="/20250723/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/%E7%9C%9F%E6%AD%A3%E9%9B%B6%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E5%B7%A5%E4%BD%9C%E6%B5%81/" rel="prev" title="真正零编程基础开发程序工作流">
                   <i class="fa fa-angle-left"></i> 真正零编程基础开发程序工作流
                 </a>
             </div>
@@ -474,7 +474,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"9177e4d61990d066446e6843d742089f"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"89d08c945e5a1c445397589aeb2ef346"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

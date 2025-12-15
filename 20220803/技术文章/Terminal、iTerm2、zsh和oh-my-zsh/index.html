@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="木偶&#39;s Blog">
 <meta property="og:description" content="作为一名程序员，我们跟终端打交道的频率非常地高，终端的是否好用，往往跟我们的效率关系很大。一开始用的是 MacOS 自带的 zsh，有时候在敲很长的 shell 命令时，发现打错了某个字符，想要修改，很是麻烦。这让我不禁想，要是终端命令也能用 vi 来编辑该多好！！！于是开始捣鼓，我发现了 oh-my-zsh">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://oss.puppetdevz.top/image/note/9d5bbe83622b201dec9fdabadea6c6f4.png">
+<meta property="og:image" content="https://img.puppetdevz.top/image/note/9d5bbe83622b201dec9fdabadea6c6f4.png">
 <meta property="article:published_time" content="2022-08-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-05T07:30:28.265Z">
+<meta property="article:modified_time" content="2025-11-24T08:54:00.629Z">
 <meta property="article:author" content="木偶">
 <meta property="article:tag" content="Shell">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://oss.puppetdevz.top/image/note/9d5bbe83622b201dec9fdabadea6c6f4.png">
+<meta name="twitter:image" content="https://img.puppetdevz.top/image/note/9d5bbe83622b201dec9fdabadea6c6f4.png">
 
 
 <link rel="canonical" href="https://www.puppetdevz.top/20220803/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Terminal%E3%80%81iTerm2%E3%80%81zsh%E5%92%8Coh-my-zsh/">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Terminal%E3%80%81iTerm2%E3%80%81zsh%E3%80%81bash-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">1.1 Terminal、iTerm2、zsh、bash 之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-iTerm2"><span class="nav-text">1.2 iTerm2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-oh-my-zsh-%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%98%E7%BD%91"><span class="nav-text">1.3 oh-my-zsh 简介与官网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E6%8E%A8%E8%8D%90%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="nav-text">1.4 推荐的插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E6%8E%A8%E8%8D%90%E7%9A%84%E4%B8%BB%E9%A2%98"><span class="nav-text">1.5 推荐的主题</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Terminal%E3%80%81iTerm2%E3%80%81zsh%E3%80%81bash-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">1.1 Terminal、iTerm2、zsh、bash 之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-iTerm2"><span class="nav-text">1.2 iTerm2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-oh-my-zsh-%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%98%E7%BD%91"><span class="nav-text">1.3 oh-my-zsh 简介与官网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E6%8E%A8%E8%8D%90%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="nav-text">1.4 推荐的插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-autojump-vs-z"><span class="nav-text">1.4.1 autojump vs z</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-sudo"><span class="nav-text">1.4.2 sudo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-zsh-syntax-highlighting-%E2%AD%90"><span class="nav-text">1.4.3 zsh-syntax-highlighting ⭐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-4-zsh-autosuggestions-%E2%AD%90"><span class="nav-text">1.4.4 zsh-autosuggestions ⭐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E6%8E%A8%E8%8D%90%E7%9A%84%E4%B8%BB%E9%A2%98"><span class="nav-text">1.5 推荐的主题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -170,7 +170,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -241,7 +241,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-06-05 15:30:28" itemprop="dateModified" datetime="2025-06-05T15:30:28+08:00">2025-06-05</time>
+      <time title="修改时间：2025-11-24 16:54:00" itemprop="dateModified" datetime="2025-11-24T16:54:00+08:00">2025-11-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,28 +297,70 @@
 <blockquote>
 <p>但是要注意，许多主题如果想要正常地显示，可能需要特定的字体补丁。即需要安装 <a target="_blank" rel="noopener" href="https://github.com/powerline/fonts">Powerline Font</a> 或者 <a target="_blank" rel="noopener" href="https://github.com/ryanoasis/nerd-fonts">Nerd Font</a>，对于这两种的字体补丁的介绍见：<a href="/pages/c48a5b/">字体</a></p>
 <p>例如 agnoster 主题，如果没有合适的字体补丁，就会乱码</p>
-<p><img src="https://oss.puppetdevz.top/image/note/9d5bbe83622b201dec9fdabadea6c6f4.png" alt="image-20221109130141997"></p>
+<p><img src="https://img.puppetdevz.top/image/note/9d5bbe83622b201dec9fdabadea6c6f4.png" alt="image-20221109130141997"></p>
 <p>用了 Powerline Font 或 Nerd Front 后，就正常了</p>
 </blockquote>
 <p>此外，oh-my-zsh 还支持第三方的插件和主题，只需要下载后，放置到 <code>~/.oh-my-zsh/custom</code> 目录下即可启动</p>
 <h2 id="1-4-推荐的插件"><a href="#1-4-推荐的插件" class="headerlink" title="1.4 推荐的插件"></a>1.4 推荐的插件</h2><p>插件也不宜启动太多，oh-my-zsh 的作者也提到，如果插件太多，会影响到 shell 的启动速度</p>
+<p>如果不看下面的介绍，可以直接批量启动推荐的插件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">omz plugin <span class="built_in">enable</span> vi-mode z zsh-syntax-highlighting zsh-autosuggestions <span class="built_in">sudo</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><p>vi-mode：首推，也是我想要用 oh-my-zsh 的原因（虽然其他的很多也可以，但挡不住它简单）</p>
-</li>
-<li><p>git：提供很多 git 命令的缩写（别名）</p>
-</li>
-<li><p>autojump：快速跳转到最近的文件夹</p>
-</li>
-<li><p>zsh-syntax-highlighting：命令高亮，且如果路径正确，会带下划线</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切换到 ~/.oh-my-zsh/custom/plugins 目录下后执行下面命令</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>zsh-autosuggestions：自动补全可能的路径</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切换到 ~/.oh-my-zsh/custom/plugins 目录下后执行下面命令</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions </span><br></pre></td></tr></table></figure></li>
+<li>vi-mode：首推，也是我想要用 oh-my-zsh 的原因（虽然其他的很多也可以，但挡不住它简单）</li>
+<li>git：提供很多 git 命令的缩写（别名），<strong>默认启动</strong></li>
 </ul>
-<h2 id="1-5-推荐的主题"><a href="#1-5-推荐的主题" class="headerlink" title="1.5 推荐的主题"></a>1.5 推荐的主题</h2><p>每个人的 the right-one 都不同，可以到 <a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">这里</a> 去找</p>
+<h3 id="1-4-1-autojump-vs-z"><a href="#1-4-1-autojump-vs-z" class="headerlink" title="1.4.1 autojump vs z"></a>1.4.1 autojump vs z</h3><p>快速跳转到最近的文件夹</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th><strong>z</strong></th>
+<th><strong>autojump</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>安装方式</strong></td>
+<td>Oh-My-Zsh 内置</td>
+<td>需要单独安装</td>
+</tr>
+<tr>
+<td><strong>依赖</strong></td>
+<td>无</td>
+<td>需要 Python</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>更快，纯 shell</td>
+<td>稍慢，调用 Python</td>
+</tr>
+<tr>
+<td><strong>功能</strong></td>
+<td>基础但够用</td>
+<td>功能更丰富</td>
+</tr>
+<tr>
+<td><strong>维护</strong></td>
+<td>OMZ 团队维护</td>
+<td>独立项目</td>
+</tr>
+<tr>
+<td><strong>推荐度</strong></td>
+<td>⭐⭐⭐⭐⭐ 首选</td>
+<td>⭐⭐⭐⭐ 高级用户</td>
+</tr>
+</tbody></table>
+<p>如果要用 autojump，需用 homebrew 安装一下</p>
+<h3 id="1-4-2-sudo"><a href="#1-4-2-sudo" class="headerlink" title="1.4.2 sudo"></a>1.4.2 <strong>sudo</strong></h3><p><strong>功能</strong>：按两次 <code>ESC</code> 自动在当前命令前加 <code>sudo</code></p>
+<h3 id="1-4-3-zsh-syntax-highlighting-⭐"><a href="#1-4-3-zsh-syntax-highlighting-⭐" class="headerlink" title="1.4.3 zsh-syntax-highlighting ⭐"></a>1.4.3 <strong>zsh-syntax-highlighting</strong> ⭐</h3><p><strong>功能</strong>：实时高亮命令语法，错误命令显示红色</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-4-zsh-autosuggestions-⭐"><a href="#1-4-4-zsh-autosuggestions-⭐" class="headerlink" title="1.4.4 zsh-autosuggestions ⭐"></a>1.4.4 <strong>zsh-autosuggestions</strong> ⭐</h3><p><strong>功能</strong>：根据历史命令自动建议补全</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-推荐的主题"><a href="#1-5-推荐的主题" class="headerlink" title="1.5 推荐的主题"></a>1.5 推荐的主题</h2><p>每个人的 the right-one 都不同，可以到 <a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">这里</a> 去找，个人喜欢 apple 主题</p>
 <p>其他三方主题推荐：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a>，具体使用详见 readme</li>
 </ul>
 
     </div>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon_64.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon_32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.puppetdevz.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在自动化脚本、服务器监控或智能家居场景中，我们经常需要将通知实时推送到手机。传统的短信或邮件要么成本高，要么时效性差。 本文将深度解析两款主流的轻量级推送服务——Bark 和 PushPlus，对比它们的优缺点，提供使用教程，并手把手教你如何自建私有的 Bark 服务端。  1.1 核心服务介绍1.1.1 📱 Bark：iOS 用户的极致之选Bark 是一款专为 iPhone&#x2F;iPad">
+<meta property="og:type" content="article">
+<meta property="og:title" content="消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南">
+<meta property="og:url" content="https://www.puppetdevz.top/20251119/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%A5%9E%E5%99%A8%E8%AF%A6%E8%A7%A3%EF%BC%9ABark%20%E4%B8%8E%20PushPlus%20%E5%85%A8%E6%96%B9%E4%BD%8D%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="木偶&#39;s Blog">
+<meta property="og:description" content="在自动化脚本、服务器监控或智能家居场景中，我们经常需要将通知实时推送到手机。传统的短信或邮件要么成本高，要么时效性差。 本文将深度解析两款主流的轻量级推送服务——Bark 和 PushPlus，对比它们的优缺点，提供使用教程，并手把手教你如何自建私有的 Bark 服务端。  1.1 核心服务介绍1.1.1 📱 Bark：iOS 用户的极致之选Bark 是一款专为 iPhone&#x2F;iPad">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-19T14:55:58.000Z">
+<meta property="article:modified_time" content="2025-11-19T14:56:50.000Z">
+<meta property="article:author" content="木偶">
+<meta property="article:tag" content="前端,后端,框架,web,学习,面试,JavaScript,ES6,TypeScript,vue,css3,html5,Node,markdown,算法,C,Cpp,Linux,Go,Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.puppetdevz.top/20251119/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%A5%9E%E5%99%A8%E8%AF%A6%E8%A7%A3%EF%BC%9ABark%20%E4%B8%8E%20PushPlus%20%E5%85%A8%E6%96%B9%E4%BD%8D%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.puppetdevz.top/20251119/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%A5%9E%E5%99%A8%E8%AF%A6%E8%A7%A3%EF%BC%9ABark%20%E4%B8%8E%20PushPlus%20%E5%85%A8%E6%96%B9%E4%BD%8D%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/","path":"20251119/技术文章/消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南/","title":"消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南 | 木偶's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="木偶's Blog" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="木偶's Blog" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">木偶's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">如果发现能力无法支撑自己的野心，那就静下心来学习吧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-简历"><a href="/resume/" rel="section"><i class="fa fa-user fa-fw"></i>简历</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%A0%B8%E5%BF%83%E6%9C%8D%E5%8A%A1%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.1 核心服务介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%F0%9F%93%B1-Bark%EF%BC%9AiOS-%E7%94%A8%E6%88%B7%E7%9A%84%E6%9E%81%E8%87%B4%E4%B9%8B%E9%80%89"><span class="nav-text">1.1.1 📱 Bark：iOS 用户的极致之选</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E2%9E%95-PushPlus-%E6%8E%A8%E9%80%81%E5%8A%A0-%EF%BC%9A%E5%BE%AE%E4%BF%A1%E7%94%9F%E6%80%81%E7%9A%84%E9%9B%86%E5%A4%A7%E6%88%90%E8%80%85"><span class="nav-text">1.1.2 ➕ PushPlus (推送加)：微信生态的集大成者</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E6%8C%87%E5%8D%97"><span class="nav-text">1.2 快速上手指南</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%F0%9F%9A%80-Bark-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-text">1.2.1 🚀 Bark 使用教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%F0%9F%9A%80-PushPlus-%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-text">1.2.2 🚀 PushPlus 使用教程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%90%8C%E7%B1%BB%E7%AB%9E%E5%93%81%E6%A8%AA%E5%90%91%E5%AF%B9%E6%AF%94"><span class="nav-text">1.3 同类竞品横向对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E5%AE%9E%E6%88%98%EF%BC%9A%E4%BD%BF%E7%94%A8-Docker-%E8%87%AA%E5%BB%BA-Bark-%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-text">1.4 实战：使用 Docker 自建 Bark 服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-%F0%9F%9B%A0%EF%B8%8F-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-text">1.4.1 🛠️ 环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-%F0%9F%93%A6-%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4"><span class="nav-text">1.4.2 📦 部署步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-1-%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9ADocker-CLI-%E6%9C%80%E5%BF%AB"><span class="nav-text">1.4.2.1 方法一：Docker CLI (最快)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-2-%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9ADocker-Compose-%E6%8E%A8%E8%8D%90"><span class="nav-text">1.4.2.2 方法二：Docker Compose (推荐)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-%F0%9F%94%92-%E5%85%B3%E9%94%AE%E9%85%8D%E7%BD%AE%EF%BC%9A%E6%8E%A5%E5%85%A5-HTTPS-%E5%BF%85%E7%9C%8B"><span class="nav-text">1.4.3 🔒 关键配置：接入 HTTPS (必看)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-4-%F0%9F%93%B1-%E6%89%8B%E6%9C%BA%E7%AB%AF%E8%BF%9E%E6%8E%A5%E7%A7%81%E6%9C%89%E6%9C%8D"><span class="nav-text">1.4.4 📱 手机端连接私有服</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E6%80%BB%E7%BB%93%E5%BB%BA%E8%AE%AE"><span class="nav-text">1.5 总结建议</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="木偶"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">木偶</p>
+  <div class="site-description" itemprop="description">本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/puppetdevz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;puppetdevz" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:puppetdevz@163.com" title="E-Mail → mailto:puppetdevz@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.puppetdevz.top/20251119/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%A5%9E%E5%99%A8%E8%AF%A6%E8%A7%A3%EF%BC%9ABark%20%E4%B8%8E%20PushPlus%20%E5%85%A8%E6%96%B9%E4%BD%8D%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="木偶">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木偶's Blog">
+      <meta itemprop="description" content="本站为木偶的技术分享博客，偶尔会聊聊其他的。主要内容涵盖Java、Python、Go、C、Cpp、前端以及对应相关的一些框架技术的研究与知识分享。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南 | 木偶's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-11-19 22:55:58 / 修改时间：22:56:50" itemprop="dateCreated datePublished" datetime="2025-11-19T22:55:58+08:00">2025-11-19</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在自动化脚本、服务器监控或智能家居场景中，我们经常需要将通知实时推送到手机。传统的短信或邮件要么成本高，要么时效性差。</p>
+<p>本文将深度解析两款主流的轻量级推送服务——<strong>Bark</strong> 和 <strong>PushPlus</strong>，对比它们的优缺点，提供使用教程，并手把手教你如何自建私有的 Bark 服务端。</p>
+<hr>
+<h2 id="1-1-核心服务介绍"><a href="#1-1-核心服务介绍" class="headerlink" title="1.1 核心服务介绍"></a>1.1 核心服务介绍</h2><h3 id="1-1-1-📱-Bark：iOS-用户的极致之选"><a href="#1-1-1-📱-Bark：iOS-用户的极致之选" class="headerlink" title="1.1.1 📱 Bark：iOS 用户的极致之选"></a>1.1.1 📱 Bark：iOS 用户的极致之选</h3><p>Bark 是一款专为 <strong>iPhone&#x2F;iPad</strong> 设计的开源推送服务。它的设计理念是“简单”与“隐私”。</p>
+<ul>
+<li><strong>核心优势：</strong><ul>
+<li><strong>原生体验：</strong> 走 Apple APNs 通道，系统级通知，省电且极速。</li>
+<li><strong>隐私安全：</strong> 消息传输支持加密，且支持<strong>完全自建服务端</strong>，数据不经过第三方。</li>
+<li><strong>功能丰富：</strong> 支持复制推送内容、自动打开 URL、自定义铃声、分组通知。</li>
+</ul>
+</li>
+<li><strong>适用人群：</strong> iOS&#x2F;iPadOS 用户，注重隐私和响应速度的极客。</li>
+</ul>
+<h3 id="1-1-2-➕-PushPlus-推送加-：微信生态的集大成者"><a href="#1-1-2-➕-PushPlus-推送加-：微信生态的集大成者" class="headerlink" title="1.1.2 ➕ PushPlus (推送加)：微信生态的集大成者"></a>1.1.2 ➕ PushPlus (推送加)：微信生态的集大成者</h3><p>PushPlus 是集成了微信、企业微信、钉钉、短信等多种渠道的聚合推送平台。</p>
+<ul>
+<li><strong>核心优势：</strong><ul>
+<li><strong>零门槛：</strong> 无需安装 App，直接通过<strong>微信公众号</strong>接收消息。</li>
+<li><strong>多渠道：</strong> 一次调用，可分发至邮件、钉钉、企业微信等。</li>
+<li><strong>群组推送：</strong> 支持“一对多”模式，适合团队运维告警。</li>
+</ul>
+</li>
+<li><strong>适用人群：</strong> 安卓&#x2F;iOS 双持用户，不想安装额外 App 的用户，以及团队协作场景。</li>
+</ul>
+<hr>
+<h2 id="1-2-快速上手指南"><a href="#1-2-快速上手指南" class="headerlink" title="1.2 快速上手指南"></a>1.2 快速上手指南</h2><h3 id="1-2-1-🚀-Bark-使用教程"><a href="#1-2-1-🚀-Bark-使用教程" class="headerlink" title="1.2.1 🚀 Bark 使用教程"></a>1.2.1 🚀 Bark 使用教程</h3><p><strong>第一步：获取 Key</strong></p>
+<ol>
+<li>在 App Store 搜索下载 <strong>Bark</strong>。</li>
+<li>打开 App，主界面会显示你的专属服务器地址，例如：<code>https://api.day.app/YourKey/</code>。</li>
+</ol>
+<p><strong>第二步：发送请求</strong><br>Bark 的 API 极其简单，支持 GET 和 POST。</p>
+<ul>
+<li><p><strong>最简模式 (GET)：</strong><br>  直接访问 URL 即可触发推送。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式：https://api.day.app/&#123;Key&#125;/&#123;推送内容&#125;</span></span><br><span class="line">curl https://api.day.app/YourKey/脚本执行完成</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>进阶模式 (GET - 带标题)：</strong></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式：https://api.day.app/&#123;Key&#125;/&#123;标题&#125;/&#123;内容&#125;</span></span><br><span class="line">curl https://api.day.app/YourKey/服务器告警/CPU负载超过90%</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>高级参数 (URL 跳转与角标)：</strong></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">&quot;https://api.day.app/YourKey/点击跳转百度?url=https://www.baidu.com&amp;badge=1&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="1-2-2-🚀-PushPlus-使用教程"><a href="#1-2-2-🚀-PushPlus-使用教程" class="headerlink" title="1.2.2 🚀 PushPlus 使用教程"></a>1.2.2 🚀 PushPlus 使用教程</h3><p><strong>第一步：获取 Token</strong></p>
+<ol>
+<li>访问 <a target="_blank" rel="noopener" href="http://www.pushplus.plus/">PushPlus 官网</a>。</li>
+<li>微信扫码登录。</li>
+<li>点击“发送消息” -&gt; “一对一推送”，复制你的 <code>token</code>。</li>
+</ol>
+<p><strong>第二步：发送请求</strong><br>推荐使用 POST 方式发送 JSON 数据。</p>
+<ul>
+<li><p><strong>基础发送 (Curl 示例)：</strong></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">     -X POST \</span><br><span class="line">     -d <span class="string">&#x27;&#123;&quot;token&quot;:&quot;你的Token&quot;, &quot;title&quot;:&quot;每日天气&quot;, &quot;content&quot;:&quot;今天晴转多云，气温25度&quot;&#125;&#x27;</span> \</span><br><span class="line">     http://www.pushplus.plus/send</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="1-3-同类竞品横向对比"><a href="#1-3-同类竞品横向对比" class="headerlink" title="1.3 同类竞品横向对比"></a>1.3 同类竞品横向对比</h2><p>除了 Bark 和 PushPlus，市面上还有许多优秀的替代方案，可根据你的具体环境选择：</p>
+<table>
+<thead>
+<tr>
+<th align="left">服务名称</th>
+<th align="left">平台支持</th>
+<th align="left">推荐指数</th>
+<th align="left">核心特点</th>
+<th align="left">局限性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Telegram Bot</strong></td>
+<td align="left">全平台</td>
+<td align="left">⭐⭐⭐⭐⭐</td>
+<td align="left"><strong>API 最强大</strong>，完全免费，支持双向交互，无限额。</td>
+<td align="left">需要特殊的网络环境 (科学上网)。</td>
+</tr>
+<tr>
+<td align="left"><strong>ServerChan (Server 酱)</strong></td>
+<td align="left">微信&#x2F;App</td>
+<td align="left">⭐⭐⭐</td>
+<td align="left">老牌服务，生态插件极多。</td>
+<td align="left">免费版限制较多，微信通道规则经常变动。</td>
+</tr>
+<tr>
+<td align="left"><strong>DingTalk (钉钉机器人)</strong></td>
+<td align="left">全平台</td>
+<td align="left">⭐⭐⭐⭐</td>
+<td align="left">企业级稳定性，适合工作流集成。</td>
+<td align="left">需要安装钉钉，消息展示为“群机器人”。</td>
+</tr>
+<tr>
+<td align="left"><strong>Feishu (飞书机器人)</strong></td>
+<td align="left">全平台</td>
+<td align="left">⭐⭐⭐⭐</td>
+<td align="left">界面美观，支持富文本卡片消息。</td>
+<td align="left">配置相对复杂（需配置 Webhook 签名）。</td>
+</tr>
+<tr>
+<td align="left"><strong>Gotify</strong></td>
+<td align="left">Android&#x2F;Web</td>
+<td align="left">⭐⭐⭐⭐</td>
+<td align="left">开源、可自建，不仅是推送更是消息中心。</td>
+<td align="left">iOS 支持较弱（无官方 App）。</td>
+</tr>
+<tr>
+<td align="left"><strong>Ntfy.sh</strong></td>
+<td align="left">全平台</td>
+<td align="left">⭐⭐⭐⭐</td>
+<td align="left">基于 Topic 的订阅模式，无需注册，支持自建。</td>
+<td align="left">公共服务器的消息所有人可见（除非加密）。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="1-4-实战：使用-Docker-自建-Bark-服务端"><a href="#1-4-实战：使用-Docker-自建-Bark-服务端" class="headerlink" title="1.4 实战：使用 Docker 自建 Bark 服务端"></a>1.4 实战：使用 Docker 自建 Bark 服务端</h2><p>为了数据的绝对安全，或者为了突破官方服务器的速率限制，自建 Bark 服务端是最佳选择。</p>
+<h3 id="1-4-1-🛠️-环境准备"><a href="#1-4-1-🛠️-环境准备" class="headerlink" title="1.4.1 🛠️ 环境准备"></a>1.4.1 🛠️ 环境准备</h3><ul>
+<li>一台拥有公网 IP 的 Linux 服务器 (VPS)。</li>
+<li>已安装 Docker 和 Docker Compose。</li>
+</ul>
+<h3 id="1-4-2-📦-部署步骤"><a href="#1-4-2-📦-部署步骤" class="headerlink" title="1.4.2 📦 部署步骤"></a>1.4.2 📦 部署步骤</h3><h4 id="1-4-2-1-方法一：Docker-CLI-最快"><a href="#1-4-2-1-方法一：Docker-CLI-最快" class="headerlink" title="1.4.2.1 方法一：Docker CLI (最快)"></a>1.4.2.1 方法一：Docker CLI (最快)</h4><p>直接运行以下命令即可启动一个 HTTP 的 Bark 服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -dt \</span><br><span class="line">    --name bark-server \</span><br><span class="line">    -p 8080:8080 \</span><br><span class="line">    -v <span class="variable">$PWD</span>/bark-data:/data \</span><br><span class="line">    finb/bark-server</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>测试：</strong> 访问 <code>http://你的服务器IP:8080/ping</code>，如果返回 <code>pong</code> 说明部署成功。</li>
+</ul>
+<h4 id="1-4-2-2-方法二：Docker-Compose-推荐"><a href="#1-4-2-2-方法二：Docker-Compose-推荐" class="headerlink" title="1.4.2.2 方法二：Docker Compose (推荐)"></a>1.4.2.2 方法二：Docker Compose (推荐)</h4><p>创建 <code>docker-compose.yaml</code> 文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">bark-server:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">finb/bark-server</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">bark-server</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&quot;8080:8080&quot;</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./bark-data:/data</span></span><br></pre></td></tr></table></figure>
+
+<p>运行命令：<code>docker-compose up -d</code></p>
+<h3 id="1-4-3-🔒-关键配置：接入-HTTPS-必看"><a href="#1-4-3-🔒-关键配置：接入-HTTPS-必看" class="headerlink" title="1.4.3 🔒 关键配置：接入 HTTPS (必看)"></a>1.4.3 🔒 关键配置：接入 HTTPS (必看)</h3><p>虽然 HTTP 也能用，但 iOS 对非 HTTPS 连接有限制，<strong>强烈建议配置 HTTPS</strong>，否则可能出现无法推送图标、铃声失效等问题。</p>
+<p><strong>推荐方案：Nginx 反向代理</strong></p>
+<p>假设你已经配置了 Nginx，可以在配置文件中添加：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">server_name</span> bark.yourdomain.com; <span class="comment"># 你的域名</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /path/to/cert.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /path/to/key.pem;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8080; <span class="comment"># 转发到 Docker 端口</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-4-📱-手机端连接私有服"><a href="#1-4-4-📱-手机端连接私有服" class="headerlink" title="1.4.4 📱 手机端连接私有服"></a>1.4.4 📱 手机端连接私有服</h3><ol>
+<li>打开 Bark App。</li>
+<li>点击左上角 <code>+</code> 号。</li>
+<li>在“私有服务器”栏输入：<code>https://bark.yourdomain.com</code>。</li>
+<li>App 会验证并生成基于你私有服务器的新 Key。</li>
+</ol>
+<hr>
+<h2 id="1-5-总结建议"><a href="#1-5-总结建议" class="headerlink" title="1.5 总结建议"></a>1.5 总结建议</h2><ul>
+<li><strong>如果你是 Apple 全家桶用户：</strong> 请毫不犹豫选择 <strong>Bark</strong>。如果在此基础上你还有服务器资源，<strong>自建 Bark</strong> 能给你带来最顶级的体验。</li>
+<li><strong>如果你需要兼顾 Android 和 iOS，或者用于团队通知：</strong> <strong>PushPlus</strong> 或 <strong>钉钉机器人</strong> 是更稳妥的选择。</li>
+<li><strong>如果你追求技术的极致自由：</strong> 解决网络问题后，<strong>Telegram Bot</strong> 是目前功能最强大的推送终点。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/uploads/wechatpay.jpeg" alt="木偶 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/uploads/alipay.jpeg" alt="木偶 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>木偶
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://www.puppetdevz.top/20251119/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E7%A5%9E%E5%99%A8%E8%AF%A6%E8%A7%A3%EF%BC%9ABark%20%E4%B8%8E%20PushPlus%20%E5%85%A8%E6%96%B9%E4%BD%8D%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/" title="消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南">https://www.puppetdevz.top/20251119/技术文章/消息推送神器详解：Bark 与 PushPlus 全方位对比与实战指南/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <span class="social-link">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </span>
+
+          <img class="social-item-img" src="/uploads/wechat_channel.png">
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20251119/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/IDE%20Agent/ClaudeCode%E6%8F%90%E7%A4%BA%E8%AF%8D%20-%20macOS%E7%89%88%E6%9C%AC/" rel="prev" title="ClaudeCode提示词 - macOS版本">
+                  <i class="fa fa-angle-left"></i> ClaudeCode提示词 - macOS版本
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20251206/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/%F0%9F%93%9D%20macOS%20%22%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%22%20%E7%88%86%E6%BB%A1%E9%97%AE%E9%A2%98%E5%AE%8C%E5%85%A8%E8%A7%A3%E5%86%B3%E6%8C%87%E5%8D%97/" rel="next" title="📝 macOS "系统数据" 爆满问题完全解决指南">
+                  📝 macOS "系统数据" 爆满问题完全解决指南 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">木偶</br><a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2022114751号-1<a /></span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"puppetdevz","repo":"blog","client_id":"5fc238dce5cb1e835808","client_secret":"c4eae999dbf9faa98dd9e72b9ca7411d70aa2be0","admin_user":"puppetdevz","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"1712c1c07a0aebc7ccd32be08486378f"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
